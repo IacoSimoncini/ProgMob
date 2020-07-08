@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProgMob.Views.Register">
+    <StackLayout>
+        <Label x:Name="Lbl_Username" Text="Username"/>
+        <Entry x:Name="Entry_Username" Placeholder="Username"/>
+        <Label x:Name="Lbl_Password" Text="Password"/>
+        <Entry x:Name="Entry_Password" Placeholder="Password"/>
+        <Label x:Name="Lbl_Email" Text="Email"/>
+        <Entry x:Name="Entry_Email" Placeholder="Email"/>
+        <Label x:Name="Lbl_Name" Text="Name"/>
+        <Entry x:Name="Entry_Name" Placeholder="Name"/>
+        <Label x:Name="Lbl_Surmame" Text="Surname"/>
+        <Entry x:Name="Entry_Surname" Placeholder="Surname"/>
+        <Button x:Name="btn_SignUp" Text="SignUp" Clicked="SignUp"/>
+    </StackLayout>
+</ContentPage>
