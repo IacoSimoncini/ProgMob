@@ -9,13 +9,15 @@
         <Label x:Name="Lbl_Username" Text="Username"/>
         <Entry x:Name="Entry_Username" Placeholder="Username"/>
         <Label x:Name="Lbl_Password" Text="Password"/>
-        <Entry x:Name="Entry_Password" Placeholder="Password"/>
+        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true"/>
+        <Entry x:Name="Entry_ConfirmPassword" Placeholder="Confirm Password" IsPassword="true"/>
         <Label x:Name="Lbl_Email" Text="Email"/>
-        <Entry x:Name="Entry_Email" Placeholder="Email"/>
+        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email"/>
         <Label x:Name="Lbl_Name" Text="Name"/>
         <Entry x:Name="Entry_Name" Placeholder="Name"/>
         <Label x:Name="Lbl_Surmame" Text="Surname"/>
         <Entry x:Name="Entry_Surname" Placeholder="Surname"/>
         <Button x:Name="btn_SignUp" Text="SignUp" Clicked="SignUp"/>
+        <Button x:Name="btn_LoginRedirect" Text="Already registered?" Clicked="LoginRedirect"/>
     </StackLayout>
 </ContentPage>

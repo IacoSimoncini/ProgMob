@@ -18,6 +18,7 @@ namespace ProgMob.Views
         }
         void SignIn(object sender , EventArgs e)
         {
+
             DisplayAlert("login", "successful", "cancel");
         }
 
