@@ -56,7 +56,7 @@ namespace ProgMob.Views
                 {
                     await DisplayAlert("Registration successful", "Press OK to continue", "OK");
                     // Return to HomePage
-                    App.Current.MainPage = new MainPage();
+                    //App.Current.MainPage = new MainPage();
                 }
                 else
                 {

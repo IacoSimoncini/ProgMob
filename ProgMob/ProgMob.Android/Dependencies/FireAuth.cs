@@ -39,7 +39,7 @@ namespace ProgMob.Droid.Dependencies
                 notFound.PrintStackTrace();
                 return "";
             }
-            
+
         }
 
         /**
