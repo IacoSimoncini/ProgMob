@@ -16,6 +16,8 @@ namespace ProgMob
         public MainPage()
         {
             InitializeComponent();
+
+
         }
     }
 }

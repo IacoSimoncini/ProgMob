@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="ProgMob.Views.Login">
     <StackLayout>
-            <Label x:Name="Lbl_Username" Text="Username"/>
+            <Label x:Name="Lbl_Email" Text="Email"/>
             <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email"/>
             <Label x:Name="Lbl_Password" Text="Password" />
             <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true"/>

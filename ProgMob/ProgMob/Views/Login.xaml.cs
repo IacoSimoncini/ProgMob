@@ -27,7 +27,8 @@ namespace ProgMob.Views
             if (token != "")
             {
                 await DisplayAlert("Authentication successful", "Press OK to continue", "OK");
-                //App.Current.MainPage = new MainPage();
+                
+                App.Current.MainPage = new MainPage();
             }
             else
             {

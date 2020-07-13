@@ -1,20 +1,18 @@
 ﻿using ProgMob.ViewModel.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Net.Security;
-using System.Text;
-using System.Threading.Tasks;
+
+using ProgMob.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Runtime.CompilerServices;
 
 namespace ProgMob.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Register : ContentPage
     {
+        
         public Register()
         {
             InitializeComponent();
@@ -51,12 +49,12 @@ namespace ProgMob.Views
             else
             {
                 // Firebase Authentication
+                User user = new User(name, surname, "");
                 string Token = await Auth.RegisterToFirebase(username, email, password);
-                if (Token != "")
+                if (Token != "" && DatabaseUser.InsertUser(user))
                 {
                     await DisplayAlert("Registration successful", "Press OK to continue", "OK");
-                    // Return to HomePage
-                    //App.Current.MainPage = new MainPage();
+                    
                 }
                 else
                 {

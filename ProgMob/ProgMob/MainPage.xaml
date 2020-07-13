@@ -6,7 +6,9 @@
              mc:Ignorable="d"
              x:Class="ProgMob.MainPage">
 
-    
+    <d:StackLayout >
+        <Label Text="Main Page" ></Label>        
+    </d:StackLayout>
     
 
 </ContentPage>

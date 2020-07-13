@@ -6,16 +6,18 @@ namespace ProgMob.Models
 {
     public class User
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Uri { get; set; }
+        //public string Uri { get; set; }
+        public string Id { 
+            get { return Id; }
+            set { Id = value; } 
+        }
 
-        public User(string Name, string Surname, string Uri, string Id)
+        public User(string Name, string Surname, string Id)
         {
             this.Name = Name;
             this.Surname = Surname;
-            this.Uri = Uri;
             this.Id = Id;
         }
     }

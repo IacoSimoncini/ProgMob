@@ -10,27 +10,33 @@ namespace ProgMob.ViewModel.Helpers
     public interface FireUser
     {
         bool InsertUser(User User);
-        Task<bool> DeleteUser(User User);
+        Task<bool> DeleteUser(string Uid);
         Task<bool> UpdateUser(User User);
+        bool GetAdmin();
         
     }
     class DatabaseUser
     {
-        private static FireUser firestore = DependencyService.Get<FireUser>();
+        private static FireUser firestoreUser = DependencyService.Get<FireUser>();
 
         public static bool InsertUser(User User)
         {
-            return firestore.InsertUser(User);
+            return firestoreUser.InsertUser(User);
         }
 
-        public static Task<bool> DeleteUser(User User)
+        public static Task<bool> DeleteUser(string Uid)
         {
-            return firestore.DeleteUser(User);
+            return firestoreUser.DeleteUser(Uid);
         }
 
         public static Task<bool> UpdateUser(User User)
         {
-            return firestore.UpdateUser(User);
+            return firestoreUser.UpdateUser(User);
+        }
+
+        public bool GetAdmin()
+        {
+            return firestoreUser.GetAdmin();
         }
         
     }

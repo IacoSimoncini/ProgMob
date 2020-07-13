@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ProgMob.Models;
 using System.Threading.Tasks;
 
 namespace ProgMob.ViewModel.Helpers
