@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProgMob.Models;
-using ProgMob.ViewModel.Helpers;
+﻿using ProgMob.ViewModel.Helpers;
+using System;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProgMob.Views
+namespace ProgMob
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Login : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public Login()
+        public LoginPage()
         {
             InitializeComponent();
         }
-        async void SignIn(object sender , EventArgs e)
+        async void SignIn(object sender, EventArgs e)
         {
             string email = Entry_Email.Text;
             string password = Entry_Password.Text;
@@ -27,7 +23,7 @@ namespace ProgMob.Views
             if (token != "")
             {
                 await DisplayAlert("Authentication successful", "Press OK to continue", "OK");
-                
+
                 App.Current.MainPage = new MainPage();
             }
             else
@@ -46,7 +42,7 @@ namespace ProgMob.Views
             else if (string.IsNullOrWhiteSpace(Entry_Password.Text))
             {
                 await DisplayAlert("Authentication failed", "Please, insert your password", "Cancel");
-            } 
+            }
             else if (string.IsNullOrWhiteSpace(Entry_Email.Text))
             {
                 await DisplayAlert("Authentication failed", "Please, insert your email", "Cancel");
@@ -59,7 +55,7 @@ namespace ProgMob.Views
 
         async void Register(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Register());
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }

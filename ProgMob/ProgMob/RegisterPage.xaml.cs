@@ -1,19 +1,20 @@
-﻿using ProgMob.ViewModel.Helpers;
+﻿using ProgMob.Models;
+using ProgMob.ViewModel.Helpers;
 using System;
-
-using ProgMob.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Runtime.CompilerServices;
 
-namespace ProgMob.Views
+namespace ProgMob
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Register : ContentPage
+    public partial class RegisterPage : ContentPage
     {
-        
-        public Register()
+        public RegisterPage()
         {
             InitializeComponent();
         }
@@ -33,7 +34,7 @@ namespace ProgMob.Views
             else if (string.IsNullOrWhiteSpace(email))
             {
                 await DisplayAlert("Incorrect email", "Please, enter a valid email", "Cancel");
-            } 
+            }
             else if (string.IsNullOrEmpty(password))
             {
                 await DisplayAlert("Incorrect password", "Please, enter a valid password", "Cancel");
@@ -54,7 +55,7 @@ namespace ProgMob.Views
                 if (Token != "" && DatabaseUser.InsertUser(user))
                 {
                     await DisplayAlert("Registration successful", "Press OK to continue", "OK");
-                    
+                    App.Current.MainPage = new MainPage();
                 }
                 else
                 {
@@ -62,10 +63,10 @@ namespace ProgMob.Views
                 }
 
             }
-            
+
         }
 
-        async void LoginRedirect(object sender, EventArgs e) => await Navigation.PushAsync(new Login());
+        async void LoginRedirect(object sender, EventArgs e) => await Navigation.PushAsync(new LoginPage());
 
     }
 }

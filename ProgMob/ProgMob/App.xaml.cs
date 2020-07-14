@@ -1,7 +1,5 @@
 ﻿using ProgMob.Views;
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace ProgMob
 {
@@ -10,8 +8,21 @@ namespace ProgMob
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new Login());
+            if (Application.Current.Properties.ContainsKey("logged"))
+            {
+                if (Application.Current.Properties["logged"].ToString().Equals("true"))
+                {
+                    MainPage = new MainPage();
+                }
+                else
+                {
+                    MainPage = new LoginPage();
+                }
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
             
 
         }

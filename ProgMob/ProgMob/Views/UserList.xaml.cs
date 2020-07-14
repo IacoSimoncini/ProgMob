@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ProgMob
+namespace ProgMob.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : Shell
+    public partial class UserList : ContentPage
     {
-        public MainPage()
+        public UserList()
         {
             InitializeComponent();
-
         }
     }
 }

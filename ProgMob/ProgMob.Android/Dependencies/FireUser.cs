@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
 using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
 using Android.Gms.Tasks;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Firebase.Firestore;
 using Java.Util;
 using ProgMob.Models;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireUser))]
@@ -23,10 +13,11 @@ namespace ProgMob.Droid.Dependencies
     class FireUser : Java.Lang.Object, ViewModel.Helpers.FireUser, IOnCompleteListener
     {
 
-        private bool Admin;
+        List<User> userList;
 
         public FireUser()
         {
+            userList = new List<User>();
         }
 
         public async Task<bool> DeleteUser(string Uid)
@@ -62,33 +53,36 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public Task<bool> UpdateUser(User User)
+        public async Task<IList<User>> ListUser()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool GetAdmin()
-        {
-            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users").Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid).Get().AddOnCompleteListener(this);
-            return Admin;
-            
+            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users");
+            collection.Get().AddOnCompleteListener(this);
+            return userList;
         }
 
         public void OnComplete(Android.Gms.Tasks.Task task)
         {
             if (task.IsSuccessful)
             {
-                HashMap mp = new HashMap();
-                mp = (HashMap)task.Result;
-                if (mp.Get("admin").Equals("admin"))
+                userList.Clear();
+                var documents = (QuerySnapshot)task.Result;
+                foreach (var doc in documents.Documents)
                 {
-                    Admin = true;
-                }
-                else
-                {
-                    Admin = false;
+                    string name = doc.Get("name").ToString();
+                    string surname = doc.Get("surname").ToString();
+                    string id = doc.Id.ToString();
+                    User user = new User(name, surname, id);
+                    userList.Add(user);
+                    Console.WriteLine(name + " " + surname + " " + id);
                 }
             }
         }
+
+        public Task<bool> UpdateUser(User User)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
