@@ -15,7 +15,8 @@ namespace ProgMob
         public MainPage()
         {
             InitializeComponent();
-
+            Application.Current.Properties["logged"] = "true";
+            Application.Current.SavePropertiesAsync();
         }
     }
 }

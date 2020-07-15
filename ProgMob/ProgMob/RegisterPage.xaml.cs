@@ -50,12 +50,12 @@ namespace ProgMob
             else
             {
                 // Firebase Authentication
-                User user = new User(name, surname, "");
+                User user = new User(name, surname);
                 string Token = await Auth.RegisterToFirebase(username, email, password);
                 if (Token != "" && DatabaseUser.InsertUser(user))
                 {
                     await DisplayAlert("Registration successful", "Press OK to continue", "OK");
-                    App.Current.MainPage = new MainPage();
+                    App.Current.MainPage = new NavigationPage(new MainPage());
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace ProgMob
 
         }
 
-        async void LoginRedirect(object sender, EventArgs e) => await Navigation.PushAsync(new LoginPage());
+        async void LoginRedirect(object sender, EventArgs e) => App.Current.MainPage = new NavigationPage(new LoginPage());
 
     }
 }

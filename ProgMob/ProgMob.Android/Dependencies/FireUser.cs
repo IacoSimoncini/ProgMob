@@ -38,13 +38,12 @@ namespace ProgMob.Droid.Dependencies
         {
             try
             {
-                User.Id = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid;
                 HashMap mp = new HashMap();
                 mp.Put("name", User.Name);
                 mp.Put("surname", User.Surname);
                 mp.Put("admin", "noAdmin");
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(User.Id)
+                    .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
                     .Set(mp);
                 return true;
             } catch (Exception e)
@@ -70,10 +69,9 @@ namespace ProgMob.Droid.Dependencies
                 {
                     string name = doc.Get("name").ToString();
                     string surname = doc.Get("surname").ToString();
-                    string id = doc.Id.ToString();
-                    User user = new User(name, surname, id);
+                    User user = new User(name, surname);
                     userList.Add(user);
-                    Console.WriteLine(name + " " + surname + " " + id);
+                    Console.WriteLine("*****************************************************" + name + " " + surname + "*****************************************************");
                 }
             }
         }
