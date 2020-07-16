@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ProgMob.ViewModel
 {
-    class UserVM : INotifyPropertyChanged
+    public class UserVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private User selectedUser;
@@ -19,7 +19,7 @@ namespace ProgMob.ViewModel
             {
                 selectedUser = value;
                 OnPropertyChanged("SelectedUser");
-                //if(selectedUser!=null) 
+                // if(selectedUser!=null) 
                 // REDIRECT SCHEDE
             }
         }

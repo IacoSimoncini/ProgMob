@@ -12,16 +12,16 @@ namespace ProgMob
             {
                 if (Application.Current.Properties["logged"].ToString().Equals("true"))
                 {
-                    MainPage = new MainPage();
+                    MainPage = new NavigationPage(new MainPage());
                 }
                 else
                 {
-                    MainPage = new LoginPage();
+                    MainPage = new NavigationPage(new LoginPage());
                 }
             }
             else
             {
-                MainPage = new LoginPage();
+                MainPage = new NavigationPage(new LoginPage());
             }
             
 

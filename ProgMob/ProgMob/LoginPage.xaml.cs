@@ -53,7 +53,7 @@ namespace ProgMob
             }
         }
 
-        async void Register(object sender, EventArgs e)
+        async private void Register(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());
         }
