@@ -13,6 +13,7 @@ namespace ProgMob.ViewModel.Helpers
         Task<bool> DeleteUser(string Uid);
         Task<bool> UpdateUser(User User);
         Task<IList<User>> ListUser();
+
         
     }
     class DatabaseUser

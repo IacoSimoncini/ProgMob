@@ -7,7 +7,7 @@
              x:Class="ProgMob.LoginPage">
     <StackLayout>
         <Label x:Name="Lbl_Email" Text="Email"/>
-        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email"/>
+        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
         <Label x:Name="Lbl_Password" Text="Password" />
         <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true"/>
         <Button x:Name="btn_SignIn" Text="Sign in" Clicked="SignIn"/>

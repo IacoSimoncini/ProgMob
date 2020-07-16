@@ -14,21 +14,38 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ListView x:Name="UserLV"
-            RowHeight="70"
-            ItemsSource="{Binding Users}"
-            SelectedItem="{Binding SelectedUser, Mode=TwoWay}">         
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="Aqua" Margin="5,5,5,5">
-                            <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="280"/>
-                            <Label HorizontalOptions="End" WidthRequest="110" MaxLines="1"  FontSize="18" TextColor="Black" VerticalTextAlignment="Center" Text="{Binding Surname}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>          
-        </ListView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Orientation="Vertical">
+
+                    <ListView BindingContext="{StaticResource UserViewModel}" 
+                      RowHeight="70" 
+                      BackgroundColor="White"
+                      ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
+                                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="280"/>
+                                        <Label HorizontalOptions="End" WidthRequest="110" MaxLines="1"  FontSize="18" TextColor="Black" VerticalTextAlignment="Center" Text="{Binding Surname}"/>
+                                    </StackLayout>
+
+                                </ViewCell>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+            </ScrollView>
+
+        </Grid>
     </ContentPage.Content>
 
 </ContentPage>
