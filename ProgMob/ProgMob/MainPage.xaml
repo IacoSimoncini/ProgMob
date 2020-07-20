@@ -26,13 +26,12 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <!-- Your Pages -->
     <TabBar>
         <Tab Title="Users" Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate local:UserListPage}" />
         </Tab>
         <Tab Title="Esempio" Icon="profile.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:ExerciseListPage}" />
         </Tab>
     </TabBar>
     

@@ -71,7 +71,6 @@ namespace ProgMob.Droid.Dependencies
                     string surname = doc.Get("surname").ToString();
                     User user = new User(name, surname);
                     userList.Add(user);
-                    Console.WriteLine("*****************************************************" + name + " " + surname + "*****************************************************");
                 }
             }
         }
@@ -81,6 +80,5 @@ namespace ProgMob.Droid.Dependencies
             throw new NotImplementedException();
         }
 
-        
     }
 }
