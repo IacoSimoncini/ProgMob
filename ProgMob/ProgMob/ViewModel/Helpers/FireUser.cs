@@ -9,7 +9,7 @@ namespace ProgMob.ViewModel.Helpers
 {
     public interface FireUser
     {
-        bool InsertUser(User User);
+        bool InsertUser(string name, string surname);
         Task<bool> DeleteUser(string Uid);
         Task<bool> UpdateUser(User User);
         Task<IList<User>> ListUser();
@@ -20,9 +20,9 @@ namespace ProgMob.ViewModel.Helpers
     {
         private static FireUser firestoreUser = DependencyService.Get<FireUser>();
 
-        public static bool InsertUser(User User)
+        public static bool InsertUser(/*User User*/ string name , string surname)
         {
-            return firestoreUser.InsertUser(User);
+            return firestoreUser.InsertUser(name , surname);
         }
 
         public static Task<bool> DeleteUser(string Uid)
