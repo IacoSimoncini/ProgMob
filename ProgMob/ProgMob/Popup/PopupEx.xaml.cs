@@ -21,5 +21,6 @@ namespace ProgMob.Popup
         {
             await PopupNavigation.PopAsync(true);
         }
+
     }
 }

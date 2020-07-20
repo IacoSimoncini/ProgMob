@@ -12,6 +12,7 @@ namespace ProgMob
         public LoginPage()
         {
             InitializeComponent();
+            Title = "Login";
         }
         async void SignIn(object sender, EventArgs e)
         {

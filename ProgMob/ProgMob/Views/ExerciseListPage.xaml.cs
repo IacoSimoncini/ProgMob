@@ -19,6 +19,7 @@ namespace ProgMob.Views
             Title = "Exercises";
 
             ExVM = Resources["ExVM"] as ExerciseVM;
+
         }
 
         protected override void OnAppearing()

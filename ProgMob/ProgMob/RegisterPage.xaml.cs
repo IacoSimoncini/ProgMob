@@ -17,6 +17,7 @@ namespace ProgMob
         public RegisterPage()
         {
             InitializeComponent();
+            Title = "Register";
         }
         async void SignUp(object sender, EventArgs e)
         {
