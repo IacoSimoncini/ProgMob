@@ -9,16 +9,15 @@ namespace ProgMob.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         //public string Uri { get; set; }
-        public string ID { 
-            get { return ID; }
-            set { ID = value; } 
-        }
+        /*public string Id { 
+            get { return Id; }
+            set { Id = value; } 
+        }*/
 
-        public User(string Name, string Surname, string ID)
+        public User(string Name, string Surname)
         {
             this.Name = Name;
             this.Surname = Surname;
-            this.ID = ID;
         }
     }
 }

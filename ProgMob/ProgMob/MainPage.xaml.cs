@@ -12,13 +12,11 @@ namespace ProgMob
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : Shell
     {
-        public static TabBar Tab;
         public MainPage()
         {
             InitializeComponent();
             Application.Current.Properties["logged"] = "true";
             Application.Current.SavePropertiesAsync();
-            Tab = AdminTabBar;
         }
     }
 }

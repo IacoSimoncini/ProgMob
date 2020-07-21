@@ -26,7 +26,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar x:Name="AdminTabBar">
+    <TabBar>
         <Tab Title="Users" Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate local:UserListPage}" />
         </Tab>

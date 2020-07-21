@@ -27,7 +27,7 @@
             <Entry x:Name="Description" Placeholder="Insert description" />
             <Label Text="Insert difficulty" />
             <Entry x:Name="Difficulty" Placeholder="Insert difficulty" />
-            <Button Text="Close" Clicked="Button_Clicked"/>
+            <Button Text="Submit" Clicked="Button_Clicked"/>
         </StackLayout>
     </Frame>
 </pages:PopupPage>

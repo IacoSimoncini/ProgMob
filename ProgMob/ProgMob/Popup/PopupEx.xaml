@@ -19,17 +19,17 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    
-    <Frame CornerRadius="10" BackgroundColor="DeepSkyBlue" Margin="50" Padding="30">
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Insert name" />
-            <Entry x:Name="EntryName" Placeholder="Insert name" />
-            <Label Text="Insert description" />
-            <Entry x:Name="Description" Placeholder="Insert description" />
-            <Label Text="Insert difficulty" />
-            <Entry x:Name="Difficulty" Placeholder="Insert difficulty" />
-            <Button Text="Close" />
-        </StackLayout>
-    </Frame>
-    
+    <StackLayout>
+        <Frame CornerRadius="10" BackgroundColor="DeepSkyBlue" Margin="50" Padding="30">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Insert name" />
+                <Entry x:Name="Name" Placeholder="Insert name" />
+                <Label Text="Insert description" />
+                <Entry x:Name="Description" Placeholder="Insert description" />
+                <Label Text="Insert difficulty" />
+                <Entry x:Name="Difficulty" Placeholder="Insert difficulty" />
+                <Button Text="Close" />
+            </StackLayout>
+        </Frame>
+    </StackLayout>
 </pages:PopupPage>

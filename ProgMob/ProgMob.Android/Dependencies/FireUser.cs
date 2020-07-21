@@ -34,13 +34,13 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public bool InsertUser(string name , string surname)
+        public bool InsertUser(User User)
         {
             try
             {
                 HashMap mp = new HashMap();
-                mp.Put("name", name);
-                mp.Put("surname", surname);
+                mp.Put("name", User.Name);
+                mp.Put("surname", User.Surname);
                 mp.Put("admin", "noAdmin");
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
@@ -69,8 +69,7 @@ namespace ProgMob.Droid.Dependencies
                 {
                     string name = doc.Get("name").ToString();
                     string surname = doc.Get("surname").ToString();
-                    string ID = doc.Id;
-                    User user = new User(name, surname, ID);
+                    User user = new User(name, surname);
                     userList.Add(user);
                 }
             }

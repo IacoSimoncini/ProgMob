@@ -1,7 +1,5 @@
 ﻿using ProgMob.Models;
-using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
-using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -18,11 +16,7 @@ namespace ProgMob.ViewModel
             {
                 selectedEx = value;
                 OnpropertyChanged("SelectedEx");
-                if (selectedEx != null)
-                {
-                    PopupNavigation.PushAsync(new PopupUpdateEx());
-                    selectedEx = null;
-                }
+
             }
         }
         public ObservableCollection<Exercise> Exercises { get; set; }
