@@ -1,5 +1,7 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
+using ProgMob.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -16,8 +18,11 @@ namespace ProgMob.ViewModel
             {
                 selectedUser = value;
                 OnPropertyChanged("SelectedUser");
-                // if(selectedUser!=null) 
-                // REDIRECT SCHEDE
+                if (selectedUser != null)
+                { 
+                    Console.WriteLine(selectedUser.Id);
+                    App.Current.MainPage.Navigation.PushAsync(new CardListPage(selectedUser.Id));
+                }
             }
         }
         public ObservableCollection<User> Users { get; set;}

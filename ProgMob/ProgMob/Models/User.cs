@@ -8,16 +8,13 @@ namespace ProgMob.Models
     {
         public string Name { get; set; }
         public string Surname { get; set; }
-        //public string Uri { get; set; }
-        /*public string Id { 
-            get { return Id; }
-            set { Id = value; } 
-        }*/
+        public string Id { get; set; }
 
         public User(string Name, string Surname)
         {
             this.Name = Name;
             this.Surname = Surname;
+            this.Id = " ";
         }
     }
 }

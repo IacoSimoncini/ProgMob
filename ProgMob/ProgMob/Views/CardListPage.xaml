@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModel="clr-namespace:ProgMob.ViewModel" 
+             mc:Ignorable="d"
+             x:Class="ProgMob.Views.CardListPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ViewModel:CardVM x:Key="CardViewModel"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Orientation="Vertical">
+
+                    <ListView BindingContext="{StaticResource CardViewModel}" 
+                      RowHeight="70" 
+                      BackgroundColor="White"
+                      ItemsSource="{Binding Cards}"
+                      SelectedItem="{Binding SelectedCard, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
+                                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280"/>
+                                        <Button Text="Elimina"
+                                            Command="{Binding DeleteCommand}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+            <Button
+                Grid.Row="0"
+                Text="+" FontSize="30"
+                BackgroundColor="Orange" 
+                BorderRadius="35" 
+                TextColor="White" 
+                HorizontalOptions="End" 
+                WidthRequest="60" 
+                HeightRequest="60" 
+                Margin="0,0,10,10" 
+                VerticalOptions="End"
+                />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -70,6 +70,7 @@ namespace ProgMob.Droid.Dependencies
                     string name = doc.Get("name").ToString();
                     string surname = doc.Get("surname").ToString();
                     User user = new User(name, surname);
+                    user.Id = doc.Id.ToString();
                     userList.Add(user);
                 }
             }
