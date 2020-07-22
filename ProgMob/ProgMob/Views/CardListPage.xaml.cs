@@ -1,10 +1,6 @@
-﻿using ProgMob.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using ProgMob.Popup;
+using ProgMob.ViewModel;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,13 +17,18 @@ namespace ProgMob.Views
             Title = "Cards";
             UserId = Uid;
             CardVM = Resources["CardViewModel"] as CardVM;
-
+            
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             CardVM.ListCard(UserId);
+        }
+
+        private async void Button_Clicked(object sender, System.EventArgs e)
+        {
+            await PopupNavigation.PushAsync(new PopupCard(UserId));
         }
     }
 }

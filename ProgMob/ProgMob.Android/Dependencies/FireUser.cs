@@ -42,6 +42,7 @@ namespace ProgMob.Droid.Dependencies
                 mp.Put("name", User.Name);
                 mp.Put("surname", User.Surname);
                 mp.Put("admin", "noAdmin");
+                mp.Put("uri", "user.png");
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
                     .Set(mp);
@@ -71,6 +72,7 @@ namespace ProgMob.Droid.Dependencies
                     string surname = doc.Get("surname").ToString();
                     User user = new User(name, surname);
                     user.Id = doc.Id.ToString();
+                    user.Uri = doc.Get("uri").ToString();
                     userList.Add(user);
                 }
             }

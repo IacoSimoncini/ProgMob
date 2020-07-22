@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependencies\FireCards.cs" />
+    <Compile Include="Dependencies\FireDetailCard.cs" />
     <Compile Include="Dependencies\FireEx.cs" />
     <Compile Include="Dependencies\FireProfile.cs" />
     <Compile Include="Dependencies\FireUser.cs" />

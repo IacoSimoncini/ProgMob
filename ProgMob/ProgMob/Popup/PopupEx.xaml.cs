@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using ProgMob.Models;
+using ProgMob.ViewModel.Helpers;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +19,14 @@ namespace ProgMob.Popup
         {
             InitializeComponent();
         }
+
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PopAsync(true);
+            Exercise ex = new Exercise(Name.Text, Description.Text, Difficulty.Text);
+            if (DatabaseExercise.InsertExercise(ex))
+                await App.Current.MainPage.DisplayAlert("Insert completed", "Please, press OK to continue", "OK");
+            else
+                await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
         }
-
     }
 }

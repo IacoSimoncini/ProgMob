@@ -37,5 +37,6 @@ namespace ProgMob.ViewModel.Helpers
         {
             return firestoreEx.UpdateExercise(ex);
         }
+
     }
 }

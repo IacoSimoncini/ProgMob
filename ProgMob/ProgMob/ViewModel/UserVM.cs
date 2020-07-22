@@ -21,6 +21,7 @@ namespace ProgMob.ViewModel
                 if (selectedUser != null)
                 { 
                     Console.WriteLine(selectedUser.Id);
+                    Console.WriteLine(selectedUser.Uri);
                     App.Current.MainPage.Navigation.PushAsync(new CardListPage(selectedUser.Id));
                 }
             }

@@ -13,82 +13,90 @@ using Android.Widget;
 using Firebase.Firestore;
 using Java.Util;
 using ProgMob.Models;
-using ProgMob.Views;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireCards))]
+[assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireDetailCard))]
 namespace ProgMob.Droid.Dependencies
 {
-    class FireCards : Java.Lang.Object, ViewModel.Helpers.FireCards, IOnCompleteListener
+    class FireDetailCard : Java.Lang.Object, ViewModel.Helpers.FireDetailCard, IOnCompleteListener
     {
-        List<Card> cardList;
-        string UserId;
-        
-        public FireCards()
+        List<Exercise> exList;
+
+        public FireDetailCard()
         {
-            cardList = new List<Card>();
+            exList = new List<Exercise>();
         }
 
-        public async Task<bool> DeleteCard(Card Card)
+        public async Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex)
         {
             try
             {
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(Card.Ref)
+                    .Document(Uid)
                     .Collection("Schede")
-                    .Document(Card.Path);
-                collection.Delete();
+                    .Document(Cid)
+                    .Collection("Ex")
+                    .Document(ex.Name)
+                    .Delete();
                 return true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
             }
         }
 
-        public bool InsertCard(Card Card)
+        public bool InsertEx(string Uid, string Cid, Exercise ex)
         {
             try
             {
                 HashMap mp = new HashMap();
+                mp.Put("name", ex.Name);
+                mp.Put("description", ex.Description);
+                mp.Put("difficulty", ex.Difficulty);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(Card.Ref)
+                    .Document(Uid)
                     .Collection("Schede")
-                    .Document(Card.Path);
+                    .Document(Cid)
+                    .Collection("Ex")
+                    .Document(ex.Name);
                 collection.Set(mp);
                 return true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
             }
         }
 
-        public async Task<IList<Card>> ListCard(string Uid)
+        public async Task<IList<Exercise>> ListExercise(string Uid, string Cid)
         {
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                .Document(Uid)
-                .Collection("Schede");
-            UserId = Uid;
+                   .Document(Uid)
+                   .Collection("Schede")
+                   .Document(Cid)
+                   .Collection("Ex");
             collection.Get().AddOnCompleteListener(this);
-            return cardList;
+            return exList; 
         }
 
         public void OnComplete(Android.Gms.Tasks.Task task)
         {
             if (task.IsSuccessful)
             {
-                cardList.Clear();
+                exList.Clear();
                 var documents = (QuerySnapshot)task.Result;
                 foreach (var doc in documents.Documents)
                 {
-                    Card card = new Card();
-                    card.Path = doc.Id.ToString();
-                    card.Ref = UserId;
-                    cardList.Add(card);
+                    Exercise ex = new Exercise(doc.Get("name").ToString(),
+                        doc.Get("description").ToString(),
+                        doc.Get("difficulty").ToString());
+                    exList.Add(ex);
                 }
             }
         }
 
-        public Task<bool> UpdateCard(Card Card)
+        public Task<bool> UpdateExercise(string Uid, string Cid, Exercise ex)
         {
             throw new NotImplementedException();
         }

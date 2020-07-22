@@ -19,13 +19,17 @@ namespace ProgMob.Popup
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             string name = Name.Text;
             string description = Description.Text;
             string difficulty = Difficulty.Text;
             Exercise ex = new Exercise(name, description, difficulty);
-            DatabaseExercise.UpdateExercise(ex);
+            bool update = await DatabaseExercise.UpdateExercise(ex);
+            if (update)
+                await App.Current.MainPage.DisplayAlert("Update completed", "Please, press OK to continue", "OK");
+            else 
+                await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
         }
     }
 }

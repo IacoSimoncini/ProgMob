@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModel="clr-namespace:ProgMob.ViewModel" 
+             mc:Ignorable="d"
+             x:Class="ProgMob.Views.CardListDetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ViewModel:CardDetailVM x:Key="CardDetailViewModel"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Orientation="Vertical">
+                    <ListView BindingContext="{StaticResource CardDetailViewModel}" 
+                    RowHeight="80" 
+                    BackgroundColor="White"
+                    ItemsSource="{Binding Exercises}"
+                    SelectedItem="{Binding SelectedExercise, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" >
+                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                            <Label HorizontalOptions="Start" FontSize="18" VerticalTextAlignment="End" TextColor="Black" Text="{Binding Description}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                            <Label HorizontalOptions="Start" FontSize="18" VerticalTextAlignment="End" TextColor="Black" Text="{Binding Difficulty}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+            </ScrollView>
+            <Button
+             Grid.Row="0"
+                Text="+" FontSize="30"
+                  BackgroundColor="Orange" BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="60" HeightRequest="60" Margin="0,0,10,10" VerticalOptions="End"
+          
+            Clicked="Button_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

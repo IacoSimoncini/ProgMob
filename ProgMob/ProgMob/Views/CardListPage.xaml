@@ -31,7 +31,8 @@
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
                                         <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280"/>
                                         <Button Text="Elimina"
-                                            Command="{Binding DeleteCommand}"/>
+                                                Command="{Binding DeleteCommand}"
+                                            />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
@@ -50,7 +51,7 @@
                 HeightRequest="60" 
                 Margin="0,0,10,10" 
                 VerticalOptions="End"
-                />
+                Clicked="Button_Clicked"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

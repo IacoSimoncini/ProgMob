@@ -1,11 +1,9 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
+using ProgMob.Views;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
@@ -23,16 +21,21 @@ namespace ProgMob.ViewModel
             {
                 selectedCard = value;
                 OnPropertyChanged("SelectedUser");
+                if (selectedCard != null)
+                {
+                    Console.WriteLine(selectedCard.Ref);
+                    App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path));
+                }
             }
         }
 
         public ObservableCollection<Card> Cards { get; set; }
-        public Command<object> DeleteCommand { get; set; }
+        public Command DeleteCommand { get; set; }
         public CardVM()
         {
             Cards = new ObservableCollection<Card>();
             
-            DeleteCommand = new Command<object>(Delete);
+            DeleteCommand = new Command(Delete);
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -52,7 +55,7 @@ namespace ProgMob.ViewModel
 
         private async void Delete(object obj)
         {
-            var card = obj as Card;
+            Card card = obj as Card;
             bool deleted = await DatabaseCards.DeleteCard(card);
             if (deleted)
                 await App.Current.MainPage.Navigation.PopAsync();
