@@ -23,7 +23,6 @@ namespace ProgMob.ViewModel
                 OnPropertyChanged("SelectedUser");
                 if (selectedCard != null)
                 {
-                    Console.WriteLine(selectedCard.Ref);
                     App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path));
                 }
             }
@@ -35,7 +34,20 @@ namespace ProgMob.ViewModel
         {
             Cards = new ObservableCollection<Card>();
             
-            DeleteCommand = new Command(Delete);
+            DeleteCommand = new Command<object>(Delete);
+        }
+
+
+        private async void Delete(object obj)
+        {
+            var card = obj as Card;
+            bool deleted = await DatabaseCards.DeleteCard(card);
+            if (deleted) { 
+                Cards.Remove(card);
+                _ = App.Current.MainPage.DisplayAlert("Successfully deleted", "Please, press OK", "OK");
+            }
+            else
+                _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -53,15 +65,6 @@ namespace ProgMob.ViewModel
             }
         }
 
-        private async void Delete(object obj)
-        {
-            Card card = obj as Card;
-            bool deleted = await DatabaseCards.DeleteCard(card);
-            if (deleted)
-                await App.Current.MainPage.Navigation.PopAsync();
-            else
-                await App.Current.MainPage.DisplayAlert("Error", "An error has occurred", "Cancel");
-        }
 
     }
 }

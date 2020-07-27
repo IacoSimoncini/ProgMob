@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Android.Gms.Tasks;
 using Firebase.Firestore;
 using Java.Util;
@@ -9,29 +10,29 @@ namespace ProgMob.Droid.Dependencies
     {
         public string Name;
         public string Surname;
-        public string ExtractProfileName()
+        public bool Admin;
+        public bool GetProfile()
         {
-            try
-            {
-                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid);
-                collection.Get().AddOnCompleteListener(this);
-                return Name;
-            } catch (Exception e)
-            {
-                return " ";
-            }
+            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+                .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid);
+            collection.Get().AddOnCompleteListener(this);
+            return Admin; 
         }
 
-        public void OnComplete(Task task)
+        public void OnComplete(Android.Gms.Tasks.Task task)
         {
-            var document = (QuerySnapshot)task.Result;
-            foreach (var doc in document.Documents)
+            if (task.IsSuccessful)
             {
-                if (doc.Get("name").ToString() != null) Name = doc.Get("name").ToString();
-                else Name = " ";
-                if (doc.Get("surname").ToString() != null) Surname = doc.Get("surname").ToString();
-                else Surname = " ";
+                var document = (QuerySnapshot)task.Result;
+                foreach (var doc in document.Documents)
+                {
+                    Name = doc.Get("name").ToString();
+                    Surname = doc.Get("surname").ToString();
+                    if (doc.Get("admin").ToString().Equals("Admin"))
+                        Admin = true;
+                    else
+                        Admin = false;
+                }
             }
         }
     }

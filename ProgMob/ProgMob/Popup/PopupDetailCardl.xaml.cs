@@ -1,4 +1,5 @@
-﻿using ProgMob.ViewModel;
+﻿using ProgMob.Models;
+using ProgMob.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,6 @@ namespace ProgMob.Popup
             ExVM.ListExercise();
         }
 
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

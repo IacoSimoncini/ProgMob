@@ -23,7 +23,7 @@ namespace ProgMob.Droid.Dependencies
     {
         List<Card> cardList;
         string UserId;
-        
+
         public FireCards()
         {
             cardList = new List<Card>();
@@ -88,9 +88,6 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public Task<bool> UpdateCard(Card Card)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

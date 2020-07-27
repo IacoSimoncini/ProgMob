@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgMob.ViewModel.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,14 @@ namespace ProgMob
             InitializeComponent();
             Application.Current.Properties["logged"] = "true";
             Application.Current.SavePropertiesAsync();
+            if (DatabaseProfile.GetProfile()) {
+                TabBar.Items.RemoveAt(2);
+                TabBar.Items.RemoveAt(3);
+            }
+            else {
+                TabBar.Items.RemoveAt(0);
+                TabBar.Items.RemoveAt(1);
+            }
         }
     }
 }

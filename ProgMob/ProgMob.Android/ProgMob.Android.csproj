@@ -58,6 +58,12 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="NETStandard.Library">
+      <Version>2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Auth">
       <Version>71.1605.4</Version>
     </PackageReference>
@@ -67,7 +73,7 @@
     <PackageReference Include="Xamarin.Firebase.Firestore">
       <Version>71.1705.4</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1142" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +83,6 @@
     <Compile Include="Dependencies\FireProfile.cs" />
     <Compile Include="Dependencies\FireUser.cs" />
     <Compile Include="Dependencies\FireAuth.cs" />
-    <Compile Include="Helpers\AppData.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -26,13 +26,21 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
+    <TabBar x:Name="TabBar" >
         <Tab Title="Users" Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate local:UserListPage}" />
         </Tab>
-        <Tab Title="Esempio" Icon="profile.png">
+        <Tab Title="Esercizi" Icon="profile.png">
             <ShellContent ContentTemplate="{DataTemplate local:ExerciseListPage}" />
         </Tab>
+        <Tab Title="Cards" Icon="user.png">
+            <ShellContent  ContentTemplate="{DataTemplate local:UserListPage}" />
+        </Tab>
+        <Tab Title="User" Icon="profile.png">
+            <ShellContent  ContentTemplate="{DataTemplate local:ExerciseListPage}" />
+        </Tab>
     </TabBar>
+    
+    
     
 </Shell>

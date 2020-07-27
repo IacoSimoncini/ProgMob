@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -8,15 +9,15 @@ namespace ProgMob.ViewModel.Helpers
 {
     public interface FireProfile
     {
-        string ExtractProfileName();
+        bool GetProfile();
     }
     class DatabaseProfile
     {
         private static FireProfile firestoreProfile = DependencyService.Get<FireProfile>();
 
-        public static string ExtractProfileName()
+        public static bool GetProfile()
         {
-            return firestoreProfile.ExtractProfileName();
+            return firestoreProfile.GetProfile();
         }
     }
 }

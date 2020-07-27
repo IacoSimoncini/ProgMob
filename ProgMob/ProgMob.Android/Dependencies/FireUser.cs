@@ -28,11 +28,13 @@ namespace ProgMob.Droid.Dependencies
                     .Document(Uid)
                     .Delete();
                 return true;
-            } catch (Exception e)
+            } catch (System.Exception e)
             {
                 return false;
             }
         }
+
+ 
 
         public bool InsertUser(User User)
         {
@@ -47,7 +49,7 @@ namespace ProgMob.Droid.Dependencies
                     .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
                     .Set(mp);
                 return true;
-            } catch (Exception e)
+            } catch (System.Exception e)
             {
                 return false;
             }
@@ -77,6 +79,8 @@ namespace ProgMob.Droid.Dependencies
                 }
             }
         }
+
+       
 
         public Task<bool> UpdateUser(User User)
         {

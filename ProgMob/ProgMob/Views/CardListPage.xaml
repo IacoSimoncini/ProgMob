@@ -24,15 +24,16 @@
                       RowHeight="70" 
                       BackgroundColor="White"
                       ItemsSource="{Binding Cards}"
-                      SelectedItem="{Binding SelectedCard, Mode=TwoWay}">
+                      SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
+                              IsPullToRefreshEnabled="true">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                    </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
                                         <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280"/>
-                                        <Button Text="Elimina"
-                                                Command="{Binding DeleteCommand}"
-                                            />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

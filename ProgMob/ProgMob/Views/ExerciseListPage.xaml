@@ -24,7 +24,8 @@
                     RowHeight="80" 
                     BackgroundColor="White"
                     ItemsSource="{Binding Exercises}"
-                    SelectedItem="{Binding SelectedEx, Mode=TwoWay}">
+                    SelectedItem="{Binding SelectedEx, Mode=TwoWay}"
+                              IsPullToRefreshEnabled="true">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

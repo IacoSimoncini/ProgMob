@@ -11,7 +11,6 @@ namespace ProgMob.ViewModel.Helpers
     {
         bool InsertCard(Card Card);
         Task<bool> DeleteCard(Card Card);
-        Task<bool> UpdateCard(Card Card);
         Task<IList<Card>> ListCard(string Uid);
 
 
@@ -27,10 +26,6 @@ namespace ProgMob.ViewModel.Helpers
         public static Task<bool> DeleteCard(Card Card)
         {
             return firestoreCards.DeleteCard(Card);
-        }
-        public static Task<bool> UpdateCard(Card Card)
-        {
-            return firestoreCards.UpdateCard(Card);
         }
         public static Task<IList<Card>> ListCard(string Uid)
         {
