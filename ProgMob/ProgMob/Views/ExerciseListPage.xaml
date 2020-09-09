@@ -6,6 +6,7 @@
              xmlns:ViewModel="clr-namespace:ProgMob.ViewModel" 
              mc:Ignorable="d"
              x:Class="ProgMob.Views.ExerciseListPage">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <ViewModel:ExerciseVM x:Key="ExVM"/>

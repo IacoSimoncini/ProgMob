@@ -4,6 +4,7 @@ using ProgMob.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
 {
@@ -22,7 +23,9 @@ namespace ProgMob.ViewModel
                 { 
                     Console.WriteLine(selectedUser.Id);
                     Console.WriteLine(selectedUser.Uri);
-                    App.Current.MainPage.Navigation.PushAsync(new CardListPage(selectedUser.Id));
+                    Application.Current.Properties["UID"] = selectedUser.Id;
+                    Application.Current.SavePropertiesAsync();
+                    App.Current.MainPage.Navigation.PushAsync(new CardListPage());
                 }
             }
         }

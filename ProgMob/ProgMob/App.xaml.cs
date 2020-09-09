@@ -14,7 +14,14 @@ namespace ProgMob
             {
                 if (Application.Current.Properties["logged"].ToString().Equals("true"))
                 {
-                    MainPage = new NavigationPage(new MainPage());
+                    if (Application.Current.Properties["Admin"].ToString().Equals("true"))
+                    {
+                        MainPage = new NavigationPage(new MainPageAdmin());
+                    }
+                    else
+                    {
+                        MainPage = new NavigationPage(new MainPage());
+                    }
                 }
                 else
                 {
@@ -25,8 +32,6 @@ namespace ProgMob
             {
                 MainPage = new NavigationPage(new LoginPage());
             }
-            
-
         }
 
         protected override void OnStart()

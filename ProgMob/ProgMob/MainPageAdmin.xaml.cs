@@ -1,5 +1,4 @@
 ﻿using ProgMob.ViewModel.Helpers;
-using ProgMob.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +11,19 @@ using Xamarin.Forms.Xaml;
 namespace ProgMob
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : Shell
+    public partial class MainPageAdmin : Shell
     {
         /*
-         *  Shell relativa all'utente non admin
+         *  Shell relativa all'utente admin
          */
-        public MainPage()
+        public MainPageAdmin()
         {
             InitializeComponent();
             Application.Current.Properties["logged"] = "true";
-            Application.Current.Properties["Admin"] = "false";
+            Application.Current.Properties["Admin"] = "true";
             Application.Current.Properties["UID"] = DatabaseProfile.GetUid();
             Application.Current.SavePropertiesAsync();
+
         }
     }
 }

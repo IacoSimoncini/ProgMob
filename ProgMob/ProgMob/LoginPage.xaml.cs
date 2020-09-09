@@ -21,11 +21,19 @@ namespace ProgMob
 
             string token = await Auth.LoginToFirebase(email, password);
 
+            bool admin = await DatabaseProfile.GetProfile();
+
             if (token != "")
             {
+                if (admin)
+                {
+                    App.Current.MainPage = new MainPageAdmin();
+                }
+                else
+                {
+                    App.Current.MainPage = new MainPage();
+                }
                 await DisplayAlert("Authentication successful", "Press OK to continue", "OK");
-
-                App.Current.MainPage = new MainPage();
             }
             else
             {

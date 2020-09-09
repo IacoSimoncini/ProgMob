@@ -18,7 +18,6 @@ namespace ProgMob.Views
             InitializeComponent();
             Title = "Profile";
 
-
         }
     }
 }

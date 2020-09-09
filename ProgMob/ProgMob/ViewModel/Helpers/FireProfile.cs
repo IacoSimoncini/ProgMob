@@ -9,15 +9,20 @@ namespace ProgMob.ViewModel.Helpers
 {
     public interface FireProfile
     {
-        bool GetProfile();
+        Task<bool> GetProfile();
+        string GetUid();
     }
     class DatabaseProfile
     {
         private static FireProfile firestoreProfile = DependencyService.Get<FireProfile>();
 
-        public static bool GetProfile()
+        public static Task<bool> GetProfile()
         {
             return firestoreProfile.GetProfile();
+        }
+        public static string GetUid()
+        {
+            return firestoreProfile.GetUid();
         }
     }
 }

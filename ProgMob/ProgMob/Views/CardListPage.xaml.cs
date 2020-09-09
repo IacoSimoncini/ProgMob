@@ -1,5 +1,6 @@
 ﻿using ProgMob.Popup;
 using ProgMob.ViewModel;
+using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,11 +12,11 @@ namespace ProgMob.Views
     {
         private readonly string UserId;
         CardVM CardVM;
-        public CardListPage(string Uid)
+        public CardListPage()
         {
             InitializeComponent();
             Title = "Cards";
-            UserId = Uid;
+            UserId = Application.Current.Properties["UID"].ToString();
             CardVM = Resources["CardViewModel"] as CardVM;
             
         }

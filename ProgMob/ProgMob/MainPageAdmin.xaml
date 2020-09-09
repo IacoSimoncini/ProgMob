@@ -6,7 +6,7 @@
        mc:Ignorable="d"
        xmlns:local="clr-namespace:ProgMob.Views"
        Title="MainPage"
-       x:Class="ProgMob.MainPage">
+       x:Class="ProgMob.MainPageAdmin">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -15,11 +15,11 @@
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
-                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.DisabledColor" Value="#757575" />
+                <Setter Property="Shell.UnselectedColor" Value="#757575" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#757575"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="White"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
@@ -27,14 +27,14 @@
     </Shell.Resources>
 
     <TabBar x:Name="TabBar" >
-        <Tab Title="Cards" Icon="user.png">
-            <ShellContent  ContentTemplate="{DataTemplate local:CardListPage}" />
-        </Tab>
-        <Tab Title="User" Icon="profile.png">
+        <Tab Title="Exercises" Icon="user.png">
             <ShellContent  ContentTemplate="{DataTemplate local:ExerciseListPage}" />
         </Tab>
+        <Tab Title="Users" Icon="profile.png">
+            <ShellContent  ContentTemplate="{DataTemplate local:UserListPage}" />
+        </Tab>
     </TabBar>
-    
-    
-    
+
+
+
 </Shell>

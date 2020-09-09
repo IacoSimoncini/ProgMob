@@ -70,12 +70,15 @@ namespace ProgMob.Droid.Dependencies
                 var documents = (QuerySnapshot)task.Result;
                 foreach (var doc in documents.Documents)
                 {
-                    string name = doc.Get("name").ToString();
-                    string surname = doc.Get("surname").ToString();
-                    User user = new User(name, surname);
-                    user.Id = doc.Id.ToString();
-                    user.Uri = doc.Get("uri").ToString();
-                    userList.Add(user);
+                    if (!doc.Id.Equals(Application.Current.Properties["UID"])) 
+                    { 
+                        string name = doc.Get("name").ToString();
+                        string surname = doc.Get("surname").ToString();
+                        User user = new User(name, surname);
+                        user.Id = doc.Id.ToString();
+                        user.Uri = doc.Get("uri").ToString();
+                        userList.Add(user);
+                    }
                 }
             }
         }
