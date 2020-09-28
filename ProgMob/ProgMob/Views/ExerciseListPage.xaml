@@ -22,7 +22,7 @@
             <ScrollView Grid.Row="0">
                 <StackLayout Orientation="Vertical">
                     <ListView BindingContext="{StaticResource ExVM}" 
-                    RowHeight="80" 
+                    RowHeight="120" 
                     BackgroundColor="White"
                     ItemsSource="{Binding Exercises}"
                     SelectedItem="{Binding SelectedEx, Mode=TwoWay}"

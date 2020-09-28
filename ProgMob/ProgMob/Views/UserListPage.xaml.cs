@@ -22,6 +22,7 @@ namespace ProgMob.Views
 
             UserVM = Resources["UserViewModel"] as UserVM;
 
+            //logout
             ToolbarItem TBItem = new ToolbarItem
             {
                 Text = "Logout",

@@ -1,5 +1,6 @@
 ﻿using ProgMob.Popup;
 using ProgMob.ViewModel;
+using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,29 @@ namespace ProgMob.Views
             CardId = Cid;
             Title = CardId;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
-            
+
+            ToolbarItem TBItem = new ToolbarItem
+            {
+                Text = "Logout",
+                IconImageSource = ImageSource.FromFile("logout.png"),
+                Order = ToolbarItemOrder.Secondary,
+                Priority = 0
+            };
+
+            TBItem.Clicked += async (sender, args) =>
+            {
+                bool logout = await Auth.Logout();
+                if (logout)
+                {
+                    Application.Current.Properties["logged"] = "false";
+                    await Application.Current.SavePropertiesAsync();
+                    await DisplayAlert("Logout", "You have been disconnected", "Cancel");
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterPage(), true);
+                }
+                else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
+            };
+            this.ToolbarItems.Add(TBItem);
+
         }
 
         protected override void OnAppearing()

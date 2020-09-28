@@ -23,7 +23,7 @@ namespace ProgMob.Droid.Dependencies
     {
         List<Card> cardList;
         string UserId;
-
+       
         public FireCards()
         {
             cardList = new List<Card>();

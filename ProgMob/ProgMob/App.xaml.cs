@@ -16,11 +16,13 @@ namespace ProgMob
                 {
                     if (Application.Current.Properties["Admin"].ToString().Equals("true"))
                     {
-                        MainPage = new NavigationPage(new MainPageAdmin());
+                        App.Current.MainPage = new MainPageAdmin();
+                        //MainPage = new NaigationPage(new MainPageAdmin());
                     }
                     else
                     {
-                        MainPage = new NavigationPage(new MainPage());
+                        App.Current.MainPage = new MainPage();
+                        //MainPage = new NavigationPage(new MainPage());
                     }
                 }
                 else

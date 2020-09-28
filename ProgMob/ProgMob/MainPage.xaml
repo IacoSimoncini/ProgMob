@@ -31,7 +31,7 @@
             <ShellContent  ContentTemplate="{DataTemplate local:CardListPage}" />
         </Tab>
         <Tab Title="User" Icon="profile.png">
-            <ShellContent  ContentTemplate="{DataTemplate local:ExerciseListPage}" />
+            <ShellContent  ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
     </TabBar>
     

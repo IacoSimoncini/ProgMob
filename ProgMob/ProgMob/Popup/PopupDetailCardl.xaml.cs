@@ -28,6 +28,10 @@ namespace ProgMob.Popup
             ExVM.ListExercise();
         }
 
-        
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+          
+        }
+
     }
 }
