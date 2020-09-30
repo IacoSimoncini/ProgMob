@@ -48,7 +48,7 @@ namespace ProgMob.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ExVM.ListExercise();
+            ExVM.ListAllExercise();
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

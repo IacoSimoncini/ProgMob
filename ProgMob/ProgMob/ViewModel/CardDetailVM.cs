@@ -27,7 +27,6 @@ namespace ProgMob.ViewModel
             {
                 selectedExercise = value;
                 OnPropertyChanged("SelectedExercise");
-
             }
         }
 

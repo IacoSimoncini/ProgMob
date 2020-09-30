@@ -2,6 +2,7 @@
 using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

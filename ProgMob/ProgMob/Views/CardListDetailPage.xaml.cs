@@ -25,6 +25,7 @@ namespace ProgMob.Views
             InitializeComponent();
             UserId = Uid;
             CardId = Cid;
+            Console.WriteLine("PROVA : 1)" + UserId, " 2)" + CardId);
             Title = CardId;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
 
@@ -56,11 +57,12 @@ namespace ProgMob.Views
         {
             base.OnAppearing();
             CardDetailVM.ListEx(UserId, CardId);
+            Console.WriteLine("ListDP : 1)" + UserId, " 2)" + CardId);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new PopupDetailCardl());
+            await PopupNavigation.PushAsync(new PopupDetailCardl(UserId , CardId));
         }
     }
 }

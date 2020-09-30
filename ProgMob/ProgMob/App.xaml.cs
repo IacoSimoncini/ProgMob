@@ -9,7 +9,7 @@ namespace ProgMob
         public App()
         {
             InitializeComponent();
-            
+            Application.Current.Properties["selectedCard"] = null;
             if (Application.Current.Properties.ContainsKey("logged"))
             {
                 if (Application.Current.Properties["logged"].ToString().Equals("true"))
