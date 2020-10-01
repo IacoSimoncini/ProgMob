@@ -54,13 +54,14 @@ namespace ProgMob.Popup
         public void ClickedEx(object sender, EventArgs e)
         {
             var v = sender as Button;
-            var s = v.Text;
+            var s = v.Text; 
             if (!selectedExs.Contains(s)) {
                 selectedExs.Add(s);
-                Console.WriteLine(s + "aggiunto");
+                v.BackgroundColor = Color.Red;
             }
-            else { selectedExs.Remove(s);
-                Console.WriteLine(s + "rimosso");
+            else {
+                selectedExs.Remove(s);
+                v.BackgroundColor = Color.White;
             }
             
         }

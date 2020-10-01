@@ -25,7 +25,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Frame CornerRadius="10" BackgroundColor="DeepSkyBlue" Margin="50" Padding="30">
+    <Frame CornerRadius="10" BackgroundColor="Transparent" Margin="50" Padding="30">
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <ListView 
                     x:Name="ExercisesLV" 
@@ -33,7 +33,6 @@
                     RowHeight="80" 
                     ItemsSource="{Binding Exercises}" 
                     BackgroundColor="Transparent"
-                    
                      >
                 <ListView.ItemTemplate
                     SelectedItem="{Binding SelectedEx}">
@@ -45,7 +44,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout VerticalOptions="CenterAndExpand">
-                                    <Button Text="{Binding Name}" x:Name="{Binding Name}" Clicked="ClickedEx" />
+                                    <Button Text="{Binding Name}" x:Name="{Binding Name}" Clicked="ClickedEx" BackgroundColor="White" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

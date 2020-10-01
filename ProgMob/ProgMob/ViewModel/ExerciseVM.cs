@@ -47,7 +47,8 @@ namespace ProgMob.ViewModel
 
         public async void ListExercise(String CardId , string UserId)
         {
-            List<Exercise> exsCard = (List<Exercise>)await DatabaseDetailCard.ListExercise(CardId, UserId);
+            // List<Exercise> exsCard = (List<Exercise>)await DatabaseDetailCard.ListExercise(CardId, UserId);
+            var exsCard = await DatabaseDetailCard.ListExercise(CardId, UserId);
             var ex = await DatabaseExercise.ListExercise();
             Exercises.Clear();
             foreach (var e in ex)
@@ -59,6 +60,7 @@ namespace ProgMob.ViewModel
                 else { Console.WriteLine(e.Name + "PRESENTE"); }
             }
         }
+
 
         public async void ListAllExercise()
         {
