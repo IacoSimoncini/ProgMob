@@ -6,8 +6,12 @@ namespace ProgMob.Models
 {
     public class User
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        private string name;
+        private string surname;
+        //private string id;
+        //private string uri;
+        public string Name { get { return name; } set { name = value; } }
+        public string Surname { get { return surname; } set { surname = value; } }
         public string Id { get; set; }
         public string Uri { get; set; }
 

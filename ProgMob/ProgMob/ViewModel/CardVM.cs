@@ -23,6 +23,11 @@ namespace ProgMob.ViewModel
                 OnPropertyChanged("SelectedUser");
                 if (selectedCard != null)
                 {
+                    /*Application.Current.Properties["selectedCard"] = null;
+                    Application.Current.Properties["wselectedCard"] = null;
+                    Application.Current.Properties["selectedCard"] = selectedCard.Path;
+                    Application.Current.Properties["wselectedCard"] = selectedCard.Ref;*/
+                    Console.WriteLine("IMPORTANTE: "+selectedCard.Path);
                     App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path));
                 }
             }

@@ -83,6 +83,7 @@
     <Compile Include="Dependencies\FireProfile.cs" />
     <Compile Include="Dependencies\FireUser.cs" />
     <Compile Include="Dependencies\FireAuth.cs" />
+    <Compile Include="Dependencies\FireUserDetail.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
