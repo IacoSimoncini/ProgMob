@@ -14,7 +14,7 @@ namespace ProgMob.Droid.Dependencies
     {
 
         List<User> userList;
-
+        int value;
         public FireUser()
         {
             userList = new List<User>();
@@ -34,7 +34,10 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
- 
+        public async Task<IList<User>> GetUser()
+        {
+            return userList;
+        }
 
         public bool InsertUser(User User)
         {
@@ -55,11 +58,21 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<IList<User>> ListUser()
+        public async Task<bool> ListUser()
         {
+            value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users");
             collection.Get().AddOnCompleteListener(this);
-            return userList;
+            
+            for(int i = 0; i < 30; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (value != 0)
+                    break;
+            }
+
+            if(value == 1) { return true; }
+            else { return false; }
         }
 
         public void OnComplete(Android.Gms.Tasks.Task task)
@@ -80,6 +93,12 @@ namespace ProgMob.Droid.Dependencies
                         userList.Add(user);
                     }
                 }
+                value = 1;
+            } 
+            else
+            {
+                Console.WriteLine(task.Exception);
+                value = 2;
             }
         }
 

@@ -12,7 +12,8 @@ namespace ProgMob.ViewModel.Helpers
         bool InsertUser(User User);
         Task<bool> DeleteUser(string Uid);
         Task<bool> UpdateUser(User User);
-        Task<IList<User>> ListUser();
+        Task<bool> ListUser();
+        Task<IList<User>> GetUser();
         
     }
     class DatabaseUser
@@ -34,11 +35,15 @@ namespace ProgMob.ViewModel.Helpers
             return firestoreUser.UpdateUser(User);
         }
 
-        public static Task<IList<User>> ListUser()
+        public static Task<bool> ListUser()
         {
             return firestoreUser.ListUser();
         }
 
+        public static Task<IList<User>> GetUser()
+        {
+            return firestoreUser.GetUser();
+        }
         
         
     }

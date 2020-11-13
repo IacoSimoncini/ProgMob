@@ -34,6 +34,7 @@ namespace ProgMob
                     App.Current.MainPage = new MainPage();
                 }
                 await DisplayAlert("Authentication successful", "Press OK to continue", "OK");
+                Navigation.RemovePage(this);
             }
             else
             {
@@ -64,7 +65,7 @@ namespace ProgMob
 
         async private void Register(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage());
+            App.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

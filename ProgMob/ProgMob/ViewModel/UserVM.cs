@@ -43,11 +43,14 @@ namespace ProgMob.ViewModel
 
         public async void ListUser()
         {
-            var users = await DatabaseUser.ListUser();
-            Users.Clear();
-            foreach (var u in users)
+            if(await DatabaseUser.ListUser())
             {
-                Users.Add(u);
+                Users.Clear();
+                var users = await DatabaseUser.GetUser();
+                foreach (var u in users)
+                {
+                    Users.Add(u);
+                }
             }
         }
     }

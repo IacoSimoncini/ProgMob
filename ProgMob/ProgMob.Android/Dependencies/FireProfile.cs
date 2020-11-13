@@ -1,10 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Android.Content.Res;
-using Android.Gms.Tasks;
+﻿using Android.Gms.Tasks;
 using Firebase.Firestore;
-using Java.Lang;
-using Java.Util;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireProfile))]
@@ -20,16 +16,18 @@ namespace ProgMob.Droid.Dependencies
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid);
             collection.Get().AddOnCompleteListener(this);
+            
             for (int i = 0; i < 25; i++)
             {
                 await System.Threading.Tasks.Task.Delay(1000);
                 if (Read == true)
                     break;
             }
+
             if (Read == false)
                 return false;
             else
-                return Admin;                
+                return Admin;
         }
 
         public string GetUid()
@@ -42,8 +40,8 @@ namespace ProgMob.Droid.Dependencies
             if (task.IsSuccessful)
             {
                 var document = (DocumentSnapshot)task.Result;
-                Console.WriteLine(document.Get("admin").ToString());
-                if (document.Get("admin").ToString().Equals("Admin")) {
+                if (document.Get("admin").ToString().Equals("Admin"))
+                {
                     Admin = true;
                 }
                 else
@@ -51,7 +49,6 @@ namespace ProgMob.Droid.Dependencies
                     Admin = false;
                 }
                 Read = true;
-               
             }
         }
     }

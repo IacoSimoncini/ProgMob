@@ -56,7 +56,7 @@ namespace ProgMob
                 if (Token != "" && DatabaseUser.InsertUser(user))
                 {
                     await DisplayAlert("Registration successful", "Press OK to continue", "OK");
-                    App.Current.MainPage = new NavigationPage(new MainPage());
+                    App.Current.MainPage = new NavigationPage(new Splash());
                 }
                 else
                 {

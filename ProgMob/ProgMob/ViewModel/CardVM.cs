@@ -57,11 +57,14 @@ namespace ProgMob.ViewModel
 
         public async void ListCard(string Uid)
         {
-            var cards = await DatabaseCards.ListCard(Uid);
-            Cards.Clear();
-            foreach (var c in cards)
+            if(await DatabaseCards.ListCard(Uid))
             {
-                Cards.Add(c);
+                Cards.Clear();
+                var card = await DatabaseCards.GetCard();
+                foreach(var c in card)
+                {
+                    Cards.Add(c);
+                }
             }
         }
 

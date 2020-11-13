@@ -23,6 +23,7 @@ namespace ProgMob.Droid.Dependencies
     {
         List<Card> cardList;
         string UserId;
+        int value;
 
         public FireCards()
         {
@@ -62,13 +63,28 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<IList<Card>> ListCard(string Uid)
+        public async Task<bool> ListCard(string Uid)
         {
+            value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Uid)
                 .Collection("Schede");
             UserId = Uid;
             collection.Get().AddOnCompleteListener(this);
+
+            for(int i = 0; i < 30; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (value != 0)
+                    break;
+            }
+
+            if(value == 1) { return true; }
+            else { return false; }
+        }
+
+        public async Task<IList<Card>> GetCard()
+        {
             return cardList;
         }
 
@@ -85,9 +101,15 @@ namespace ProgMob.Droid.Dependencies
                     card.Ref = UserId;
                     cardList.Add(card);
                 }
+                value = 1;
+            }
+            else
+            {
+                Console.WriteLine(task.Exception);
+                value = 2;
             }
         }
 
-       
+        
     }
 }

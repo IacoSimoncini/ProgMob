@@ -26,7 +26,7 @@ namespace ProgMob.Views
             CardId = Cid;
             Title = CardId;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
-            
+
         }
 
         protected override void OnAppearing()

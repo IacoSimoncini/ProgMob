@@ -14,14 +14,7 @@ namespace ProgMob
             {
                 if (Application.Current.Properties["logged"].ToString().Equals("true"))
                 {
-                    if (Application.Current.Properties["Admin"].ToString().Equals("true"))
-                    {
-                        MainPage = new NavigationPage(new MainPageAdmin());
-                    }
-                    else
-                    {
-                        MainPage = new NavigationPage(new MainPage());
-                    }
+                    MainPage = new NavigationPage(new Splash());
                 }
                 else
                 {
@@ -30,7 +23,7 @@ namespace ProgMob
             }
             else
             {
-                MainPage = new NavigationPage(new LoginPage());
+                MainPage = new NavigationPage(new RegisterPage());
             }
         }
 
