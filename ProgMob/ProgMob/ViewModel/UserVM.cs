@@ -20,16 +20,14 @@ namespace ProgMob.ViewModel
                 selectedUser = value;
                 OnPropertyChanged("SelectedUser");
                 if (selectedUser != null)
-                { 
-                    Console.WriteLine(selectedUser.Id);
-                    Console.WriteLine(selectedUser.Uri);
+                {
                     Application.Current.Properties["UID"] = selectedUser.Id;
                     Application.Current.SavePropertiesAsync();
                     App.Current.MainPage.Navigation.PushAsync(new CardListPage());
                 }
             }
         }
-        public ObservableCollection<User> Users { get; set;}
+        public ObservableCollection<User> Users { get; set; }
 
         public UserVM()
         {
@@ -43,7 +41,7 @@ namespace ProgMob.ViewModel
 
         public async void ListUser()
         {
-            if(await DatabaseUser.ListUser())
+            if (await DatabaseUser.ListUser())
             {
                 Users.Clear();
                 var users = await DatabaseUser.GetUser();

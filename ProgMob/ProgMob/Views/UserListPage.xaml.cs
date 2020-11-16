@@ -1,10 +1,5 @@
 ﻿using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,7 +17,6 @@ namespace ProgMob.Views
 
             UserVM = Resources["UserViewModel"] as UserVM;
 
-            //logout
             ToolbarItem TBItem = new ToolbarItem
             {
                 Text = "Logout",
@@ -38,12 +32,14 @@ namespace ProgMob.Views
                 {
                     Application.Current.Properties["logged"] = "false";
                     await Application.Current.SavePropertiesAsync();
-                    await DisplayAlert("Logout", "You have been disconnected", "Cancel");
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterPage(), true);
+                    await DisplayAlert("Logout", "You have been disconnected, the app will be closed", "Cancel");
+                    await System.Threading.Tasks.Task.Delay(1000);
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
                 }
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
             this.ToolbarItems.Add(TBItem);
+
         }
 
         protected override void OnAppearing()

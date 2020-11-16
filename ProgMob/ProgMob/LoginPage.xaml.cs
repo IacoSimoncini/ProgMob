@@ -65,7 +65,7 @@ namespace ProgMob
 
         async private void Register(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new LoginPage());
+            App.Current.MainPage = new NavigationPage(new RegisterPage());
         }
     }
 }

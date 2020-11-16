@@ -2,7 +2,6 @@
 using ProgMob.ViewModel.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
 {
@@ -37,12 +36,16 @@ namespace ProgMob.ViewModel
 
         public async void ListEx(string Uid, string Cid)
         {
-            var ex = await DatabaseDetailCard.ListExercise(Uid, Cid);
             Exercises.Clear();
-            foreach (var e in ex)
+            if(await DatabaseDetailCard.ListExercise(Uid, Cid)) 
             {
-                Exercises.Add(e);
+                var ex = await DatabaseDetailCard.GetExercises();
+                foreach (var e in ex)
+                {
+                    Exercises.Add(e);
+                }
             }
+            
         }
 
     }

@@ -1,7 +1,5 @@
 ﻿using ProgMob.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,7 +10,8 @@ namespace ProgMob.ViewModel.Helpers
         bool InsertExercise(Exercise ex);
         Task<bool> DeleteExercise(string Eid);
         Task<bool> UpdateExercise(Exercise ex);
-        Task<IList<Exercise>> ListExercise();
+        Task<bool> ListExercise();
+        Task<IList<Exercise>> GetExercises();
     }
     class DatabaseExercise
     {
@@ -28,7 +27,7 @@ namespace ProgMob.ViewModel.Helpers
             return firestoreEx.DeleteExercise(Eid);
         }
 
-        public static Task<IList<Exercise>> ListExercise()
+        public static Task<bool> ListExercise()
         {
             return firestoreEx.ListExercise();
         }
@@ -36,6 +35,11 @@ namespace ProgMob.ViewModel.Helpers
         public static Task<bool> UpdateExercise(Exercise ex)
         {
             return firestoreEx.UpdateExercise(ex);
+        }
+
+        public static Task<IList<Exercise>> GetExercises()
+        {
+            return firestoreEx.GetExercises();
         }
 
     }

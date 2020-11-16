@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Firebase.Auth;
-using Org.Apache.Http.Client;
+﻿using Firebase.Auth;
 using ProgMob.ViewModel.Helpers;
+using System;
+using System.Threading.Tasks;
 
 [assembly: Xamarin.Forms.Dependency(typeof(ProgMob.Droid.Dependencies.FireAuth))]
 namespace ProgMob.Droid.Dependencies

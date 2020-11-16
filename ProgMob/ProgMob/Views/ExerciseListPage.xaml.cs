@@ -1,12 +1,10 @@
-﻿using ProgMob.ViewModel;
+﻿using ProgMob.Popup;
+using ProgMob.ViewModel;
+using ProgMob.ViewModel.Helpers;
+using Rg.Plugins.Popup.Services;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
-using ProgMob.Popup;
-using ProgMob.ViewModel.Helpers;
 
 namespace ProgMob.Views
 {
@@ -20,6 +18,15 @@ namespace ProgMob.Views
             Title = "Exercises";
 
             ExVM = Resources["ExVM"] as ExerciseVM;
+
+            if (Application.Current.Properties["Admin"].ToString().Equals("true"))
+            {
+                Btn_AddEx.IsVisible = true;
+            }
+            else
+            {
+                Btn_AddEx.IsVisible = false;
+            }
 
             ToolbarItem TBItem = new ToolbarItem
             {
@@ -36,8 +43,9 @@ namespace ProgMob.Views
                 {
                     Application.Current.Properties["logged"] = "false";
                     await Application.Current.SavePropertiesAsync();
-                    await DisplayAlert("Logout", "You have been disconnected", "Cancel");
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterPage(), true);
+                    await DisplayAlert("Logout", "You have been disconnected, the app will be closed", "Cancel");
+                    await System.Threading.Tasks.Task.Delay(1000);
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
                 }
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };

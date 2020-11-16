@@ -1,7 +1,6 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -17,7 +16,8 @@ namespace ProgMob.ViewModel
             get { return selectedEx; }
             set
             {
-                if (selectedEx != value) {
+                if (selectedEx != value)
+                {
                     selectedEx = value;
                     HandleSelectedExercises();
                 }
@@ -45,30 +45,35 @@ namespace ProgMob.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async void ListExercise(String CardId , string UserId)
+        public async void ListExercise(String CardId, string UserId)
         {
             // List<Exercise> exsCard = (List<Exercise>)await DatabaseDetailCard.ListExercise(CardId, UserId);
-            var exsCard = await DatabaseDetailCard.ListExercise(CardId, UserId);
-            var ex = await DatabaseExercise.ListExercise();
             Exercises.Clear();
-            foreach (var e in ex)
+            if(await DatabaseDetailCard.ListExercise(UserId, CardId))  // Carica il vettore con gli esercizi lista
             {
-                if (!exsCard.Contains(e)) { 
-                    Console.WriteLine(e.Name+ "NON PRESENTE");
-                    Exercises.Add(e);  
+                var exsCard = await DatabaseDetailCard.GetExercises();      // Metodo get per esercizi lista
+                var ex = await DatabaseExercise.GetExercises();     // Metodo get per esercizi tutti
+                foreach (var e in ex)
+                {
+                    if (!exsCard.Contains(e))
+                    {
+                        Console.WriteLine(e.Name + " NON PRESENTE");
+                        Exercises.Add(e);
+                    }
+                    else { Console.WriteLine(e.Name + " PRESENTE"); 
+                    }
                 }
-                else { Console.WriteLine(e.Name + "PRESENTE"); }
             }
+            
         }
-
 
         public async void ListAllExercise()
         {
-            var ex = await DatabaseExercise.ListExercise();
-            Exercises.Clear();
+
+            var ex = await DatabaseExercise.GetExercises();
             foreach (var e in ex)
             {
-                Exercises.Add(e); 
+                Exercises.Add(e);
             }
         }
     }

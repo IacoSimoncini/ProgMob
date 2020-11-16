@@ -1,12 +1,6 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ProgMob.Popup
@@ -28,7 +22,7 @@ namespace ProgMob.Popup
             bool update = await DatabaseExercise.UpdateExercise(ex);
             if (update)
                 await App.Current.MainPage.DisplayAlert("Update completed", "Please, press OK to continue", "OK");
-            else 
+            else
                 await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
         }
     }

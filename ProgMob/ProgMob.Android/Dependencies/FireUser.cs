@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Android.Gms.Tasks;
+﻿using Android.Gms.Tasks;
 using Firebase.Firestore;
 using Java.Util;
 using ProgMob.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireUser))]
@@ -28,7 +28,8 @@ namespace ProgMob.Droid.Dependencies
                     .Document(Uid)
                     .Delete();
                 return true;
-            } catch (System.Exception e)
+            }
+            catch (System.Exception e)
             {
                 return false;
             }
@@ -52,7 +53,8 @@ namespace ProgMob.Droid.Dependencies
                     .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
                     .Set(mp);
                 return true;
-            } catch (System.Exception e)
+            }
+            catch (System.Exception e)
             {
                 return false;
             }
@@ -63,15 +65,15 @@ namespace ProgMob.Droid.Dependencies
             value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users");
             collection.Get().AddOnCompleteListener(this);
-            
-            for(int i = 0; i < 30; i++)
+
+            for (int i = 0; i < 30; i++)
             {
                 await System.Threading.Tasks.Task.Delay(100);
                 if (value != 0)
                     break;
             }
 
-            if(value == 1) { return true; }
+            if (value == 1) { return true; }
             else { return false; }
         }
 
@@ -83,8 +85,8 @@ namespace ProgMob.Droid.Dependencies
                 var documents = (QuerySnapshot)task.Result;
                 foreach (var doc in documents.Documents)
                 {
-                    if (!doc.Id.Equals(Application.Current.Properties["UID"])) 
-                    { 
+                    if (!doc.Id.Equals(Application.Current.Properties["MyUID"]))
+                    {
                         string name = doc.Get("name").ToString();
                         string surname = doc.Get("surname").ToString();
                         User user = new User(name, surname);
@@ -94,15 +96,14 @@ namespace ProgMob.Droid.Dependencies
                     }
                 }
                 value = 1;
-            } 
+            }
             else
             {
-                Console.WriteLine(task.Exception);
                 value = 2;
             }
         }
 
-       
+
 
         public Task<bool> UpdateUser(User User)
         {

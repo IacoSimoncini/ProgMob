@@ -42,6 +42,7 @@
                 </StackLayout>
             </ScrollView>
             <Button
+                x:Name="Btn_AddCard"
                 Grid.Row="0"
                 Text="+" FontSize="30"
                 BackgroundColor="Orange" 

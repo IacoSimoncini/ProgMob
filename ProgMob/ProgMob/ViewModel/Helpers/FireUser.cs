@@ -1,7 +1,5 @@
 ﻿using ProgMob.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,7 +12,7 @@ namespace ProgMob.ViewModel.Helpers
         Task<bool> UpdateUser(User User);
         Task<bool> ListUser();
         Task<IList<User>> GetUser();
-        
+
     }
     class DatabaseUser
     {
@@ -44,7 +42,7 @@ namespace ProgMob.ViewModel.Helpers
         {
             return firestoreUser.GetUser();
         }
-        
-        
+
+
     }
 }

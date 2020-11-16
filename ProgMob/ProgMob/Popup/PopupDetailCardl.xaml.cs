@@ -1,12 +1,7 @@
-﻿
-using ProgMob.Models;
-using ProgMob.ViewModel;
+﻿using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -31,18 +26,19 @@ namespace ProgMob.Popup
 
         protected override void OnAppearing()
         {
-           base.OnAppearing();
+            base.OnAppearing();
             ExVM.ListExercise(CardId, UserId);
             BindingContext = this;
-            Console.WriteLine("PopupDC : 1)"+UserId," 2)"+ CardId);
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            foreach (var y in selectedExs) {
+            foreach (var y in selectedExs)
+            {
                 foreach (var x in ExVM.Exercises)
                 {
-                    if (x.Name.Equals(y)){
+                    if (x.Name.Equals(y))
+                    {
                         Console.WriteLine("Aggiungo " + y);
                         DatabaseDetailCard.InsertEx(UserId, CardId, x);
                     }
@@ -54,16 +50,18 @@ namespace ProgMob.Popup
         public void ClickedEx(object sender, EventArgs e)
         {
             var v = sender as Button;
-            var s = v.Text; 
-            if (!selectedExs.Contains(s)) {
+            var s = v.Text;
+            if (!selectedExs.Contains(s))
+            {
                 selectedExs.Add(s);
                 v.BackgroundColor = Color.Red;
             }
-            else {
+            else
+            {
                 selectedExs.Remove(s);
                 v.BackgroundColor = Color.White;
             }
-            
+
         }
 
     }

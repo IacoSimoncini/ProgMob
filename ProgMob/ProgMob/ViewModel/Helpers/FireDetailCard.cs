@@ -1,7 +1,5 @@
 ﻿using ProgMob.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,7 +10,8 @@ namespace ProgMob.ViewModel.Helpers
         bool InsertEx(string Uid, string Cid, Exercise ex);
         Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex);
         Task<bool> UpdateExercise(string Uid, string Cid, Exercise ex);
-        Task<IList<Exercise>> ListExercise(string Uid, string Cid);
+        Task<bool> ListExercise(string Uid, string Cid);
+        Task<IList<Exercise>> GetExercises();
     }
     class DatabaseDetailCard
     {
@@ -28,7 +27,7 @@ namespace ProgMob.ViewModel.Helpers
             return firestoreDetailCard.DeleteExercise(Uid, Cid, ex);
         }
 
-        public static Task<IList<Exercise>> ListExercise(string Uid, string Cid)
+        public static Task<bool> ListExercise(string Uid, string Cid)
         {
             return firestoreDetailCard.ListExercise(Uid, Cid);
         }
@@ -36,6 +35,11 @@ namespace ProgMob.ViewModel.Helpers
         public static Task<bool> UpdateExercise(string Uid, string Cid, Exercise ex)
         {
             return firestoreDetailCard.UpdateExercise(Uid, Cid, ex);
+        }
+
+        public static Task<IList<Exercise>> GetExercises()
+        {
+            return firestoreDetailCard.GetExercises();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ProgMob.Droid.Dependencies
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid);
             collection.Get().AddOnCompleteListener(this);
-            
+
             for (int i = 0; i < 25; i++)
             {
                 await System.Threading.Tasks.Task.Delay(1000);

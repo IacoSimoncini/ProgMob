@@ -46,7 +46,8 @@
                 </StackLayout>
             </ScrollView>
             <Button
-             Grid.Row="0"
+                x:Name="Btn_AddEx"
+                Grid.Row="0"
                 Text="+" FontSize="30"
                   BackgroundColor="Orange" BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="60" HeightRequest="60" Margin="0,0,10,10" VerticalOptions="End"
           

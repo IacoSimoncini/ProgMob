@@ -1,10 +1,5 @@
-﻿using ProgMob.ViewModel;
-using ProgMob.ViewModel.Helpers;
-using ProgMob.Views;
+﻿using ProgMob.ViewModel.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -14,20 +9,19 @@ namespace ProgMob
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Splash : ContentPage
-    { 
+    {
         public Splash()
         {
             InitializeComponent();
-            Application.Current.Properties["Admin"] = DatabaseProfile.GetProfile();
+            Application.Current.Properties["MyUID"] = DatabaseProfile.GetUid();
             Startup();
         }
 
         public async Task Startup()
         {
-            Console.WriteLine(Application.Current.Properties["Admin"].ToString());
-            if (Application.Current.Properties["Admin"].ToString().Equals("true"))
+            if (await DatabaseProfile.GetProfile())
             {
-                if(await DatabaseUser.ListUser())
+                if (await DatabaseUser.ListUser() && await DatabaseExercise.ListExercise())
                 {
                     App.Current.MainPage = new MainPageAdmin();
                     Navigation.RemovePage(this);
@@ -39,18 +33,18 @@ namespace ProgMob
                 }
             }
             else
-            { 
-                if(await DatabaseCards.ListCard(DatabaseProfile.GetUid()))
+            {
+                if (await DatabaseCards.ListCard(DatabaseProfile.GetUid()))
                 {
                     App.Current.MainPage = new MainPage();
                     Navigation.RemovePage(this);
-                } 
+                }
                 else
                 {
                     await DisplayAlert("Error", "Something went wrong2", "OK");
                     Navigation.PopAsync();
                 }
-            }  
+            }
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
+using ProgMob.Views;
+using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,15 +18,27 @@ namespace ProgMob.Popup
             UserId = Uid;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             Card card = new Card();
             card.Path = Name.Text;
             card.Ref = UserId;
-            if (DatabaseCards.InsertCard(card))
-                _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
+            if (DatabaseCards.InsertCard(card)) {
+                if (await DatabaseCards.ListCard(UserId))
+                { 
+                    _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
+                    CardListPage.verify = 1;
+                }
+                else
+                {
+                    _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+                }
+            } 
             else
-                _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+            {
+                _ = App.Current.MainPage.DisplayAlert("Error", "The insertion was not successful", "OK");
+            }
+            PopupNavigation.PopAsync();
         }
     }
 }

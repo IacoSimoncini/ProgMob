@@ -1,11 +1,8 @@
 ﻿using ProgMob.Popup;
 using ProgMob.ViewModel;
+using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,6 +21,7 @@ namespace ProgMob.Views
             InitializeComponent();
             UserId = Uid;
             CardId = Cid;
+            DatabaseDetailCard.ListExercise(UserId, CardId);
             Title = CardId;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
 
@@ -37,7 +35,7 @@ namespace ProgMob.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new PopupDetailCardl());
+            await PopupNavigation.PushAsync(new PopupDetailCardl(UserId, CardId));
         }
     }
 }

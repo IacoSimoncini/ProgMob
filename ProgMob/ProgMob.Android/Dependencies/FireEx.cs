@@ -1,12 +1,11 @@
-﻿using System;
-using Xamarin.Forms;
-using ProgMob.Models;
-using System.Security.Policy;
-using Java.Util;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Android.Gms.Tasks;
+﻿using Android.Gms.Tasks;
 using Firebase.Firestore;
+using Java.Util;
+using ProgMob.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireEx))]
 namespace ProgMob.Droid.Dependencies
@@ -14,7 +13,7 @@ namespace ProgMob.Droid.Dependencies
     class FireEx : Java.Lang.Object, ViewModel.Helpers.FireExercise, IOnCompleteListener
     {
         List<Exercise> exList;
-
+        int value;
         public FireEx()
         {
             exList = new List<Exercise>();
@@ -33,7 +32,8 @@ namespace ProgMob.Droid.Dependencies
                 collection.Set(mp);
                 ex.Id = collection.Id.ToString();
                 return true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
             }
@@ -47,16 +47,35 @@ namespace ProgMob.Droid.Dependencies
                     .Document(Eid)
                     .Delete();
                 return true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
             }
         }
 
-        public async Task<IList<Exercise>> ListExercise()
+        public async Task<bool> ListExercise()
         {
+            value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Exercises");
             collection.Get().AddOnCompleteListener(this);
+
+            for(int i = 0; i < 30; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (value != 0)
+                    break;
+            }
+
+            if (value == 1)
+                return true;
+            else
+                return false;
+
+        }
+
+        public async Task<IList<Exercise>> GetExercises()
+        {
             return exList;
         }
 
@@ -75,6 +94,11 @@ namespace ProgMob.Droid.Dependencies
                     ex.Id = doc.Id.ToString();
                     exList.Add(ex);
                 }
+                value = 1;
+            }
+            else
+            {
+                value = 2;
             }
         }
 
@@ -86,12 +110,13 @@ namespace ProgMob.Droid.Dependencies
                     .Document(ex.Id)
                     .Update("name", ex.Name, "description", ex.Description, "difficulty", ex.Difficulty);
                 return true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
             }
         }
 
-        
+       
     }
 }

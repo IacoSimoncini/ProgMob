@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.Gms.Tasks;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Gms.Tasks;
 using Firebase.Firestore;
 using Java.Util;
 using ProgMob.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireDetailCard))]
@@ -21,7 +13,7 @@ namespace ProgMob.Droid.Dependencies
     class FireDetailCard : Java.Lang.Object, ViewModel.Helpers.FireDetailCard, IOnCompleteListener
     {
         List<Exercise> exList;
-
+        int value;
         public FireDetailCard()
         {
             exList = new List<Exercise>();
@@ -44,6 +36,11 @@ namespace ProgMob.Droid.Dependencies
             {
                 return false;
             }
+        }
+
+        public async Task<IList<Exercise>> GetExercises()
+        {
+            return exList;
         }
 
         public bool InsertEx(string Uid, string Cid, Exercise ex)
@@ -69,15 +66,25 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<IList<Exercise>> ListExercise(string Uid, string Cid)
+        public async Task<bool> ListExercise(string Uid, string Cid)
         {
+            value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                    .Document(Uid)
                    .Collection("Schede")
                    .Document(Cid)
                    .Collection("Ex");
             collection.Get().AddOnCompleteListener(this);
-            return exList; 
+
+            for(int i = 0; i < 30; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (value != 0)
+                    break;
+            }
+
+            if (value == 1) return true;
+            else return false;
         }
 
         public void OnComplete(Android.Gms.Tasks.Task task)
@@ -93,6 +100,11 @@ namespace ProgMob.Droid.Dependencies
                         doc.Get("difficulty").ToString());
                     exList.Add(ex);
                 }
+                value = 1;
+            }
+            else
+            {
+                value = 2;
             }
         }
 

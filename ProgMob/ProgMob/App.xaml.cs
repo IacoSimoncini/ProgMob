@@ -1,6 +1,4 @@
-﻿using ProgMob.ViewModel.Helpers;
-using ProgMob.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace ProgMob
 {
@@ -9,7 +7,7 @@ namespace ProgMob
         public App()
         {
             InitializeComponent();
-            
+
             if (Application.Current.Properties.ContainsKey("logged"))
             {
                 if (Application.Current.Properties["logged"].ToString().Equals("true"))

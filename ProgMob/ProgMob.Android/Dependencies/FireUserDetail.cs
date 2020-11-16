@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Android.Gms.Extensions;
-using Android.Gms.Tasks;
+﻿using Android.Gms.Tasks;
 using Firebase.Firestore;
-using Java.Util;
 using ProgMob.Models;
+using System;
 using Xamarin.Forms;
 [assembly: Dependency(typeof(ProgMob.Droid.Dependencies.FireUserDetail))]
 namespace ProgMob.Droid.Dependencies
@@ -21,22 +17,22 @@ namespace ProgMob.Droid.Dependencies
             {
                 var documents = (DocumentSnapshot)task.Result;
                 Console.WriteLine("1) HO ESTRATTO IL NOME: " + documents.Get("name").ToString() + "HO ESTRATTO IL COGNOME: " + documents.Get("surname").ToString());
-                this.initializeUserData(documents.Get("name").ToString() , documents.Get("name").ToString());
+                this.initializeUserData(documents.Get("name").ToString(), documents.Get("name").ToString());
                 //flag = true;
             }
         }
-            //string name = (QuerySnapshot)task.Result.Get("name").ToString();
-            //string surname = (QuerySnapshot)task.Result.Get("surname").ToString();
-            /*var documents = (QuerySnapshot)task.Result;
-            foreach (var doc in documents.Documents)
-            {
-                string name = doc.Get("name").ToString();
-                string surname = doc.Get("surname").ToString();
-                userData = new User(name, surname);
-                /*user.Id = doc.Id.ToString();
-                user.Uri = doc.Get("uri").ToString();
-                userList.Add(user);*/
-            // }
+        //string name = (QuerySnapshot)task.Result.Get("name").ToString();
+        //string surname = (QuerySnapshot)task.Result.Get("surname").ToString();
+        /*var documents = (QuerySnapshot)task.Result;
+        foreach (var doc in documents.Documents)
+        {
+            string name = doc.Get("name").ToString();
+            string surname = doc.Get("surname").ToString();
+            userData = new User(name, surname);
+            /*user.Id = doc.Id.ToString();
+            user.Uri = doc.Get("uri").ToString();
+            userList.Add(user);*/
+        // }
 
 
         public void generateUserData()
@@ -50,7 +46,7 @@ namespace ProgMob.Droid.Dependencies
             return userData;*/
         }
 
-        public void initializeUserData(string n , string s )
+        public void initializeUserData(string n, string s)
         {
             name = null;
             surname = null;

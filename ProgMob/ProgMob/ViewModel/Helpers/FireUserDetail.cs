@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using ProgMob.Models;
+﻿using ProgMob.Models;
 using Xamarin.Forms;
 namespace ProgMob.ViewModel.Helpers
 {
@@ -24,11 +20,11 @@ namespace ProgMob.ViewModel.Helpers
         {
             return DatabaseUserDetail.firestoreUserDetail.getUserData().Surname;
         }*/
-       /*
-        public static void generateUserData()
-        {
-            DatabaseUserDetail.firestoreUserDetail.generateUserData();
-        }*/
+        /*
+         public static void generateUserData()
+         {
+             DatabaseUserDetail.firestoreUserDetail.generateUserData();
+         }*/
 
         public static User getUserData()
         {

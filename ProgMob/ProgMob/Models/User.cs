@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProgMob.Models
+﻿namespace ProgMob.Models
 {
     public class User
     {

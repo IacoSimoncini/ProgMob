@@ -23,11 +23,6 @@ namespace ProgMob.ViewModel
                 OnPropertyChanged("SelectedUser");
                 if (selectedCard != null)
                 {
-                    /*Application.Current.Properties["selectedCard"] = null;
-                    Application.Current.Properties["wselectedCard"] = null;
-                    Application.Current.Properties["selectedCard"] = selectedCard.Path;
-                    Application.Current.Properties["wselectedCard"] = selectedCard.Ref;*/
-                    Console.WriteLine("IMPORTANTE: "+selectedCard.Path);
                     App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path));
                 }
             }
@@ -38,7 +33,7 @@ namespace ProgMob.ViewModel
         public CardVM()
         {
             Cards = new ObservableCollection<Card>();
-            
+
             DeleteCommand = new Command<object>(Delete);
         }
 
@@ -47,7 +42,8 @@ namespace ProgMob.ViewModel
         {
             var card = obj as Card;
             bool deleted = await DatabaseCards.DeleteCard(card);
-            if (deleted) { 
+            if (deleted)
+            {
                 Cards.Remove(card);
                 _ = App.Current.MainPage.DisplayAlert("Successfully deleted", "Please, press OK", "OK");
             }
@@ -62,17 +58,15 @@ namespace ProgMob.ViewModel
 
         public async void ListCard(string Uid)
         {
-            if(await DatabaseCards.ListCard(Uid))
+            if (await DatabaseCards.ListCard(Uid))
             {
                 Cards.Clear();
                 var card = await DatabaseCards.GetCard();
-                foreach(var c in card)
+                foreach (var c in card)
                 {
                     Cards.Add(c);
                 }
             }
         }
-
-
     }
 }
