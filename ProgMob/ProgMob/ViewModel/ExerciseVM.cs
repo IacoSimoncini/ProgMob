@@ -3,14 +3,16 @@ using ProgMob.ViewModel.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
 {
     class ExerciseVM : INotifyPropertyChanged
     {
-        //private ObservableCollection<Exercise> selectedExercises;
         public event PropertyChangedEventHandler PropertyChanged;
+
         private Exercise selectedEx;
+
         public Exercise SelectedEx
         {
             get { return selectedEx; }
@@ -19,25 +21,24 @@ namespace ProgMob.ViewModel
                 if (selectedEx != value)
                 {
                     selectedEx = value;
-                    HandleSelectedExercises();
+                    OnpropertyChanged("SelectedEx");
+                    if (selectedEx != null)
+                    {
+
+                    }
                 }
             }
         }
-        /*public ObservableCollection<Exercise> SelectedExercises
-        {
-            get { return selectedExercises; }
-            private set { selectedExercises = value; OnpropertyChanged(""); }
-        }*/
 
-        private void HandleSelectedExercises()
-        {
-            Console.WriteLine(SelectedEx.Name);
-        }
         public ObservableCollection<Exercise> Exercises { get; set; }
+
+        public Command DeleteCommand { get; set; }
 
         public ExerciseVM()
         {
             Exercises = new ObservableCollection<Exercise>();
+
+            DeleteCommand = new Command<object>(Delete);
         }
 
         private void OnpropertyChanged(string propertyName)
@@ -45,14 +46,26 @@ namespace ProgMob.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private async void Delete(object obj)
+        {
+            var ex = obj as Exercise;
+            bool deleted = await DatabaseExercise.DeleteExercise(ex.Id);
+            if (deleted)
+            {
+                Exercises.Remove(ex);
+                _ = App.Current.MainPage.DisplayAlert("Succesfully deleted", "Plese, press OK", "OK");
+            }
+            else
+                _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+        }
+
         public async void ListExercise(String CardId, string UserId)
         {
-            // List<Exercise> exsCard = (List<Exercise>)await DatabaseDetailCard.ListExercise(CardId, UserId);
             Exercises.Clear();
-            if(await DatabaseDetailCard.ListExercise(UserId, CardId))  // Carica il vettore con gli esercizi lista
+            if (await DatabaseDetailCard.ListExercise(UserId, CardId)) 
             {
-                var exsCard = await DatabaseDetailCard.GetExercises();      // Metodo get per esercizi lista
-                var ex = await DatabaseExercise.GetExercises();     // Metodo get per esercizi tutti
+                var exsCard = await DatabaseDetailCard.GetExercises();  
+                var ex = await DatabaseExercise.GetExercises(); 
                 foreach (var e in ex)
                 {
                     if (!exsCard.Contains(e))
@@ -60,11 +73,13 @@ namespace ProgMob.ViewModel
                         Console.WriteLine(e.Name + " NON PRESENTE");
                         Exercises.Add(e);
                     }
-                    else { Console.WriteLine(e.Name + " PRESENTE"); 
+                    else
+                    {
+                        Console.WriteLine(e.Name + " PRESENTE");
                     }
                 }
             }
-            
+
         }
 
         public async void ListAllExercise()

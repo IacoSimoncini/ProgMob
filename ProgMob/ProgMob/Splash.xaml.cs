@@ -24,7 +24,7 @@ namespace ProgMob
                 if (await DatabaseUser.ListUser() && await DatabaseExercise.ListExercise())
                 {
                     App.Current.MainPage = new MainPageAdmin();
-                    Navigation.RemovePage(this);
+                    Navigation.PopAsync();
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace ProgMob
                 if (await DatabaseCards.ListCard(DatabaseProfile.GetUid()))
                 {
                     App.Current.MainPage = new MainPage();
-                    Navigation.RemovePage(this);
+                    Navigation.PopAsync();
                 }
                 else
                 {

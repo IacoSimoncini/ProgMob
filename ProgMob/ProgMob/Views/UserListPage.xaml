@@ -30,7 +30,7 @@
                               IsPullToRefreshEnabled="true">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri}"/>
+                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Source}"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

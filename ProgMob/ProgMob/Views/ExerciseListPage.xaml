@@ -6,7 +6,7 @@
              xmlns:ViewModel="clr-namespace:ProgMob.ViewModel" 
              mc:Ignorable="d"
              x:Class="ProgMob.Views.ExerciseListPage">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <ViewModel:ExerciseVM x:Key="ExVM"/>
@@ -30,6 +30,9 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                    </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
                                         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" >
                                             <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>

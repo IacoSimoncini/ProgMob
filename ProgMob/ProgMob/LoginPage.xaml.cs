@@ -21,11 +21,9 @@ namespace ProgMob
 
             string token = await Auth.LoginToFirebase(email, password);
 
-            bool admin = await DatabaseProfile.GetProfile();
-
             if (token != "")
             {
-                if (admin)
+                if (await DatabaseProfile.GetProfile())
                 {
                     App.Current.MainPage = new MainPageAdmin();
                 }
@@ -63,7 +61,7 @@ namespace ProgMob
             }
         }
 
-        async private void Register(object sender, EventArgs e)
+        private void Register(object sender, EventArgs e)
         {
             App.Current.MainPage = new NavigationPage(new RegisterPage());
         }

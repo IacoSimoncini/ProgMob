@@ -5,17 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ProgMob.Views.ProfilePage">
-    
+
     <ContentPage.Content>
         <StackLayout>
             <!--TAG IMAGE VIEW UTENTE DA INSERIRE-->
-            <Label x:Name="User_Name" Text="Your name" HorizontalTextAlignment="Center"/>
-            <Label x:Name="name" Text="{Binding LblText}" HorizontalTextAlignment="Center" />
-            <Label x:Name="User_Surname" Text="Your Surname" HorizontalTextAlignment="Center"/>
-            
+            <Image x:Name="ProfileImage" Source=""/>
+            <Label x:Name="name" Text="" HorizontalTextAlignment="Center" />
+            <Label x:Name="User_Surname" Text="" HorizontalTextAlignment="Center"/>
+
             <!--ICONA MAIL DA INSERIRE (OPZIONALE)-->
             <Label x:Name="User_Email" Text="Your Email" HorizontalTextAlignment="Center"/>
-            
+
             <!--ICONA PHONE DA INSERIRE (OPZIONALE)-->
             <Label x:Name="User_Phone" Text="Your Phone" HorizontalTextAlignment="Center"/>
         </StackLayout>

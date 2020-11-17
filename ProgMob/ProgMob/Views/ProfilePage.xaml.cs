@@ -10,36 +10,35 @@ namespace ProgMob.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
-        private string _lblText;
         private User user;
-        public string LblText
-        {
-            get
-            {
-                return _lblText;
-            }
-            set
-            {
-                _lblText = value;
-                OnPropertyChanged();
-            }
-        }
         public ProfilePage()
         {
             InitializeComponent();
-            Console.WriteLine("A)GENERO I DATI");
-            DatabaseUserDetail.generateUserData();
-            Console.WriteLine("B)ASSEGNO I DATI");
-            user = null;
-            user = DatabaseUserDetail.getUserData();
+
             Title = "Profile";
             BindingContext = this;
+
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            StartUp();
+        }
 
-            //this.LblText = "hi";
+        public async void StartUp()
+        {
+            if (await DatabaseUserDetail.generateUserData())
+            {
+                user = DatabaseUserDetail.getUserData();
+            }
+
+            Uri uri = new Uri(user.Uri);
+            ProfileImage.Source = ImageSource.FromUri(uri);
+            name.Text = user.Name;
+            User_Surname.Text = user.Surname;
+
+            Console.WriteLine("UTENTE: " + user.Name + " " + user.Surname);
         }
     }
 }

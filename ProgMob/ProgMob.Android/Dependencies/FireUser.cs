@@ -89,9 +89,9 @@ namespace ProgMob.Droid.Dependencies
                     {
                         string name = doc.Get("name").ToString();
                         string surname = doc.Get("surname").ToString();
-                        User user = new User(name, surname);
+                        string uri = doc.Get("uri").ToString();
+                        User user = new User(name, surname, uri);
                         user.Id = doc.Id.ToString();
-                        user.Uri = doc.Get("uri").ToString();
                         userList.Add(user);
                     }
                 }

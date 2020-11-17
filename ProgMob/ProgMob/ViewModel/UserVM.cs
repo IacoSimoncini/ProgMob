@@ -46,7 +46,7 @@ namespace ProgMob.ViewModel
                 Users.Clear();
                 var users = await DatabaseUser.GetUser();
                 foreach (var u in users)
-                {
+                { 
                     Users.Add(u);
                 }
             }
