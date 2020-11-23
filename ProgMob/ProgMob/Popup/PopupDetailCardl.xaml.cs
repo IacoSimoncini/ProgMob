@@ -30,12 +30,14 @@ namespace ProgMob.Popup
             PopupViewModel.LoadListEx(UserId, CardId);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Add_Exercise(object sender, EventArgs e)
         {
             foreach(var y in selectedEx)
             {
+                Console.WriteLine("selectedEx: " + y);
                 foreach(var x in PopupViewModel.ListPopupEx)
                 {
+                    Console.WriteLine("Esercizio in ListPopupEx: " + x.Name);
                     if (x.Name.Equals(y))
                     {
                         DatabaseDetailCard.InsertEx(UserId, CardId, x);
@@ -43,7 +45,6 @@ namespace ProgMob.Popup
                 }
             }
             selectedEx.Clear();
-            PopupViewModel.LoadListEx(UserId, CardId);
         }
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -59,8 +60,6 @@ namespace ProgMob.Popup
                 selectedEx.Remove(selectedItem.Name);
                 Console.WriteLine("RIMOSSO: " + selectedItem.Name);
             }
-
         }
-
     }
 }

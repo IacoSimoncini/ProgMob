@@ -41,13 +41,28 @@ namespace ProgMob.ViewModel
         public async void LoadListEx(string Uid, string Cid)
         {
             ListPopupEx.Clear();
-            var exCards = await DatabaseDetailCard.GetExercises();
+            bool value = false;
+            List<Exercise> exCards = (List<Exercise>)await DatabaseDetailCard.GetExercises();
             var exAll = await DatabaseExercise.GetExercises();
             foreach (Exercise e in exAll)
             {
-                foreach(var x in exCards)
+                Console.WriteLine("e: " + e.Name);
+                foreach (Exercise x in exCards)
                 {
-                    if (!e.Name.Equals(x.Name)) ListPopupEx.Add(e);
+                    Console.WriteLine("x: " + x.Name);
+                    if (x.Name.Equals(e.Name))
+                    {
+                        value = true;
+                        break;
+                    }
+                    else
+                        value = false;
+                    Console.WriteLine("value: " + value.ToString());
+                }
+                if (!value)
+                {
+                    Console.WriteLine("Aggiungo esercizio");
+                    ListPopupEx.Add(e);
                 }
             }
         }

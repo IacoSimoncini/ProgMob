@@ -23,11 +23,13 @@
                 <StackLayout Orientation="Vertical">
 
                     <ListView BindingContext="{StaticResource UserViewModel}" 
-                      RowHeight="70" 
-                      BackgroundColor="White"
-                      ItemsSource="{Binding Users}"
-                      SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
-                              IsPullToRefreshEnabled="true">
+                        RowHeight="70" 
+                        BackgroundColor="White"
+                        ItemsSource="{Binding Users}"
+                        SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
+                        IsPullToRefreshEnabled="True"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsRefreshing="{Binding IsRefreshing}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri}"/>

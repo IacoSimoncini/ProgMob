@@ -22,11 +22,13 @@
             <ScrollView Grid.Row="0">
                 <StackLayout Orientation="Vertical">
                     <ListView BindingContext="{StaticResource ExVM}" 
-                    RowHeight="120" 
-                    BackgroundColor="White"
-                    ItemsSource="{Binding Exercises}"
-                    SelectedItem="{Binding SelectedEx, Mode=TwoWay}"
-                              IsPullToRefreshEnabled="true">
+                        RowHeight="120" 
+                        BackgroundColor="White"
+                        ItemsSource="{Binding Exercises}"
+                        SelectedItem="{Binding SelectedEx, Mode=TwoWay}"
+                        IsPullToRefreshEnabled="true"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsRefreshing="{Binding IsRefreshing}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

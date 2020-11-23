@@ -46,14 +46,13 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <CheckBox Grid.Row="1" Grid.Column="1" VerticalOptions="Center" />
                                 <Label Text="{Binding Name}" x:Name="{Binding Name}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add Exercises" Clicked="Button_Clicked" />
+            <Button Text="Add Exercises" Clicked="Add_Exercise" />
         </StackLayout>
     </Frame>
 </pages:PopupPage>

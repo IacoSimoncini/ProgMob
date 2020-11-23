@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
@@ -34,6 +35,32 @@ namespace ProgMob.ViewModel
         public ObservableCollection<Exercise> Exercises { get; set; }
 
         public Command DeleteCommand { get; set; }
+        
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnpropertyChanged(nameof(IsRefreshing));
+            }
+        }
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsRefreshing = true;
+
+                    ListAllExercise();
+
+                    IsRefreshing = false;
+                });
+            }
+        }
+
 
         public ExerciseVM()
         {
@@ -62,12 +89,16 @@ namespace ProgMob.ViewModel
 
         public async void ListAllExercise()
         {
-
-            var ex = await DatabaseExercise.GetExercises();
-            foreach (var e in ex)
+            Exercises.Clear();
+            if(await DatabaseExercise.ListExercise())
             {
-                Exercises.Add(e);
+                var ex = await DatabaseExercise.GetExercises();
+                foreach (var e in ex)
+                {
+                    Exercises.Add(e);
+                }
             }
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using ProgMob.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
@@ -27,6 +28,33 @@ namespace ProgMob.ViewModel
                 }
             }
         }
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsRefreshing = true;
+
+                    ListUser();
+
+                    IsRefreshing = false;
+                });
+            }
+        }
+
         public ObservableCollection<User> Users { get; set; }
 
         public UserVM()

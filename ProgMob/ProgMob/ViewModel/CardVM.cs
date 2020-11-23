@@ -4,6 +4,7 @@ using ProgMob.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ProgMob.ViewModel
@@ -23,17 +24,43 @@ namespace ProgMob.ViewModel
                 OnPropertyChanged("SelectedUser");
                 if (selectedCard != null)
                 {
+                    Application.Current.Properties["CID"] = selectedCard.Path;
+                    Application.Current.SavePropertiesAsync();
                     App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path));
                 }
             }
         }
 
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
         public ObservableCollection<Card> Cards { get; set; }
         public Command DeleteCommand { get; set; }
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsRefreshing = true;
+
+                    ListCard(App.Current.Properties["UID"].ToString());
+
+                    IsRefreshing = false;
+                });
+            }
+        }
         public CardVM()
         {
             Cards = new ObservableCollection<Card>();
-
             DeleteCommand = new Command<object>(Delete);
         }
 

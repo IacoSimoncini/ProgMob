@@ -21,11 +21,13 @@
                 <StackLayout Orientation="Vertical">
 
                     <ListView BindingContext="{StaticResource CardViewModel}" 
-                      RowHeight="70" 
-                      BackgroundColor="White"
-                      ItemsSource="{Binding Cards}"
-                      SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
-                              IsPullToRefreshEnabled="true">
+                        RowHeight="70" 
+                        BackgroundColor="White"
+                        ItemsSource="{Binding Cards}"
+                        SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
+                        IsPullToRefreshEnabled="true"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsRefreshing="{Binding IsRefreshing}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
