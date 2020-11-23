@@ -33,8 +33,7 @@ namespace ProgMob.Views
                 user = DatabaseUserDetail.getUserData();
             }
 
-            Uri uri = new Uri(user.Uri);
-            ProfileImage.Source = ImageSource.FromUri(uri);
+            ProfileImage.Source = user.Uri;
             name.Text = user.Name;
             User_Surname.Text = user.Surname;
 

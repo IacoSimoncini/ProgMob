@@ -17,8 +17,6 @@ namespace ProgMob.Views
 
             UserVM = Resources["UserViewModel"] as UserVM;
 
-
-
             ToolbarItem TBItem = new ToolbarItem
             {
                 Text = "Logout",
@@ -41,7 +39,6 @@ namespace ProgMob.Views
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
             this.ToolbarItems.Add(TBItem);
-
         }
 
         protected override void OnAppearing()

@@ -1,4 +1,5 @@
-﻿using ProgMob.ViewModel;
+﻿using ProgMob.Models;
+using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
@@ -13,53 +14,50 @@ namespace ProgMob.Popup
     {
         private readonly string UserId;
         private readonly string CardId;
-        ExerciseVM ExVM;
-        public List<String> selectedExs;
+        public List<string> selectedEx = new List<string>();
+        PopupDetailCardVM PopupViewModel;
         public PopupDetailCardl(string Uid, string Cid)
         {
             InitializeComponent();
-            ExVM = Resources["ExVM"] as ExerciseVM;
-            selectedExs = new List<String>();
             UserId = Uid;
             CardId = Cid;
+            PopupViewModel = Resources["PopupDetailCardViewModel"] as PopupDetailCardVM;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ExVM.ListExercise(CardId, UserId);
-            BindingContext = this;
+            PopupViewModel.LoadListEx(UserId, CardId);
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            foreach (var y in selectedExs)
+            foreach(var y in selectedEx)
             {
-                foreach (var x in ExVM.Exercises)
+                foreach(var x in PopupViewModel.ListPopupEx)
                 {
                     if (x.Name.Equals(y))
                     {
-                        Console.WriteLine("Aggiungo " + y);
                         DatabaseDetailCard.InsertEx(UserId, CardId, x);
                     }
                 }
             }
-            selectedExs.Clear();
+            selectedEx.Clear();
+            PopupViewModel.LoadListEx(UserId, CardId);
         }
 
-        public void ClickedEx(object sender, EventArgs e)
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var v = sender as Button;
-            var s = v.Text;
-            if (!selectedExs.Contains(s))
+            var selectedItem = e.SelectedItem as Exercise;
+            if (!selectedEx.Contains(selectedItem.Name))
             {
-                selectedExs.Add(s);
-                v.BackgroundColor = Color.Red;
+                selectedEx.Add(selectedItem.Name);
+                Console.WriteLine("AGGIUNTO: " + selectedItem.Name);
             }
             else
             {
-                selectedExs.Remove(s);
-                v.BackgroundColor = Color.White;
+                selectedEx.Remove(selectedItem.Name);
+                Console.WriteLine("RIMOSSO: " + selectedItem.Name);
             }
 
         }

@@ -1,6 +1,7 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -12,7 +13,7 @@ namespace ProgMob.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Exercise selectedEx;
-
+        
         public Exercise SelectedEx
         {
             get { return selectedEx; }
@@ -57,29 +58,6 @@ namespace ProgMob.ViewModel
             }
             else
                 _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
-        }
-
-        public async void ListExercise(String CardId, string UserId)
-        {
-            Exercises.Clear();
-            if (await DatabaseDetailCard.ListExercise(UserId, CardId)) 
-            {
-                var exsCard = await DatabaseDetailCard.GetExercises();  
-                var ex = await DatabaseExercise.GetExercises(); 
-                foreach (var e in ex)
-                {
-                    if (!exsCard.Contains(e))
-                    {
-                        Console.WriteLine(e.Name + " NON PRESENTE");
-                        Exercises.Add(e);
-                    }
-                    else
-                    {
-                        Console.WriteLine(e.Name + " PRESENTE");
-                    }
-                }
-            }
-
         }
 
         public async void ListAllExercise()

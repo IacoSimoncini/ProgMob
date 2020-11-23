@@ -5,7 +5,7 @@
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:ViewModel="clr-namespace:ProgMob.ViewModel"    
     x:Class="ProgMob.Popup.PopupDetailCardl">
-    
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -21,31 +21,33 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ViewModel:ExerciseVM x:Key="ExVM"/>
+            <ViewModel:PopupDetailCardVM x:Key="PopupDetailCardViewModel"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Frame CornerRadius="10" BackgroundColor="Transparent" Margin="50" Padding="30">
+    <Frame CornerRadius="10" BackgroundColor="Orange" Margin="50" Padding="30">
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <ListView 
                     x:Name="ExercisesLV" 
-                    BindingContext="{StaticResource ExVM}" 
+                    BindingContext="{StaticResource PopupDetailCardViewModel}" 
                     RowHeight="80" 
-                    ItemsSource="{Binding Exercises}" 
-                    BackgroundColor="Transparent"
+                    ItemsSource="{Binding ListPopupEx}" 
+                    BackgroundColor="Yellow"
+                    ItemSelected="OnItemSelected"
                      >
                 <ListView.ItemTemplate
-                    SelectedItem="{Binding SelectedEx}">
+                    SelectedItem="{Binding SelectedItem}">
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="0,0,0,10">
+                            <Grid Margin="10,10,10,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <StackLayout VerticalOptions="CenterAndExpand">
-                                    <Button Text="{Binding Name}" x:Name="{Binding Name}" Clicked="ClickedEx" BackgroundColor="White" />
-                                </StackLayout>
+                                <CheckBox Grid.Row="1" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding Name}" x:Name="{Binding Name}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
