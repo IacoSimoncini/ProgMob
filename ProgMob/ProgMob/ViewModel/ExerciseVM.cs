@@ -1,5 +1,7 @@
 ﻿using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,6 +37,7 @@ namespace ProgMob.ViewModel
         public ObservableCollection<Exercise> Exercises { get; set; }
 
         public Command DeleteCommand { get; set; }
+        public Command ModifyCommand { get; set; }
         
         private bool _isRefreshing = false;
         public bool IsRefreshing
@@ -65,8 +68,14 @@ namespace ProgMob.ViewModel
         public ExerciseVM()
         {
             Exercises = new ObservableCollection<Exercise>();
-
+            ModifyCommand = new Command<object>(Modify);
             DeleteCommand = new Command<object>(Delete);
+        }
+
+        private async void Modify(object obj)
+        {
+            var ex = obj as Exercise;
+            await PopupNavigation.PushAsync(new PopupUpdateEx(ex.Id));
         }
 
         private void OnpropertyChanged(string propertyName)

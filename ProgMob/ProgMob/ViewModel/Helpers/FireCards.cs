@@ -33,5 +33,7 @@ namespace ProgMob.ViewModel.Helpers
         {
             return firestoreCards.GetCard();
         }
+
+        
     }
 }

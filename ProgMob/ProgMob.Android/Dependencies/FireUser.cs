@@ -102,9 +102,7 @@ namespace ProgMob.Droid.Dependencies
                 value = 2;
             }
         }
-
-
-
+        
         public Task<bool> UpdateUser(User User)
         {
             throw new NotImplementedException();

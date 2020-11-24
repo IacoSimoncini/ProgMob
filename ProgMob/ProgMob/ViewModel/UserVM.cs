@@ -57,9 +57,25 @@ namespace ProgMob.ViewModel
 
         public ObservableCollection<User> Users { get; set; }
 
+        public Command DeleteCommand { get; set; }
+
         public UserVM()
         {
             Users = new ObservableCollection<User>();
+            DeleteCommand = new Command<object>(Delete);
+        }
+
+        private async void Delete(object obj)
+        {
+            var user = obj as User;
+            bool deleted = await DatabaseUser.DeleteUser(user.Id);
+            if (deleted)
+            {
+                Users.Remove(user);
+                _ = App.Current.MainPage.DisplayAlert("Successfully deleted", "Please, press OK", "OK");
+            }
+            else
+                _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
         }
 
         private void OnPropertyChanged(string propertyName)

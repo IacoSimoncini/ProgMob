@@ -32,7 +32,11 @@
                         IsRefreshing="{Binding IsRefreshing}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri}"/>
+                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri}">
+                                    <ImageCell.ContextActions>
+                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource UserViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                    </ImageCell.ContextActions>
+                                </ImageCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
