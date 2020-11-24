@@ -4,6 +4,7 @@ using ProgMob.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -14,7 +15,6 @@ namespace ProgMob.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Card selectedCard;
-
         public Card SelectedCard
         {
             get { return selectedCard; }
@@ -95,5 +95,7 @@ namespace ProgMob.ViewModel
                 }
             }
         }
+
+        
     }
 }

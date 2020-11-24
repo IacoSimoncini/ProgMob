@@ -1,5 +1,7 @@
 ﻿using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
+using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -56,6 +58,7 @@ namespace ProgMob.ViewModel
             {
                 selectedExercise = value;
                 OnPropertyChanged("SelectedExercise");
+                PopupNavigation.PushAsync(new PopupDetailExercise(SelectedExercise));
             }
         }
 
@@ -75,7 +78,6 @@ namespace ProgMob.ViewModel
                     Exercises.Add(e);
                 }
             }
-            
         }
 
         private async void Delete(object obj)

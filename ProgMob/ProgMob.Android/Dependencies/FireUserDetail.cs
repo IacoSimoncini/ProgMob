@@ -44,7 +44,9 @@ namespace ProgMob.Droid.Dependencies
                 var document = (DocumentSnapshot)task.Result;
                 user = new User(document.Get("name").ToString(),
                     document.Get("surname").ToString(),
-                    document.Get("uri").ToString());
+                    document.Get("uri").ToString(),
+                    document.Get("username").ToString(),
+                    document.Get("email").ToString());
                 value = 1;
             }
             else

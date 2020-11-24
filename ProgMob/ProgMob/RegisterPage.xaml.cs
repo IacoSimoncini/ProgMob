@@ -47,7 +47,7 @@ namespace ProgMob
             else
             {
                 // Firebase Authentication
-                User user = new User(name, surname, "user.png");
+                User user = new User(name, surname, "user.png", username, email);
                 string Token = await Auth.RegisterToFirebase(username, email, password);
                 if (Token != "" && DatabaseUser.InsertUser(user))
                 {

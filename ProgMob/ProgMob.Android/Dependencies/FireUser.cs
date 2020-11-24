@@ -49,6 +49,8 @@ namespace ProgMob.Droid.Dependencies
                 mp.Put("surname", User.Surname);
                 mp.Put("admin", "noAdmin");
                 mp.Put("uri", "user.png");
+                mp.Put("username", User.Username);
+                mp.Put("email", User.Email);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
                     .Set(mp);
@@ -85,12 +87,14 @@ namespace ProgMob.Droid.Dependencies
                 var documents = (QuerySnapshot)task.Result;
                 foreach (var doc in documents.Documents)
                 {
-                    if (!doc.Id.Equals(Application.Current.Properties["MyUID"]))
+                    if (!doc.Id.Equals(Application.Current.Properties["MyUID"]) && !doc.Get("admin").Equals("Admin"))
                     {
                         string name = doc.Get("name").ToString();
                         string surname = doc.Get("surname").ToString();
                         string uri = doc.Get("uri").ToString();
-                        User user = new User(name, surname, uri);
+                        string username = doc.Get("username").ToString();
+                        string email = doc.Get("email").ToString();
+                        User user = new User(name, surname, uri, username, email);
                         user.Id = doc.Id.ToString();
                         userList.Add(user);
                     }

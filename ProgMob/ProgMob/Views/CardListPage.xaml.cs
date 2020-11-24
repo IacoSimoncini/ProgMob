@@ -52,6 +52,7 @@ namespace ProgMob.Views
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
             this.ToolbarItems.Add(TBItem);
+
         }
 
         protected override void OnAppearing()

@@ -35,9 +35,9 @@ namespace ProgMob.Views
 
             ProfileImage.Source = user.Uri;
             name.Text = user.Name;
-            User_Surname.Text = user.Surname;
+            surname.Text = user.Surname;
+            email.Text = user.Email;
 
-            Console.WriteLine("UTENTE: " + user.Name + " " + user.Surname);
         }
     }
 }

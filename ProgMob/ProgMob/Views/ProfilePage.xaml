@@ -7,17 +7,13 @@
              x:Class="ProgMob.Views.ProfilePage">
 
     <ContentPage.Content>
-        <StackLayout>
-            <!--TAG IMAGE VIEW UTENTE DA INSERIRE-->
-            <Image x:Name="ProfileImage" Source=""/>
-            <Label x:Name="name" Text="" HorizontalTextAlignment="Center" />
-            <Label x:Name="User_Surname" Text="" HorizontalTextAlignment="Center"/>
-
-            <!--ICONA MAIL DA INSERIRE (OPZIONALE)-->
-            <Label x:Name="User_Email" Text="Your Email" HorizontalTextAlignment="Center"/>
-
-            <!--ICONA PHONE DA INSERIRE (OPZIONALE)-->
-            <Label x:Name="User_Phone" Text="Your Phone" HorizontalTextAlignment="Center"/>
+        <StackLayout VerticalOptions="Start">
+            <Image x:Name="ProfileImage" Source="user.png" HeightRequest="215" WidthRequest="125"/>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label x:Name="name" Text="" HorizontalTextAlignment="Center" />
+                <Label x:Name="surname" Text="" HorizontalTextAlignment="Center"/>
+                <Label x:Name="email" Text="" HorizontalTextAlignment="Center"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

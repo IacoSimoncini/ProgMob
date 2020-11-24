@@ -106,8 +106,13 @@ namespace ProgMob.ViewModel
                 {
                     Exercises.Add(e);
                 }
-            }
-            
+            }   
+        }
+
+        public bool IsEmptyList()
+        {
+            if (Exercises.Count == 0) return true;
+            else return false;
         }
     }
 }
