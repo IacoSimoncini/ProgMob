@@ -6,11 +6,11 @@
              mc:Ignorable="d"
              x:Class="ProgMob.LoginPage">
     <StackLayout>
-        <Label x:Name="Lbl_Email" Text="Email"/>
-        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
-        <Label x:Name="Lbl_Password" Text="Password" />
-        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true"/>
-        <Button x:Name="btn_SignIn" Text="Sign in" Clicked="SignIn"/>
-        <Button x:Name="btn_Register" Text="Register" Clicked="Register"/>
+        <Label x:Name="Lbl_Email" Text="Email" FontFamily="bangers.regular.ttf#banger.regular" />
+        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+        <Label x:Name="Lbl_Password" Text="Password" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+        <Button x:Name="btn_SignIn" Text="LOGIN" Clicked="SignIn" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Button x:Name="btn_Register" Text="Register" Clicked="Register" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
     </StackLayout>
 </ContentPage>

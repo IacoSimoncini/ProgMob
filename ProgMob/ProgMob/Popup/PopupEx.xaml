@@ -20,16 +20,18 @@
     </pages:PopupPage.Animation>
 
     
-        <Frame CornerRadius="10" BackgroundColor="DeepSkyBlue" Margin="50" Padding="30">
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Insert name" />
-                <Entry x:Name="Name" Placeholder="Insert name" />
-                <Label Text="Insert description" />
-                <Entry x:Name="Description" Placeholder="Insert description" />
-                <Label Text="Insert difficulty" />
-                <Entry x:Name="Difficulty" Placeholder="Insert difficulty" />
-                <Button Text="Submit" Clicked="Button_Clicked" />
+        <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0">
+        <ScrollView>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+                <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+                <Entry x:Name="Name " Placeholder="Insert name" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Label Text="Insert description " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+                <Entry x:Name="Description " Placeholder="Insert description" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Label Text="Insert difficulty " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+                <Entry x:Name="Difficulty " Placeholder="Insert difficulty" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" />
             </StackLayout>
-        </Frame>
+        </ScrollView>
+    </Frame>
     
 </pages:PopupPage>

@@ -16,11 +16,11 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    <Frame CornerRadius="10" BackgroundColor="Yellow" Margin="50" Padding="30">
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="" FontSize="15" x:Name="name" TextColor="Black" FontAttributes="Bold"/>
-            <Label Text="" FontSize="11" x:Name="description" TextColor="Black"/>
-            <Label Text="" FontSize="11" x:Name="difficulty" TextColor="Black"/>
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="10" >
+        <StackLayout HorizontalOptions="Start" VerticalOptions="Center" >
+            <Label Text="" FontSize="30" x:Name="name " TextColor="Black" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Label Text="" FontSize="20" x:Name="description " TextColor="Black" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+            <Label Text="" FontSize="20" x:Name="difficulty " TextColor="Black" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
         </StackLayout>
     </Frame>
 

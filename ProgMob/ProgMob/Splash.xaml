@@ -7,12 +7,15 @@
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Label Text="WhiteGym"
+                       FontFamily="bangers.regular.ttf#banger.regular"
                        FontSize="50"
                        TextColor="Black"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" />
+                <Image Source="Logo.png" HeightRequest="150" WidthRequest="150"  VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
-            <Image Source="Logo.png" HeightRequest="150" WidthRequest="150"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

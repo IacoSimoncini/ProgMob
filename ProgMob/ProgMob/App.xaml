@@ -6,6 +6,14 @@
              mc:Ignorable="d"
              x:Class="ProgMob.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="bangers.regular.ttf#banger.regular"/>
+                <Setter Property="FontFamily" Value="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+            </Style>
+           
+                
+        </ResourceDictionary>
         
     </Application.Resources>
 </Application>

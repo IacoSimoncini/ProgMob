@@ -10,7 +10,7 @@
 
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#E64A19</Color>
+            <Color x:Key="NavigationPrimary">#3D9F88</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />

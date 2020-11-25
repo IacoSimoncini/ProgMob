@@ -8,12 +8,21 @@
 
     <ContentPage.Content>
         <StackLayout VerticalOptions="Start">
-            <Image x:Name="ProfileImage" Source="user.png" HeightRequest="215" WidthRequest="125"/>
-            <StackLayout VerticalOptions="CenterAndExpand">
-                <Label x:Name="name" Text="" HorizontalTextAlignment="Center" />
-                <Label x:Name="surname" Text="" HorizontalTextAlignment="Center"/>
-                <Label x:Name="email" Text="" HorizontalTextAlignment="Center"/>
-            </StackLayout>
+            <Image x:Name="ProfileImage" Source="user.png" HeightRequest="100" WidthRequest="100" Margin="30"/>
+            <StackLayout VerticalOptions="Start">
+                <StackLayout HorizontalOptions="Start">
+                    <Image x:Name="UserIcon" Source="person.png" HeightRequest="40" WidthRequest="40"></Image>
+                    <Label Text="Your Name" HorizontalTextAlignment="Start" FontFamily="bangers.regular.ttf#banger.regular" FontSize="25"/>
+                    <Label x:Name="name" Text="" HorizontalTextAlignment="Start" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" FontSize="25"/>
+                    <Label Text="Your Surname" HorizontalTextAlignment="Start" FontFamily="bangers.regular.ttf#banger.regular" FontSize="25"/>
+                    <Label x:Name="surname" Text="" HorizontalTextAlignment="Start" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" FontSize="25"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Start">
+                <Image x:Name="UserEmail" Source="mail.jpg" HeightRequest="40" WidthRequest="40"></Image>
+                    <Label Text="Your Email" HorizontalTextAlignment="Start" FontFamily="bangers.regular.ttf#banger.regular" FontSize="25"/>
+                    <Label x:Name="email" Text="" HorizontalTextAlignment="Start" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" FontSize="25"/>
+                </StackLayout>
+                </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

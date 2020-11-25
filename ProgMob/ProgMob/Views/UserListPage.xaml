@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ViewModel:UserVM x:Key="UserViewModel"/>
+            <Color x:Key="NavigationPrimary">#3D9F88</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -32,8 +33,8 @@
                         IsRefreshing="{Binding IsRefreshing}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri}">
-                                    <ImageCell.ContextActions>
+                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri} ">
+                                    <ImageCell.ContextActions FontFamily="bangers.regular.ttf#banger.regular">
                                         <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource UserViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
                                     </ImageCell.ContextActions>
                                 </ImageCell>

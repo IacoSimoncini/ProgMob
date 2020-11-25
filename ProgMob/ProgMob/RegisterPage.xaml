@@ -6,17 +6,17 @@
              mc:Ignorable="d"
              x:Class="ProgMob.RegisterPage">
     <StackLayout>
-        <Label x:Name="Lbl_Username" Text="Username"/>
-        <Entry x:Name="Entry_Username" Placeholder="Username"/>
-        <Label x:Name="Lbl_Password" Text="Password"/>
-        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true"/>
+        <Label x:Name="Lbl_Username" Text="Username" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Entry x:Name="Entry_Username" Placeholder="Username" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+        <Label x:Name="Lbl_Password" Text="Password" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
         <Entry x:Name="Entry_ConfirmPassword" Placeholder="Confirm Password" IsPassword="true"/>
-        <Label x:Name="Lbl_Email" Text="Email"/>
-        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email"/>
-        <Label x:Name="Lbl_Name" Text="Name"/>
-        <Entry x:Name="Entry_Name" Placeholder="Name"/>
-        <Label x:Name="Lbl_Surmame" Text="Surname"/>
-        <Entry x:Name="Entry_Surname" Placeholder="Surname"/>
+        <Label x:Name="Lbl_Email" Text="Email" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+        <Label x:Name="Lbl_Name" Text="Name" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Entry x:Name="Entry_Name" Placeholder="Name" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+        <Label x:Name="Lbl_Surmame" Text="Surname" FontFamily="bangers.regular.ttf#banger.regular"/>
+        <Entry x:Name="Entry_Surname" Placeholder="Surname" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
         <Button x:Name="btn_SignUp" Text="SignUp" Clicked="SignUp"/>
         <Button x:Name="btn_LoginRedirect" Text="Already registered?" Clicked="LoginRedirect"/>
     </StackLayout>

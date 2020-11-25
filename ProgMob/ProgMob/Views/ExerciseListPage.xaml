@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ViewModel:ExerciseVM x:Key="ExVM"/>
+            <Color x:Key="NavigationPrimary">#3D9F88</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -36,11 +37,11 @@
                                         <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
                                         <MenuItem Text="Edit" Command="{Binding ModifyCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
                                     </ViewCell.ContextActions>
-                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="#FFFFE8"  Margin="5,5,5,5">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
                                         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" >
-                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
-                                            <Label HorizontalOptions="Start" FontSize="18" VerticalTextAlignment="End" TextColor="Black" Text="{Binding Description}" LineBreakMode="TailTruncation" WidthRequest="290"/>
-                                            <Label HorizontalOptions="Start" FontSize="18" VerticalTextAlignment="End" TextColor="Black" Text="{Binding Difficulty}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                            <Label HorizontalOptions="Start" FontSize="18" VerticalTextAlignment="End" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" TextColor="Black" Text="{Binding Description}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                            <Label HorizontalOptions="Start" FontSize="18" VerticalTextAlignment="End" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" TextColor="Black" Text="{Binding Difficulty}" LineBreakMode="TailTruncation" WidthRequest="290"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>
@@ -55,7 +56,7 @@
                 x:Name="Btn_AddEx"
                 Grid.Row="0"
                 Text="+" FontSize="30"
-                  BackgroundColor="Orange" BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="60" HeightRequest="60" Margin="0,0,10,10" VerticalOptions="End"
+                  BackgroundColor="{StaticResource NavigationPrimary}" BorderRadius="35" TextColor="Black" HorizontalOptions="End" WidthRequest="60" HeightRequest="60" Margin="0,0,10,10" VerticalOptions="End"
           
             Clicked="Button_Clicked"/>
         </Grid>

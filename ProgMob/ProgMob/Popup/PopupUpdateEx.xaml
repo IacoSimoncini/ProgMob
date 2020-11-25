@@ -17,17 +17,17 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    
-    <Frame CornerRadius="10" BackgroundColor="DeepSkyBlue" Margin="50" Padding="30">
+
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="30" >
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Update selected exercise" FontSize="20"/>
-            <Label Text="Insert name" />
-            <Entry x:Name="Name" Placeholder="Insert name" />
-            <Label Text="Insert description" />
-            <Entry x:Name="Description" Placeholder="Insert description" />
-            <Label Text="Insert difficulty" />
-            <Entry x:Name="Difficulty" Placeholder="Insert difficulty" />
-            <Button Text="Submit" Clicked="Button_Clicked"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Update selected exercise" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Entry x:Name="Name " Placeholder="Insert name " FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+            <Label Text="Insert description " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Entry x:Name="Description " Placeholder="Insert description " FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+            <Label Text="Insert difficulty"  FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Entry x:Name="Difficulty " Placeholder="Insert difficulty " FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+            <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
         </StackLayout>
     </Frame>
 </pages:PopupPage>

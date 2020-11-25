@@ -25,8 +25,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Frame CornerRadius="10" BackgroundColor="Orange" Margin="50" Padding="30">
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="10" >
+        <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
             <ListView 
                     x:Name="ExercisesLV" 
                     BindingContext="{StaticResource PopupDetailCardViewModel}" 
@@ -46,13 +46,13 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" x:Name="{Binding Name}" />
+                                <Label Text="{Binding Name}" x:Name="{Binding Name}" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add Exercises" Clicked="Add_Exercise" />
+            <Button Text="Add Exercises " Clicked="Add_Exercise" FontFamily="bangers.regular.ttf#banger.regular" />
         </StackLayout>
     </Frame>
 </pages:PopupPage>

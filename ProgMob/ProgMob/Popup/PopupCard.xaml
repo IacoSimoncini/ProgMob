@@ -18,12 +18,12 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    
-        <Frame CornerRadius="10" BackgroundColor="DeepSkyBlue" Margin="50" Padding="30">
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Insert name" />
-                <Entry x:Name="Name" Placeholder="Insert name" />
-                <Button Text="Submit" Clicked="Button_Clicked"/>
+
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0"  >
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+            <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Entry x:Name="Name" Placeholder="Insert name" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+            <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
             </StackLayout>
         </Frame>
     
