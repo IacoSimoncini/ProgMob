@@ -32,7 +32,7 @@ namespace ProgMob
                     App.Current.MainPage = new MainPage();
                 }
                 await DisplayAlert("Authentication successful", "Press OK to continue", "OK");
-                Navigation.RemovePage(this);
+                await Navigation.PopAsync();
             }
             else
             {

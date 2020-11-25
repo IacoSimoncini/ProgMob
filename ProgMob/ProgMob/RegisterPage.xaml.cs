@@ -5,6 +5,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace ProgMob
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -47,7 +48,10 @@ namespace ProgMob
             else
             {
                 // Firebase Authentication
-                User user = new User(name, surname, "user.png", username, email);
+                HelpStorage helpStorage = new HelpStorage(null);
+                string uri = await helpStorage.GetDefaultPic();
+                Console.WriteLine(uri);
+                User user = new User(name, surname, uri, username, email);
                 string Token = await Auth.RegisterToFirebase(username, email, password);
                 if (Token != "" && DatabaseUser.InsertUser(user))
                 {
