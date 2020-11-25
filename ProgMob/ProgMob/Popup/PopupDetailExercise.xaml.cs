@@ -1,4 +1,5 @@
 ﻿using ProgMob.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,15 @@ namespace ProgMob.Popup
         public PopupDetailExercise(Exercise ex)
         {
             InitializeComponent();
-
             name.Text = ex.Name;
             description.Text = ex.Description;
             difficulty.Text = ex.Difficulty;
+        }
+
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            PopupNavigation.PopAsync();
         }
     }
 }

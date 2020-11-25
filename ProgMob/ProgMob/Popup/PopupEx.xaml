@@ -24,11 +24,11 @@
         <ScrollView>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
                 <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-                <Entry x:Name="Name " Placeholder="Insert name" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
-                <Label Text="Insert description " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-                <Entry x:Name="Description " Placeholder="Insert description" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
-                <Label Text="Insert difficulty " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-                <Entry x:Name="Difficulty " Placeholder="Insert difficulty" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Entry x:Name="Name" Placeholder="Insert name" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Label Text="Insert description" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+                <Entry x:Name="Description" Placeholder="Insert description" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Label Text="Insert difficulty" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+                <Entry x:Name="Difficulty" Placeholder="Insert difficulty" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
                 <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" />
             </StackLayout>
         </ScrollView>

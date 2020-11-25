@@ -20,25 +20,33 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            Card card = new Card();
-            card.Path = Name.Text;
-            card.Ref = UserId;
-            if (DatabaseCards.InsertCard(card)) {
-                if (await DatabaseCards.ListCard(UserId))
-                { 
-                    _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
-                    CardListPage.verify = 1;
+            if(Name.Text != null)
+            {
+                Card card = new Card();
+                card.Path = Name.Text;
+                card.Ref = UserId;
+                if (DatabaseCards.InsertCard(card))
+                {
+                    if (await DatabaseCards.ListCard(UserId))
+                    {
+                        _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
+                        CardListPage.verify = 1;
+                    }
+                    else
+                    {
+                        _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+                    }
                 }
                 else
                 {
-                    _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+                    _ = App.Current.MainPage.DisplayAlert("Error", "The insertion was not successful", "OK");
                 }
+                PopupNavigation.PopAsync();
             } 
             else
             {
-                _ = App.Current.MainPage.DisplayAlert("Error", "The insertion was not successful", "OK");
+                _ = App.Current.MainPage.DisplayAlert("Error", "Please, fill the field", "OK");
             }
-            PopupNavigation.PopAsync();
         }
     }
 }

@@ -18,21 +18,28 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            string name = Name.Text;
-            string description = Description.Text;
-            string difficulty = Difficulty.Text;
-            Exercise ex = new Exercise(name, description, difficulty);
-            ex.Id = exID;
-            bool update = await DatabaseExercise.UpdateExercise(ex);
-            if (update)
-            {
-                await App.Current.MainPage.DisplayAlert("Update completed", "Please, press OK to continue", "OK");
-                PopupNavigation.PopAsync();
-            }
+            if (Name.Text != null && Description.Text != null && Difficulty.Text != null)
+            { 
+                string name = Name.Text;
+                string description = Description.Text;
+                string difficulty = Difficulty.Text;
+                Exercise ex = new Exercise(name, description, difficulty);
+                ex.Id = exID;
+                bool update = await DatabaseExercise.UpdateExercise(ex);
+                if (update)
+                {
+                    await App.Current.MainPage.DisplayAlert("Update completed", "Please, press OK to continue", "OK");
+                    PopupNavigation.PopAsync();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+                    PopupNavigation.PopAsync();
+                }
+            } 
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
-                PopupNavigation.PopAsync();
+                await App.Current.MainPage.DisplayAlert("Error", "Some fields are empty", "OK");
             }
         }
     }

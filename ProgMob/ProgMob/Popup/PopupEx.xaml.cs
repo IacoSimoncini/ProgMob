@@ -16,16 +16,23 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            Exercise ex = new Exercise(Name.Text, Description.Text, Difficulty.Text);
-            if (DatabaseExercise.InsertExercise(ex))
+            if(Name.Text != null && Description.Text != null && Difficulty.Text != null) 
             {
-                await App.Current.MainPage.DisplayAlert("Insert completed", "Please, press OK to continue", "OK");
-                PopupNavigation.PopAsync();
+                Exercise ex = new Exercise(Name.Text, Description.Text, Difficulty.Text);
+                if (DatabaseExercise.InsertExercise(ex))
+                {
+                    await App.Current.MainPage.DisplayAlert("Insert completed", "Please, press OK to continue", "OK");
+                    PopupNavigation.PopAsync();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+                    PopupNavigation.PopAsync();
+                }
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
-                PopupNavigation.PopAsync();
+                await App.Current.MainPage.DisplayAlert("Error", "Some fields are empty", "OK");
             }
         }
     }

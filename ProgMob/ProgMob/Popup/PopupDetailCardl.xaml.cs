@@ -34,10 +34,8 @@ namespace ProgMob.Popup
         {
             foreach(var y in selectedEx)
             {
-                Console.WriteLine("selectedEx: " + y);
                 foreach(var x in PopupViewModel.ListPopupEx)
                 {
-                    Console.WriteLine("Esercizio in ListPopupEx: " + x.Name);
                     if (x.Name.Equals(y))
                     {
                         DatabaseDetailCard.InsertEx(UserId, CardId, x);

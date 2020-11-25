@@ -2,6 +2,7 @@
 using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -58,7 +59,11 @@ namespace ProgMob.ViewModel
             {
                 selectedExercise = value;
                 OnPropertyChanged("SelectedExercise");
-                PopupNavigation.PushAsync(new PopupDetailExercise(SelectedExercise));
+                if (selectedExercise != null)
+                {
+                    Console.WriteLine("Description: " + SelectedExercise.Description);
+                    PopupNavigation.PushAsync(new PopupDetailExercise(SelectedExercise));
+                }
             }
         }
 

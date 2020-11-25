@@ -3,6 +3,7 @@
                   xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                   x:Class="ProgMob.Popup.PopupDetailExercise">
+    
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -16,12 +17,13 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="10" >
-        <StackLayout HorizontalOptions="Start" VerticalOptions="Center" >
-            <Label Text="" FontSize="30" x:Name="name " TextColor="Black" FontFamily="bangers.regular.ttf#banger.regular"/>
-            <Label Text="" FontSize="20" x:Name="description " TextColor="Black" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-            <Label Text="" FontSize="20" x:Name="difficulty " TextColor="Black" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="10">
+        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" >
+            <Label Text="" FontSize="60" x:Name="name" TextColor="Black" FontAttributes="Bold" />
+            <Label Text="" FontSize="45" x:Name="description" TextColor="Black"/>
+            <Label Text="" FontSize="40" x:Name="difficulty" TextColor="Black"/>
         </StackLayout>
+        
     </Frame>
 
 
