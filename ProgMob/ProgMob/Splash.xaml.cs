@@ -13,12 +13,13 @@ namespace ProgMob
         public Splash()
         {
             InitializeComponent();
-            Application.Current.Properties["MyUID"] = DatabaseProfile.GetUid();
+            
             Startup();
         }
 
         public async Task Startup()
         {
+            Application.Current.Properties["MyUID"] = DatabaseProfile.GetUid();
             if (await DatabaseProfile.GetProfile())
             {
                 if (await DatabaseUser.ListUser() && await DatabaseExercise.ListExercise())

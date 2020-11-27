@@ -20,7 +20,7 @@ namespace ProgMob.Droid.Dependencies
             userList = new List<User>();
         }
 
-        public async Task<bool> DeleteUser(string Uid)
+        public bool DeleteUser(string Uid)
         {
             try
             {
@@ -29,8 +29,9 @@ namespace ProgMob.Droid.Dependencies
                     .Delete();
                 return true;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -48,7 +49,7 @@ namespace ProgMob.Droid.Dependencies
                 mp.Put("name", User.Name);
                 mp.Put("surname", User.Surname);
                 mp.Put("admin", "noAdmin");
-                mp.Put("uri", "user.png");
+                mp.Put("uri", User.Uri);
                 mp.Put("username", User.Username);
                 mp.Put("email", User.Email);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
@@ -56,8 +57,9 @@ namespace ProgMob.Droid.Dependencies
                     .Set(mp);
                 return true;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -107,9 +109,20 @@ namespace ProgMob.Droid.Dependencies
             }
         }
         
-        public Task<bool> UpdateUser(User User)
+        public bool UpdateUserPic(User User, string uri)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+                    .Document(User.Id)
+                    .Update("uri", uri);
+                return true;
+            } 
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
 
     }

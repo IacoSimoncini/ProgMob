@@ -47,6 +47,7 @@ namespace ProgMob.Droid.Dependencies
                     document.Get("uri").ToString(),
                     document.Get("username").ToString(),
                     document.Get("email").ToString());
+                user.Id = document.Id;
                 value = 1;
             }
             else

@@ -48,9 +48,8 @@ namespace ProgMob
             else
             {
                 // Firebase Authentication
-                HelpStorage helpStorage = new HelpStorage(null);
-                string uri = await helpStorage.GetDefaultPic();
-                Console.WriteLine(uri);
+                string uri = await DatabaseProfile.GetDefaultPic();
+                Console.WriteLine("Register Page URI: " + uri);
                 User user = new User(name, surname, uri, username, email);
                 string Token = await Auth.RegisterToFirebase(username, email, password);
                 if (Token != "" && DatabaseUser.InsertUser(user))

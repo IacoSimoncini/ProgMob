@@ -15,7 +15,6 @@ namespace ProgMob.Views
     public partial class ProfilePage : ContentPage
     {
         MediaFile file;
-        HelpStorage helpStorage;
         private User user;
         public ProfilePage()
         {
@@ -38,13 +37,10 @@ namespace ProgMob.Views
             {
                 user = DatabaseUserDetail.getUserData();
 
-                helpStorage = new HelpStorage(user);
-
                 ProfileImage.Source = user.Uri;
                 name.Text = user.Name;
                 surname.Text = user.Surname;
                 email.Text = user.Email;
-                Console.WriteLine("URI: " + user.Uri);
             }
 
         }
@@ -60,16 +56,22 @@ namespace ProgMob.Views
                 });
                 if (file == null)
                     return;
-                ProfileImage.Source = ImageSource.FromStream(() =>
+                string uri = await DatabaseProfile.UploadFile(file.GetStream(), user.Id);
+                if (DatabaseUser.UpdateUserPic(user, uri))
                 {
-                    var imageStram = file.GetStream();
-                    return imageStram;
-                });
-                helpStorage.UploadFile(file.GetStream());
+                    await DisplayAlert("Profile picture updated", "Press OK to continue", "OK");
+                    Console.WriteLine("Propic Updated");
+                }
+                else
+                {
+                    await DisplayAlert("Error, profile picture update failure", "Press OK to continue", "OK");
+                    Console.WriteLine("Error Propic");
+                }
+                StartUp();
             } 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ProfilePage: " + ex.Message);
             }
         }
 

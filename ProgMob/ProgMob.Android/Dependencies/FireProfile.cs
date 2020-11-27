@@ -1,5 +1,8 @@
 ﻿using Android.Gms.Tasks;
 using Firebase.Firestore;
+using Firebase.Storage;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -10,6 +13,7 @@ namespace ProgMob.Droid.Dependencies
     {
         public bool Admin = true;
         public bool Read;
+        FirebaseStorage firebaseStorage = new FirebaseStorage("progmobxam-af105.appspot.com");
         public async Task<bool> GetProfile()
         {
             Read = false;
@@ -28,6 +32,33 @@ namespace ProgMob.Droid.Dependencies
                 return false;
             else
                 return Admin;
+        }
+
+        public async Task<string> GetPic(string Uid)
+        {
+            return await firebaseStorage
+                .Child("ProfilePic")
+                .Child(Uid)
+                .Child("propic.jpg")
+                .GetDownloadUrlAsync();
+        }
+
+        public async Task<string> GetDefaultPic()
+        { 
+            return await firebaseStorage
+                .Child("Default")
+                .Child("user.png")
+                .GetDownloadUrlAsync();
+        }
+
+        public async Task<string> UploadFile(Stream fileStream, string Uid)
+        {
+            var storageImg = await firebaseStorage
+                .Child("ProfilePic")
+                .Child(Uid)
+                .Child("propic.jpg")
+                .PutAsync(fileStream);
+            return storageImg;
         }
 
         public string GetUid()

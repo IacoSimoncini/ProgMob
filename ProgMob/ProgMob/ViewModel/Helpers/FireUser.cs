@@ -8,8 +8,8 @@ namespace ProgMob.ViewModel.Helpers
     public interface FireUser
     {
         bool InsertUser(User User);
-        Task<bool> DeleteUser(string Uid);
-        Task<bool> UpdateUser(User User);
+        bool DeleteUser(string Uid);
+        bool UpdateUserPic(User User, string uri);
         Task<bool> ListUser();
         Task<IList<User>> GetUser();
 
@@ -23,14 +23,14 @@ namespace ProgMob.ViewModel.Helpers
             return firestoreUser.InsertUser(User);
         }
 
-        public static Task<bool> DeleteUser(string Uid)
+        public static bool DeleteUser(string Uid)
         {
             return firestoreUser.DeleteUser(Uid);
         }
 
-        public static Task<bool> UpdateUser(User User)
+        public static bool UpdateUserPic(User User, string uri)
         {
-            return firestoreUser.UpdateUser(User);
+            return firestoreUser.UpdateUserPic(User, uri);
         }
 
         public static Task<bool> ListUser()

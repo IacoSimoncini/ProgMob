@@ -68,7 +68,7 @@ namespace ProgMob.ViewModel
         private async void Delete(object obj)
         {
             var user = obj as User;
-            bool deleted = await DatabaseUser.DeleteUser(user.Id);
+            bool deleted = DatabaseUser.DeleteUser(user.Id);
             if (deleted)
             {
                 Users.Remove(user);
