@@ -66,7 +66,7 @@ namespace ProgMob.Views
             verify = 0;
             await PopupNavigation.PushAsync(new PopupCard(UserId));
 
-            for (int i = 0; i < 80; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 await System.Threading.Tasks.Task.Delay(100);
                 if (verify != 0)

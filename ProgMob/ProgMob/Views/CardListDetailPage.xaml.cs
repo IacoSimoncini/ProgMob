@@ -14,7 +14,7 @@ namespace ProgMob.Views
     {
         private readonly string UserId;
         private readonly string CardId;
-
+        static public int verify = 0;
         CardDetailVM CardDetailVM;
         public CardListDetailPage(string Uid, string Cid)
         {
@@ -68,7 +68,17 @@ namespace ProgMob.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            verify = 0;
             await PopupNavigation.PushAsync(new PopupDetailCardl(UserId, CardId));
+           
+            for (int i = 0; i < 1000; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (verify != 0)
+                    break;
+            }
+
+            CardDetailVM.ListEx(UserId, CardId);
         }
     }
 }

@@ -7,23 +7,73 @@
              x:Class="ProgMob.Views.ProfilePage">
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Start">
-            <Image x:Name="ProfileImage" Source="" HeightRequest="100" WidthRequest="100" Margin="30"/>
-            <Button x:Name="Btn_PickImage" Text="Change Image" HorizontalOptions="Start" Clicked="Btn_PickImage_Clicked"/>
-            <StackLayout VerticalOptions="Start">
-                <StackLayout HorizontalOptions="Start">
+        <StackLayout Margin="0, 10, 0, 0">
+            <Frame CornerRadius="100"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   Padding="0"
+                   BorderColor="DarkGray"
+                   IsClippedToBounds="True">
+                <Image x:Name="ProfileImage" Source=""/>
+            </Frame>
+            <Button x:Name="Btn_PickImage" Text="Change Image" HorizontalOptions="Center" Clicked="Btn_PickImage_Clicked"/>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
                     <Image x:Name="UserIcon" Source="person.png" HeightRequest="40" WidthRequest="40"></Image>
-                    <Label Text="Your Name" HorizontalTextAlignment="Start" FontFamily="bangers.regular.ttf#banger.regular" FontSize="25"/>
-                    <Label x:Name="name" Text="" HorizontalTextAlignment="Start" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" FontSize="25"/>
-                    <Label Text="Your Surname" HorizontalTextAlignment="Start" FontFamily="bangers.regular.ttf#banger.regular" FontSize="25"/>
-                    <Label x:Name="surname" Text="" HorizontalTextAlignment="Start" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" FontSize="25"/>
-                </StackLayout>
-                <StackLayout HorizontalOptions="Start">
-                    <Image x:Name="UserEmail" Source="mail.jpg" HeightRequest="40" WidthRequest="40"/>
-                    <Label Text="Your Email" HorizontalTextAlignment="Start" FontFamily="bangers.regular.ttf#banger.regular" FontSize="25"/>
-                    <Label x:Name="email" Text="" HorizontalTextAlignment="Start" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" FontSize="25"/>
-                </StackLayout>
-                </StackLayout>
+                    <Label Text="Your Name:"
+                           HorizontalTextAlignment="Center"
+                           FontFamily="bangers.regular.ttf#banger.regular"
+                           FontSize="25"
+                           Grid.Column="1"
+                           Grid.RowSpan="2"/>
+                    <Label x:Name="name"
+                           Text="" 
+                           HorizontalTextAlignment="Center"
+                           FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"
+                           FontSize="25"
+                           Grid.Column="2"/>
+                    <Label Text="Your Surname:"
+                           HorizontalTextAlignment="Center"
+                           FontFamily="bangers.regular.ttf#banger.regular"
+                           FontSize="23"
+                           Grid.Row="1"
+                           Grid.Column="1"/>
+                    <Label x:Name="surname"
+                           Text="" 
+                           HorizontalTextAlignment="Center"
+                           FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" 
+                           FontSize="25"
+                           Grid.Row="1"
+                           Grid.Column="2"/>
+                    <Image x:Name="UserEmail"
+                           Source="mail.jpg"
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           Grid.Row="2"/>
+                    <Label Text="Your Email:"
+                           HorizontalTextAlignment="Center" 
+                           FontFamily="bangers.regular.ttf#banger.regular"
+                           FontSize="25"
+                           Grid.Row="2"
+                           Grid.Column="1"/>
+                    <Label x:Name="email" 
+                           Text=""
+                           HorizontalTextAlignment="Center"
+                           FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"
+                           FontSize="25"
+                           Grid.Row="2"
+                           Grid.Column="2"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

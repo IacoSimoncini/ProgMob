@@ -23,15 +23,8 @@ namespace ProgMob
 
             if (token != "")
             {
-                if (await DatabaseProfile.GetProfile())
-                {
-                    App.Current.MainPage = new MainPageAdmin();
-                }
-                else
-                {
-                    App.Current.MainPage = new MainPage();
-                }
                 await DisplayAlert("Authentication successful", "Press OK to continue", "OK");
+                App.Current.MainPage = new Splash();
                 await Navigation.PopAsync();
             }
             else

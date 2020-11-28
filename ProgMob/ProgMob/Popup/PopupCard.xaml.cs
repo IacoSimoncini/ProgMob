@@ -20,7 +20,7 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if(Name.Text != null)
+            if(Name.Text != null && Name.Text.Length < 10)
             {
                 Card card = new Card();
                 card.Path = Name.Text;
@@ -45,7 +45,7 @@ namespace ProgMob.Popup
             } 
             else
             {
-                _ = App.Current.MainPage.DisplayAlert("Error", "Please, fill the field", "OK");
+                _ = App.Current.MainPage.DisplayAlert("Error", "Enter up to 10 characters", "OK");
             }
         }
     }

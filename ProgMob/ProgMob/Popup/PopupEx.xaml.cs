@@ -16,7 +16,7 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if(Name.Text != null && Description.Text != null && Difficulty.Text != null) 
+            if(Name.Text != null && Description.Text != null && Difficulty.Text != null && Name.Text.Length < 10 && Description.Text.Length < 25) 
             {
                 Exercise ex = new Exercise(Name.Text, Description.Text, Difficulty.Text);
                 if (DatabaseExercise.InsertExercise(ex))
@@ -32,7 +32,7 @@ namespace ProgMob.Popup
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Some fields are empty", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "Name up to 10 characters, description up to 25 characters", "OK");
             }
         }
     }

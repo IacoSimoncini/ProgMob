@@ -27,10 +27,10 @@
     </Shell.Resources>
 
     <TabBar x:Name="TabBar" >
-        <Tab Title="Cards" Icon="user.png">
+        <Tab Title="Cards" Icon="cards.png">
             <ShellContent  ContentTemplate="{DataTemplate local:CardListPage}" />
         </Tab>
-        <Tab Title="User" Icon="profile.png">
+        <Tab Title="User" Icon="user.png">
             <ShellContent  ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
     </TabBar>

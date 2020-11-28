@@ -45,6 +45,18 @@ namespace ProgMob
             {
                 await DisplayAlert("Incorrect password", "Passwords do not match", "Cancel");
             }
+            else if (username.Length > 10)
+            {
+                await DisplayAlert("Incorrect username", "Write username up to 10 characters", "OK");
+            }
+            else if (name.Length > 10)
+            {
+                await DisplayAlert("Incorrect name", "Write name up to 10 characters", "OK");
+            }
+            else if (surname.Length > 15)
+            {
+                await DisplayAlert("Incorrect surname", "Write surname up to 15 characters", "OK");
+            }
             else
             {
                 // Firebase Authentication

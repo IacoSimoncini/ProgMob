@@ -46,10 +46,8 @@ namespace ProgMob.ViewModel
             var exAll = await DatabaseExercise.GetExercises();
             foreach (Exercise e in exAll)
             {
-                Console.WriteLine("e: " + e.Name);
                 foreach (Exercise x in exCards)
                 {
-                    Console.WriteLine("x: " + x.Name);
                     if (x.Name.Equals(e.Name))
                     {
                         value = true;
@@ -57,11 +55,9 @@ namespace ProgMob.ViewModel
                     }
                     else
                         value = false;
-                    Console.WriteLine("value: " + value.ToString());
                 }
                 if (!value)
                 {
-                    Console.WriteLine("Aggiungo esercizio");
                     ListPopupEx.Add(e);
                 }
             }

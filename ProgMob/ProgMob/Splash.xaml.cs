@@ -20,6 +20,7 @@ namespace ProgMob
         public async Task Startup()
         {
             Application.Current.Properties["MyUID"] = DatabaseProfile.GetUid();
+            await Application.Current.SavePropertiesAsync();
             if (await DatabaseProfile.GetProfile())
             {
                 if (await DatabaseUser.ListUser() && await DatabaseExercise.ListExercise())

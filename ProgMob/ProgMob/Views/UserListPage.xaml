@@ -33,11 +33,24 @@
                         IsRefreshing="{Binding IsRefreshing}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ImageCell Text="{Binding Name}" ImageSource="{Binding Uri}" >
-                                    <ImageCell.ContextActions FontFamily="bangers.regular.ttf#banger.regular">
-                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource UserViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
-                                    </ImageCell.ContextActions>
-                                </ImageCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame CornerRadius="100"
+                                                   HeightRequest="70"
+                                                   WidthRequest="70"
+                                                   BorderColor="DarkGray"
+                                                   Padding="0"
+                                                   IsClippedToBounds="True">
+                                                <Image Source="{Binding Uri}" HeightRequest="70" WidthRequest="70"/>
+                                            </Frame>
+                                            <Label Text="{Binding Name}" 
+                                                   FontSize="25"/>
+                                            <Label Text="{Binding Surname}"
+                                                   FontSize="25"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
