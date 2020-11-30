@@ -63,5 +63,10 @@ namespace ProgMob.Views
         {
             await PopupNavigation.PushAsync(new PopupEx());
         }
+
+        private void LV_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }

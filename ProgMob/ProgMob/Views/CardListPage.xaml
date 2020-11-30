@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <ViewModel:CardVM x:Key="CardViewModel"/>
             <Color x:Key="NavigationPrimary">#3D9F88</Color>
+            <Color x:Key="AccentColor">#FFC107</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -21,6 +22,7 @@
             <ScrollView Grid.Row="0">
                 <StackLayout Orientation="Vertical">
                     <ListView BindingContext="{StaticResource CardViewModel}" 
+                        ItemTapped="ListView_ItemTapped"
                         RowHeight="70" 
                         BackgroundColor="White"
                         ItemsSource="{Binding Cards}"
@@ -35,7 +37,7 @@
                                         <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
                                     </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
-                                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280"/>
+                                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
@@ -47,7 +49,7 @@
                 x:Name="Btn_AddCard"
                 Grid.Row="0"
                 Text="+" FontSize="30"
-                BackgroundColor="{StaticResource NavigationPrimary}" 
+                BackgroundColor="{StaticResource AccentColor}" 
                 BorderRadius="35" 
                 TextColor="Black" 
                 HorizontalOptions="End" 

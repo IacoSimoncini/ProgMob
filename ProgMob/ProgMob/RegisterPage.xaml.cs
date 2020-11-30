@@ -15,6 +15,14 @@ namespace ProgMob
         {
             InitializeComponent();
             Title = "Register";
+
+            var Login_Tap = new TapGestureRecognizer();
+            Login_Tap.Tapped += (s, e) =>
+            {
+                App.Current.MainPage = new NavigationPage(new LoginPage());
+            };
+            Lbl_Login.GestureRecognizers.Add(Login_Tap);
+
         }
         async void SignUp(object sender, EventArgs e)
         {
@@ -77,8 +85,6 @@ namespace ProgMob
             }
 
         }
-
-        async void LoginRedirect(object sender, EventArgs e) => App.Current.MainPage = new NavigationPage(new LoginPage());
 
     }
 }

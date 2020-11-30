@@ -5,19 +5,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ProgMob.RegisterPage">
-    <StackLayout>
-        <Label x:Name="Lbl_Username" Text="Username" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Entry x:Name="Entry_Username" Placeholder="Username" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-        <Label x:Name="Lbl_Password" Text="Password" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-        <Entry x:Name="Entry_ConfirmPassword" Placeholder="Confirm Password" IsPassword="true"/>
-        <Label x:Name="Lbl_Email" Text="Email" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-        <Label x:Name="Lbl_Name" Text="Name" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Entry x:Name="Entry_Name" Placeholder="Name" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-        <Label x:Name="Lbl_Surmame" Text="Surname" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Entry x:Name="Entry_Surname" Placeholder="Surname" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-        <Button x:Name="btn_SignUp" Text="SignUp" Clicked="SignUp"/>
-        <Button x:Name="btn_LoginRedirect" Text="Already registered?" Clicked="LoginRedirect"/>
+    <StackLayout VerticalOptions="Center">
+        <StackLayout Padding="10">
+            <Label x:Name="Lbl_Username" Text="Username" Style="{x:StaticResource Key=LabelStyle}"/>
+            <Entry x:Name="Entry_Username" Placeholder="Username" FontFamily="Roboto-Regular.ttf#Roboto-Regular" />
+            <Label x:Name="Lbl_Password" Text="Password" Style="{x:StaticResource Key=LabelStyle}"/>
+            <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true" FontFamily="Roboto-Regular.ttf#Roboto-Regular"/>
+            <Entry x:Name="Entry_ConfirmPassword" Placeholder="Confirm Password" IsPassword="true" FontFamily="Roboto-Regular.ttf#Roboto-Regular"/>
+            <Label x:Name="Lbl_Email" Text="Email" Style="{x:StaticResource Key=LabelStyle}"/>
+            <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" FontFamily="Roboto-Regular.ttf#Roboto-Regular"/>
+            <Label x:Name="Lbl_Name" Text="Name" Style="{x:StaticResource Key=LabelStyle}"/>
+            <Entry x:Name="Entry_Name" Placeholder="Name" FontFamily="Roboto-Regular.ttf#Roboto-Regular"/>
+            <Label x:Name="Lbl_Surmame" Text="Surname" Style="{x:StaticResource Key=LabelStyle}"/>
+            <Entry x:Name="Entry_Surname" Placeholder="Surname" FontFamily="Roboto-Regular.ttf#Roboto-Regular"/>
+            <Button x:Name="btn_SignUp" 
+                Text="Sign Up"
+                CornerRadius="20"
+                BackgroundColor="#FFEB3B"
+                    Style="{x:StaticResource Key=BtnStyle }"
+                Clicked="SignUp"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Already registered? "
+                    FontSize="20"
+                    Style="{x:StaticResource Key=LabelStyle}" />
+                <Label x:Name="Lbl_Login"
+                    Text="Login"
+                    TextColor="Blue"
+                    FontSize="20"
+                    Style="{x:StaticResource Key=LabelStyle}"/>
+            </StackLayout>
+        </StackLayout>
+        
+        
     </StackLayout>
 </ContentPage>

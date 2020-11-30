@@ -18,12 +18,32 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if (Name.Text != null && Description.Text != null && Difficulty.Text != null)
-            { 
+            if (Name.Text != null && Description.Text != null && Difficulty.SelectedItem.ToString() != null)
+            {
+                string diff = "";
+                if (Difficulty.SelectedItem.ToString() == "Warming Up")
+                {
+                    diff = "Warming_Up.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Arms")
+                {
+                    diff = "Arms.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Sit Ups")
+                {
+                    diff = "Sit_Ups.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Back")
+                {
+                    diff = "Back.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Hit and Special")
+                {
+                    diff = "Hit_and_Special.png";
+                }
                 string name = Name.Text;
                 string description = Description.Text;
-                string difficulty = Difficulty.Text;
-                Exercise ex = new Exercise(name, description, difficulty);
+                Exercise ex = new Exercise(name, description, diff);
                 ex.Id = exID;
                 bool update = await DatabaseExercise.UpdateExercise(ex);
                 if (update)

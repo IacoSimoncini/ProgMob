@@ -18,14 +18,28 @@
     </pages:PopupPage.Animation>
 
     <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="10">
-        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" >
-            <Label Text="" FontSize="60" x:Name="name" TextColor="Black" FontAttributes="Bold" />
-            <Label Text="" FontSize="45" x:Name="description" TextColor="Black"/>
-            <Label Text="" FontSize="40" x:Name="difficulty" TextColor="Black"/>
+        <StackLayout>
+            <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" >
+                <Label Text=""
+                   FontSize="40"
+                   Style="{x:StaticResource Key=LabelTitle}"
+                   x:Name="name"
+                   TextColor="Black"
+                   FontAttributes="Bold" />
+                <Label Text=""
+                   FontSize="35"
+                   Style="{x:StaticResource Key=LabelStyle}"
+                   x:Name="description"
+                   TextColor="Black"/>
+                <StackLayout HorizontalOptions="Start">
+                    <Image x:Name="Difficulty" HeightRequest="70" WidthRequest="70"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Button Text="Close"
+                    Style="{x:StaticResource Key=BtnStyle}"
+                    Clicked="Button_Clicked" />
+            </StackLayout>
         </StackLayout>
-        
     </Frame>
-
-
-
 </pages:PopupPage>

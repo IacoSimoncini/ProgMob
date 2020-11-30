@@ -19,13 +19,13 @@ namespace ProgMob.Popup
             InitializeComponent();
             name.Text = ex.Name;
             description.Text = ex.Description;
-            difficulty.Text = ex.Difficulty;
+            Difficulty.Source = ex.Difficulty;
         }
-
 
         private void Button_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.PopAsync();
         }
+
     }
 }

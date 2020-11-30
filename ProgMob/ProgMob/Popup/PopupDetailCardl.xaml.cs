@@ -47,5 +47,10 @@ namespace ProgMob.Popup
             PopupNavigation.PopAsync();
             CardListDetailPage.verify = 1;
         }
+
+        private void ExercisesLV_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }

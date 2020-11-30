@@ -5,12 +5,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ProgMob.LoginPage">
-    <StackLayout>
-        <Label x:Name="Lbl_Email" Text="Email" FontFamily="bangers.regular.ttf#banger.regular" />
-        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
-        <Label x:Name="Lbl_Password" Text="Password" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="true" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
-        <Button x:Name="btn_SignIn" Text="LOGIN" Clicked="SignIn" FontFamily="bangers.regular.ttf#banger.regular"/>
-        <Button x:Name="btn_Register" Text="Register" Clicked="Register" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+    <StackLayout VerticalOptions="Center">
+        <StackLayout VerticalOptions="Center">
+            <Image Source="Logo.png" x:Name="AppLogo" HeightRequest="100" WidthRequest="100"/>
+            <Label x:Name="Lbl_AppName" Text="WhiteGym" HorizontalOptions="Center" FontSize="25" />
+        </StackLayout>
+        <Frame BackgroundColor="#F7F7F7" BorderColor="Gray" CornerRadius="20" Margin="10" HasShadow="True">
+            <StackLayout VerticalOptions="Center" >
+                <Label x:Name="Lbl_Email"
+                   Text="Email" 
+                   Style="{x:StaticResource Key=LabelStyle}" />
+                <Entry x:Name="Entry_Email"
+                   Placeholder="Email"
+                   Keyboard="Email"
+                   FontFamily="Roboto-Regular.ttf#Roboto-Regular" />
+                <Label x:Name="Lbl_Password" 
+                   Text="Password"
+                   Style="{x:StaticResource Key=LabelStyle}"/>
+                <Entry x:Name="Entry_Password"
+                   Placeholder="Password"
+                   IsPassword="true"
+                   FontFamily="Roboto-Regular.ttf#Roboto-Regular"/>
+                <Button x:Name="btn_SignIn" 
+                    Text="LOGIN" 
+                    Clicked="SignIn" 
+                    CornerRadius="20"
+                    BackgroundColor="#FFC107"
+                    Style="{x:StaticResource Key=BtnStyle}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Don't have an account? Please,"
+                           FontSize="20"
+                           Style="{x:StaticResource Key=LabelStyle}"/>
+                    <Label x:Name="Lbl_Register" 
+                       Text="Sign up"
+                       TextColor="DarkCyan"
+                       HorizontalOptions="Center"
+                       FontSize="20" 
+                       Style="{x:StaticResource Key=LabelStyle}" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>

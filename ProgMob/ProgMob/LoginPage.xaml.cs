@@ -13,7 +13,16 @@ namespace ProgMob
         {
             InitializeComponent();
             Title = "Login";
+
+            var Signup_Tap = new TapGestureRecognizer();
+            Signup_Tap.Tapped += (s,e) =>
+            {
+                App.Current.MainPage = new NavigationPage(new RegisterPage());
+            };
+            Lbl_Register.GestureRecognizers.Add(Signup_Tap);
+
         }
+
         async void SignIn(object sender, EventArgs e)
         {
             string email = Entry_Email.Text;
@@ -53,10 +62,6 @@ namespace ProgMob
                 await DisplayAlert("Authentication failed", "E-mail or password are not correct", "Cancel");
             }
         }
-
-        private void Register(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new NavigationPage(new RegisterPage());
-        }
+        
     }
 }

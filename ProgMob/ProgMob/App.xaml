@@ -7,12 +7,28 @@
              x:Class="ProgMob.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="bangers.regular.ttf#banger.regular"/>
-                <Setter Property="FontFamily" Value="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"/>
+            <!-- FONTS-->
+            <OnPlatform x:TypeArguments="Font" x:Key="FontNormal">
+                <On Platform="Android" Value="Roboto-Regular.ttf#Roboto-Regular, 15" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontItalic">
+                <On Platform="Android" Value="Roboto-Italic.ttf#Roboto-Italic, 15" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontBold">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 15" />
+            </OnPlatform>
+            <!--STYLES-->
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontNormal}" />
             </Style>
-           
-                
+            <Style x:Key="BtnStyle" TargetType="Button">
+                <Setter Property="Font" Value="{StaticResource FontItalic}" />
+            </Style>
+            <Style x:Key="LabelTitle" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontBold}" />
+            </Style>
+            
+
         </ResourceDictionary>
         
     </Application.Resources>

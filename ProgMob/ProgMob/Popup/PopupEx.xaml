@@ -28,7 +28,15 @@
                 <Label Text="Insert description" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
                 <Entry x:Name="Description" Placeholder="Insert description" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
                 <Label Text="Insert difficulty" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-                <Entry x:Name="Difficulty" Placeholder="Insert difficulty" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
+                <Picker Title="Difficulty" x:Name="Difficulty" >
+                    <Picker.Items>
+                        <x:String>Warming Up</x:String>
+                        <x:String>Arms</x:String>
+                        <x:String>Sit Ups</x:String>
+                        <x:String>Back</x:String>
+                        <x:String>Hit and Special</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" />
             </StackLayout>
         </ScrollView>

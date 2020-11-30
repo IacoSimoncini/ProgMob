@@ -80,5 +80,10 @@ namespace ProgMob.Views
 
             CardDetailVM.ListEx(UserId, CardId);
         }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }

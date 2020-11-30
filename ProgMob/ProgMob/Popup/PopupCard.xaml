@@ -18,7 +18,6 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-
     <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0"  >
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
             <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>

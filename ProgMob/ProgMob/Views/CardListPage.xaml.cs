@@ -61,6 +61,7 @@ namespace ProgMob.Views
             CardVM.ListCard(UserId);
         }
 
+
         private async void Button_Clicked(object sender, System.EventArgs e)
         {
             verify = 0;
@@ -74,6 +75,11 @@ namespace ProgMob.Views
             }
 
             CardVM.ListCard(UserId);
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
         }
     }
 }

@@ -46,5 +46,10 @@ namespace ProgMob.Views
             base.OnAppearing();
             UserVM.ListUser();
         }
+
+        private void LV_ItemTapped(object sender, ItemTappedEventArgs e) 
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }

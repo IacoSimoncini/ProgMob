@@ -27,6 +27,7 @@
                         RowHeight="70" 
                         BackgroundColor="White"
                         ItemsSource="{Binding Users}"
+                        ItemTapped="LV_ItemTapped"
                         SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
                         IsPullToRefreshEnabled="True"
                         RefreshCommand="{Binding RefreshCommand}"
@@ -34,8 +35,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource UserViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                    </ViewCell.ContextActions>
                                     <StackLayout Orientation="Vertical">
-                                        <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Margin="5,1">
                                             <Frame CornerRadius="100"
                                                    HeightRequest="70"
                                                    WidthRequest="70"
@@ -45,9 +49,11 @@
                                                 <Image Source="{Binding Uri}" HeightRequest="70" WidthRequest="70"/>
                                             </Frame>
                                             <Label Text="{Binding Name}" 
-                                                   FontSize="25"/>
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
                                             <Label Text="{Binding Surname}"
-                                                   FontSize="25"/>
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>

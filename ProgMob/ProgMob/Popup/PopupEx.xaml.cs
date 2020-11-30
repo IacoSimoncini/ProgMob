@@ -16,9 +16,30 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if(Name.Text != null && Description.Text != null && Difficulty.Text != null && Name.Text.Length < 10 && Description.Text.Length < 25) 
+            if(Name.Text != null && Description.Text != null && Name.Text.Length < 10 && Description.Text.Length < 25 && Difficulty.SelectedItem.ToString() != null)
             {
-                Exercise ex = new Exercise(Name.Text, Description.Text, Difficulty.Text);
+                string diff = "";
+                if (Difficulty.SelectedItem.ToString() == "Warming Up")
+                {
+                    diff = "Warming_Up.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Arms")
+                {
+                    diff = "Arms.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Sit Ups")
+                {
+                    diff = "Sit_Ups.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Back")
+                {
+                    diff = "Back.png";
+                }
+                else if (Difficulty.SelectedItem.ToString() == "Hit and Special")
+                {
+                    diff = "Hit_and_Special.png";
+                }
+                Exercise ex = new Exercise(Name.Text, Description.Text, diff);
                 if (DatabaseExercise.InsertExercise(ex))
                 {
                     await App.Current.MainPage.DisplayAlert("Insert completed", "Please, press OK to continue", "OK");
