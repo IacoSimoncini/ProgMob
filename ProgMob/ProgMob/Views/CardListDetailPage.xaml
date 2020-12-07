@@ -40,8 +40,8 @@
                                     </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
                                         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
-                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
                                             <Image WidthRequest="35" HeightRequest="35" Source="{Binding Difficulty}" HorizontalOptions="End" />
+                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>

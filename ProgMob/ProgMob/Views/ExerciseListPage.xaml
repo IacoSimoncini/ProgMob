@@ -36,8 +36,8 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ViewCell.ContextActions>
-                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
-                                        <MenuItem Text="Edit" Command="{Binding ModifyCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                        <MenuItem IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                        <MenuItem IconImageSource="pencil.png" Command="{Binding ModifyCommand, Source={StaticResource ExVM}}" IsDestructive="True" CommandParameter="{Binding .}" />
                                     </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
                                         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" >

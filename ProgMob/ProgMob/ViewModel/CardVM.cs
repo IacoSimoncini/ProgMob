@@ -44,6 +44,7 @@ namespace ProgMob.ViewModel
 
         public ObservableCollection<Card> Cards { get; set; }
         public Command DeleteCommand { get; set; }
+        public Command PlayCommand { get; set; }
         public ICommand RefreshCommand
         {
             get
@@ -62,8 +63,15 @@ namespace ProgMob.ViewModel
         {
             Cards = new ObservableCollection<Card>();
             DeleteCommand = new Command<object>(Delete);
+            PlayCommand = new Command<object>(Play);
+            
         }
 
+        private void Play(object obj)
+        {
+            var card = obj as Card;
+            App.Current.MainPage.Navigation.PushAsync(new TimerPage(card.Path, card.Ref));
+        }
 
         private async void Delete(object obj)
         {
@@ -95,7 +103,5 @@ namespace ProgMob.ViewModel
                 }
             }
         }
-
-        
     }
 }

@@ -36,7 +36,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ViewCell.ContextActions>
-                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource UserViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                                        <MenuItem IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource UserViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
                                     </ViewCell.ContextActions>
                                     <StackLayout Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal" Margin="5,1">

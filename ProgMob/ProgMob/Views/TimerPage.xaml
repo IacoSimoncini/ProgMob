@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgMob.Views.TimerPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label x:Name="TitleLbl"
+                   HorizontalOptions="Center"
+                   Text="Press play button to start the timer"
+                   Style="{x:StaticResource Key=LabelStyle}"/>
+            <Label x:Name="ExLbl"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"                
+                   Style="{x:StaticResource Key=LabelStyle}"
+                   />
+            <Label x:Name="TimerLbl"
+                Text=""
+                FontSize="25"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                Style="{x:StaticResource Key=LabelStyle}"/>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <ImageButton x:Name="PlayPauseButton"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Source=""
+                    Clicked="PlayPauseButton_Clicked"
+                />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
