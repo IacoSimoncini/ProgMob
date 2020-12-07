@@ -28,7 +28,8 @@ namespace ProgMob.Views
             else
             {
                 Btn_AddCard.IsVisible = false;
-            }            
+            }
+
 
             ToolbarItem TBItem = new ToolbarItem
             {

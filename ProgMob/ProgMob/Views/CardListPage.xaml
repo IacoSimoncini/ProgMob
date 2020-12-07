@@ -35,8 +35,8 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ViewCell.ContextActions>
-                                        <MenuItem IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
-                                        <MenuItem IconImageSource="playbutton.png" Command="{Binding PlayCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
+                                        <MenuItem x:Name="DeleteItem" IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
+                                        <MenuItem x:Name="PlayItem" IconImageSource="playbutton.png" Command="{Binding PlayCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
                                     </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
                                         <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>

@@ -7,7 +7,7 @@
              x:Class="ProgMob.Views.ProfilePage">
 
     <ContentPage.Content>
-        <StackLayout Margin="0, 10, 0, 0">
+        <StackLayout >
             <Frame CornerRadius="100"
                    HeightRequest="200"
                    WidthRequest="200"
@@ -15,43 +15,44 @@
                    Padding="0"
                    BorderColor="DarkGray"
                    IsClippedToBounds="True">
-                <Image x:Name="ProfileImage" Source=""/>
+                <ImageButton x:Name="ProfileImage" Source="" Clicked="Btn_PickImage_Clicked" BackgroundColor="White"/>
             </Frame>
-            <Button x:Name="Btn_PickImage" Text="Change Image" HorizontalOptions="Center" Clicked="Btn_PickImage_Clicked"/>
             <StackLayout>
                 <Grid>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*" />
                         <ColumnDefinition Width="0.5*" />
-                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.7*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="70" />
                     </Grid.RowDefinitions>
                     <Image x:Name="UserIcon" Source="person.png" HeightRequest="40" WidthRequest="40"></Image>
                     <Label Text="Your Name:"
                            HorizontalTextAlignment="Center"
-                           FontFamily="bangers.regular.ttf#banger.regular"
-                           FontSize="25"
+                           Style="{x:StaticResource Key=LabelStyle}"
+                           FontSize="20"
                            Grid.Column="1"
                            Grid.RowSpan="2"/>
                     <Label x:Name="name"
                            Text="" 
                            HorizontalTextAlignment="Center"
-                           FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"
-                           FontSize="25"
+                           Style="{x:StaticResource Key=LabelStyle}"
+                           FontSize="20"
                            Grid.Column="2"/>
                     <Label Text="Your Surname:"
                            HorizontalTextAlignment="Center"
-                           FontFamily="bangers.regular.ttf#banger.regular"
-                           FontSize="23"
+                           Style="{x:StaticResource Key=LabelStyle}"
+                           FontSize="20"
                            Grid.Row="1"
                            Grid.Column="1"/>
                     <Label x:Name="surname"
                            Text="" 
                            HorizontalTextAlignment="Center"
-                           FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" 
-                           FontSize="25"
+                           Style="{x:StaticResource Key=LabelStyle}" 
+                           FontSize="20"
                            Grid.Row="1"
                            Grid.Column="2"/>
                     <Image x:Name="UserEmail"
@@ -61,15 +62,15 @@
                            Grid.Row="2"/>
                     <Label Text="Your Email:"
                            HorizontalTextAlignment="Center" 
-                           FontFamily="bangers.regular.ttf#banger.regular"
-                           FontSize="25"
+                           Style="{x:StaticResource Key=LabelStyle}"
+                           FontSize="20"
                            Grid.Row="2"
                            Grid.Column="1"/>
                     <Label x:Name="email" 
                            Text=""
                            HorizontalTextAlignment="Center"
-                           FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular"
-                           FontSize="25"
+                           Style="{x:StaticResource Key=LabelStyle}"
+                           FontSize="20"
                            Grid.Row="2"
                            Grid.Column="2"/>
                 </Grid>
