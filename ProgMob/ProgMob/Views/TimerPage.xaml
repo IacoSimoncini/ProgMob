@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProgMob.Views.TimerPage">
+             x:Class="ProgMob.Views.TimerPage"
+             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin" xmlns:local="clr-namespace:ProgMob.ViewModel.Helpers">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ValueProgressBarConverter x:Key="ValueProgressBar" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label x:Name="TitleLbl"
@@ -13,6 +20,7 @@
                    VerticalOptions="Center"                
                    Style="{x:StaticResource Key=LabelStyle}"
                    />
+            <control:ProgressRing HeightRequest="90" RingProgressColor="Orange" Scale="2" WidthRequest="90" RingThickness="5" Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBar}, Mode=TwoWay}"/>
             <Label x:Name="TimerLbl"
                 Text=""
                 FontSize="25"
