@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"  
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModel="clr-namespace:ProgMob.ViewModel" 
+             mc:Ignorable="d"               
+             x:Class="ProgMob.Views.CalendaryPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ViewModel:CalendaryVM x:Key="CalendaryViewModel"></ViewModel:CalendaryVM>
+            
+            <DataTemplate x:Key="trueTemplate">
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding n}" TextColor="Black"></Label>
+                        <Button Text="->" Clicked="ButtonGo_Clicked" ></Button>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="falseTemplate">
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding n}" TextColor="Black"></Label>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="trueAdminTemplate">
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding n}" TextColor="Black"></Label>
+                        <Button Text="->" Clicked="ButtonGo_Clicked" ></Button>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="falseAdminTemplate">
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding n}" TextColor="Black"></Label>
+                        <Button Text="+" Clicked="ButtonAdd_Clicked"  ></Button>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+
+            <ViewModel:MyDataTemplateSelector 
+                x:Key="myDataTemplateSelector"
+                TrueTemplate="{StaticResource trueTemplate}"
+                FalseTemplate="{StaticResource falseTemplate}"
+                TrueAdminTemplate="{StaticResource trueAdminTemplate}"
+                FalseAdminTemplate="{StaticResource falseAdminTemplate}"
+                />
+            <Color x:Key="NavigationPrimary">#3D9F88</Color>
+            <Color x:Key="AccentColor">#FFC107</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ScrollView Grid.Row="0">
+                    <StackLayout Orientation="Vertical">
+                        <ListView BindingContext="{StaticResource CalendaryViewModel}" 
+                            x:Name="CalendaryViewCard"
+                            RowHeight="70" 
+                            BackgroundColor="White"
+                            ItemsSource="{Binding Days}"
+                            SelectedItem="{Binding SelectedDay, Mode=TwoWay}"
+                            IsPullToRefreshEnabled="true"
+                            RefreshCommand="{Binding RefreshCommand}"
+                            IsRefreshing="{Binding IsRefreshing}"
+                            ItemTemplate="{StaticResource myDataTemplateSelector}">
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+        </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage> 

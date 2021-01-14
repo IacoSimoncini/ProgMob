@@ -21,7 +21,7 @@ namespace ProgMob.Views
             InitializeComponent();
             UserId = Uid;
             CardId = Cid;
-            DatabaseDetailCard.ListExercise(UserId, CardId);
+            DatabaseDetailCard.ListExercise(UserId, CardId, "1");
             Title = CardId;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
 

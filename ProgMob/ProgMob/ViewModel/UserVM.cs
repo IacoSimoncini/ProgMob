@@ -24,7 +24,7 @@ namespace ProgMob.ViewModel
                 {
                     Application.Current.Properties["UID"] = selectedUser.Id;
                     Application.Current.SavePropertiesAsync();
-                    App.Current.MainPage.Navigation.PushAsync(new CardListPage());
+                    App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
                 }
             }
         }

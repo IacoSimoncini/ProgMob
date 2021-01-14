@@ -6,10 +6,8 @@ namespace ProgMob
     {
         public App()
         {
-            InitializeComponent();
-
-            if (Application.Current.Properties.ContainsKey("logged"))
-            {
+          InitializeComponent();
+          if (Application.Current.Properties.ContainsKey("logged")){
                 if (Application.Current.Properties["logged"].ToString().Equals("true"))
                 {
                     MainPage = new NavigationPage(new Splash());

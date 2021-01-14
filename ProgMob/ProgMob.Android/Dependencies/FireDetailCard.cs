@@ -19,13 +19,13 @@ namespace ProgMob.Droid.Dependencies
             exList = new List<Exercise>();
         }
 
-        public async Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex)
+        public async Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day)
         {
             try
             {
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Uid)
-                    .Collection("Schede")
+                    .Collection(day)
                     .Document(Cid)
                     .Collection("Ex")
                     .Document(ex.Name)
@@ -43,7 +43,7 @@ namespace ProgMob.Droid.Dependencies
             return exList;
         }
 
-        public bool InsertEx(string Uid, string Cid, Exercise ex)
+        public bool InsertEx(string Uid, string Cid, Exercise ex, string day)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace ProgMob.Droid.Dependencies
                 mp.Put("difficulty", ex.Difficulty);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Uid)
-                    .Collection("Schede")
+                    .Collection(day)
                     .Document(Cid)
                     .Collection("Ex")
                     .Document(ex.Name);
@@ -66,12 +66,12 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<bool> ListExercise(string Uid, string Cid)
+        public async Task<bool> ListExercise(string Uid, string Cid , string day)
         {
             value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                    .Document(Uid)
-                   .Collection("Schede")
+                   .Collection(day)
                    .Document(Cid)
                    .Collection("Ex");
             collection.Get().AddOnCompleteListener(this);

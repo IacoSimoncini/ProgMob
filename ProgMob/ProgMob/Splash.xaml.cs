@@ -13,12 +13,12 @@ namespace ProgMob
         public Splash()
         {
             InitializeComponent();
-            
             Startup();
         }
 
         public async Task Startup()
         {
+
             Application.Current.Properties["MyUID"] = DatabaseProfile.GetUid();
             await Application.Current.SavePropertiesAsync();
             if (await DatabaseProfile.GetProfile())
@@ -36,7 +36,7 @@ namespace ProgMob
             }
             else
             {
-                if (await DatabaseCards.ListCard(DatabaseProfile.GetUid()))
+                if (await DatabaseCalendary.ControlDay(DatabaseProfile.GetUid(), "A"))
                 {
                     App.Current.MainPage = new MainPage();
                     Navigation.PopAsync();

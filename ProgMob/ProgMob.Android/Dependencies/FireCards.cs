@@ -15,19 +15,20 @@ namespace ProgMob.Droid.Dependencies
         List<Card> cardList;
         string UserId;
         int value;
+        string currentType;
 
         public FireCards()
         {
             cardList = new List<Card>();
         }
 
-        public async Task<bool> DeleteCard(Card Card)
+        public async Task<bool> DeleteCard(Card Card , string day)
         {
             try
             {
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Card.Ref)
-                    .Collection("Schede")
+                    .Collection(day)
                     .Document(Card.Path);
                 collection.Delete();
                 return true;
@@ -38,15 +39,14 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public bool InsertCard(Card Card)
+        public bool InsertCard(Card card, string day)
         {
             try
             {
                 HashMap mp = new HashMap();
+                mp.Put("type", card.Type);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(Card.Ref)
-                    .Collection("Schede")
-                    .Document(Card.Path);
+                    .Document(card.Ref).Collection(day).Document(card.Path);
                 collection.Set(mp);
                 return true;
             }
@@ -56,13 +56,14 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<bool> ListCard(string Uid)
+        public async Task<bool> ListCard(string Uid , string day , string type)
         {
             value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Uid)
-                .Collection("Schede");
+                .Collection(day);
             UserId = Uid;
+            currentType = type;
             collection.Get().AddOnCompleteListener(this);
 
             for (int i = 0; i < 30; i++)
@@ -89,10 +90,13 @@ namespace ProgMob.Droid.Dependencies
                 var documents = (QuerySnapshot)task.Result;
                 foreach (var doc in documents.Documents)
                 {
-                    Card card = new Card();
-                    card.Path = doc.Id.ToString();
-                    card.Ref = UserId;
-                    cardList.Add(card);
+                    if (doc.Get("type").Equals(currentType)) {
+                        Card card = new Card();
+                        card.Path = doc.Id.ToString();
+                        card.Ref = UserId;
+                        cardList.Add(card);
+                    }
+                    
                 }
                 value = 1;
             }

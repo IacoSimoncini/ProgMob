@@ -11,10 +11,12 @@ namespace ProgMob.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupCard : Rg.Plugins.Popup.Pages.PopupPage
     {
+        private string Day;
         private string UserId;
-        public PopupCard(string Uid)
+        public PopupCard(string Uid, string day)
         {
             InitializeComponent();
+            Day = day;
             UserId = Uid;
         }
 
@@ -25,12 +27,14 @@ namespace ProgMob.Popup
                 Card card = new Card();
                 card.Path = Name.Text;
                 card.Ref = UserId;
-                if (DatabaseCards.InsertCard(card))
+                card.Type = "A";
+                if (DatabaseCards.InsertCard(card , Day))
                 {
-                    if (await DatabaseCards.ListCard(UserId))
+                    if( await DatabaseCalendary.ControlDay(UserId , "A"))
                     {
                         _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
-                        CardListPage.verify = 1;
+                        //CardListPage.verify = 1;
+                        CalendaryPage.verify = 1;
                     }
                     else
                     {

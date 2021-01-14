@@ -4,7 +4,7 @@
     {
         public string Path { get; set; }
         public string Ref { get; set; }
-
+        public string Type { get; set; }
         public Card()
         {
         }

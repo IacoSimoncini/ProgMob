@@ -11,6 +11,33 @@
             <ViewModel:CardVM x:Key="CardViewModel"/>
             <Color x:Key="NavigationPrimary">#3D9F88</Color>
             <Color x:Key="AccentColor">#FFC107</Color>
+            <DataTemplate x:Key="userTemplate">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem x:Name="PlayItem" IconImageSource="playbutton.png" Command="{Binding PlayCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
+                    </ViewCell.ContextActions>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
+                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="adminTemplate">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem x:Name="DeleteItem" IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
+                        <MenuItem x:Name="ModifyItem" IconImageSource="pencil.png"/>
+
+                    </ViewCell.ContextActions>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
+                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <ViewModel:ListCardTemplateSelector 
+                x:Key="ListCardTemplateSelector"
+                UserTemplate="{StaticResource userTemplate}"
+                AdminTemplate="{StaticResource adminTemplate}"
+                />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -18,7 +45,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
+            
             <ScrollView Grid.Row="0">
                 <StackLayout Orientation="Vertical">
                     <ListView BindingContext="{StaticResource CardViewModel}" 
@@ -30,20 +57,8 @@
                         SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
                         IsPullToRefreshEnabled="true"
                         RefreshCommand="{Binding RefreshCommand}"
-                        IsRefreshing="{Binding IsRefreshing}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ViewCell.ContextActions>
-                                        <MenuItem x:Name="DeleteItem" IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
-                                        <MenuItem x:Name="PlayItem" IconImageSource="playbutton.png" Command="{Binding PlayCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
-                                    </ViewCell.ContextActions>
-                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
-                                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
+                        IsRefreshing="{Binding IsRefreshing}"
+                        ItemTemplate="{StaticResource ListCardTemplateSelector}">
                     </ListView>
                 </StackLayout>
             </ScrollView>

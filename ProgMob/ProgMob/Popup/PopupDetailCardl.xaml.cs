@@ -39,7 +39,7 @@ namespace ProgMob.Popup
                 if (x.IsChecked)
                 {
                     x.IsChecked = false;
-                    DatabaseDetailCard.InsertEx(UserId, CardId, x);
+                    DatabaseDetailCard.InsertEx(UserId, CardId, x , "1");
                 }
             }
 

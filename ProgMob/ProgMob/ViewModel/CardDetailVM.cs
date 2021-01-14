@@ -75,7 +75,7 @@ namespace ProgMob.ViewModel
         public async void ListEx(string Uid, string Cid)
         {
             Exercises.Clear();
-            if(await DatabaseDetailCard.ListExercise(Uid, Cid)) 
+            if(await DatabaseDetailCard.ListExercise(Uid, Cid, "1")) 
             {
                 var ex = await DatabaseDetailCard.GetExercises();
                 foreach (var e in ex)
@@ -90,7 +90,7 @@ namespace ProgMob.ViewModel
             var ex = obj as Exercise;
             bool deleted = await DatabaseDetailCard.DeleteExercise(Application.Current.Properties["UID"].ToString(),
                 Application.Current.Properties["CID"].ToString(),
-                ex);
+                ex, "1");
             if (deleted)
             {
                 Exercises.Remove(ex);

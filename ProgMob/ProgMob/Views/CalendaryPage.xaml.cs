@@ -1,30 +1,31 @@
-﻿using ProgMob.Popup;
+﻿using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ProgMob.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CardListPage : ContentPage
+    public partial class CalendaryPage : ContentPage
     {
         static public int verify = 0;
+        CalendaryVM CalendaryVM;
         private readonly string UserId;
-        private readonly string selectedDay;
-        CardVM CardVM;
-        public CardListPage()
+        public CalendaryPage()
         {
             InitializeComponent();
-            Title = "Cards";
-            selectedDay = Application.Current.Properties["selectedDay"].ToString();
+            Title = "Calendary";
             UserId = Application.Current.Properties["UID"].ToString();
-            CardVM = Resources["CardViewModel"] as CardVM;
-            Btn_AddCard.IsVisible = false;
-
+            CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
 
             ToolbarItem TBItem = new ToolbarItem
             {
@@ -48,20 +49,22 @@ namespace ProgMob.Views
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
             this.ToolbarItems.Add(TBItem);
-
         }
+
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-             CardVM.ListCard(UserId , selectedDay);
+            CalendaryVM.ListDay(UserId, "A");
         }
 
-
-        private async void Button_Clicked(object sender, System.EventArgs e)
+        private async void ButtonAdd_Clicked(object sender, System.EventArgs e)
         {
+            Button btn = (Button)sender;
+            var day = btn.BindingContext as Day;
+            
             verify = 0;
-            await PopupNavigation.PushAsync(new PopupCard(UserId, selectedDay));
+            await PopupNavigation.PushAsync(new PopupCard(UserId, day.n.ToString()));
 
             for (int i = 0; i < 1000; i++)
             {
@@ -70,14 +73,25 @@ namespace ProgMob.Views
                     break;
             }
 
-            CardVM.ListCard(UserId , selectedDay);
+            CalendaryVM.ListDay(UserId, "A");
+            
         }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+       
+        private async void ButtonGo_Clicked(object sender, System.EventArgs e)
         {
-            if (sender is ListView lv) lv.SelectedItem = null;
+            Button btn = (Button)sender;
+            var day = btn.BindingContext as Day;
+            Application.Current.Properties["selectedDay"] = day.n.ToString();
+            Application.Current.SavePropertiesAsync();
+            App.Current.MainPage.Navigation.PushAsync(new CardListPage());
+
         }
 
-        
+        /*
+        private void CalendaryView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            //if (sender is ListView lv) lv.SelectedItem = null;
+        }*/
+
     }
 }

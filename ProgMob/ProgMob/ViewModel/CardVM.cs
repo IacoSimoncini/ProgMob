@@ -41,9 +41,9 @@ namespace ProgMob.ViewModel
                 OnPropertyChanged(nameof(IsRefreshing));
             }
         }
-
         public ObservableCollection<Card> Cards { get; set; }
         public Command DeleteCommand { get; set; }
+        public Command ModifyCommand { get; set; }
         public Command PlayCommand { get; set; }
         public ICommand RefreshCommand
         {
@@ -53,7 +53,7 @@ namespace ProgMob.ViewModel
                 {
                     IsRefreshing = true;
 
-                    ListCard(App.Current.Properties["UID"].ToString());
+                    ListCard(App.Current.Properties["UID"].ToString() , Application.Current.Properties["selectedDay"].ToString());
 
                     IsRefreshing = false;
                 });
@@ -62,6 +62,7 @@ namespace ProgMob.ViewModel
         public CardVM()
         {
             Cards = new ObservableCollection<Card>();
+            //ModifyCommand = new Command<object>(Modify);
             DeleteCommand = new Command<object>(Delete);
             PlayCommand = new Command<object>(Play);
             
@@ -72,11 +73,18 @@ namespace ProgMob.ViewModel
             var card = obj as Card;
             App.Current.MainPage.Navigation.PushAsync(new TimerPage(card.Path, card.Ref));
         }
+        
+        /*
+         private async void Modify(object obj)
+        {
 
+            var ex = obj as Exercise;
+            await PopupNavigation.PushAsync(new PopupUpdateEx(ex.Id));
+        }*/
         private async void Delete(object obj)
         {
             var card = obj as Card;
-            bool deleted = await DatabaseCards.DeleteCard(card);
+            bool deleted = await DatabaseCards.DeleteCard(card, "1");
             if (deleted)
             {
                 Cards.Remove(card);
@@ -91,9 +99,9 @@ namespace ProgMob.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async void ListCard(string Uid)
+        public async void ListCard(string Uid , string Day)
         {
-            if (await DatabaseCards.ListCard(Uid))
+            if (await DatabaseCards.ListCard(Uid, Day , "A"))
             {
                 Cards.Clear();
                 var card = await DatabaseCards.GetCard();
