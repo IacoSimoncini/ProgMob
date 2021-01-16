@@ -78,6 +78,5 @@ namespace ProgMob.Views
             if (sender is ListView lv) lv.SelectedItem = null;
         }
 
-        
     }
 }

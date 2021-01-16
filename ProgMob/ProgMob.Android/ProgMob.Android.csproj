@@ -60,6 +60,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
+      <Version>2.0.11</Version>
+    </PackageReference>
     <PackageReference Include="FirebaseStorage.net">
       <Version>1.0.3</Version>
     </PackageReference>
@@ -85,9 +88,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies\FireWeek.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Dependencies\FireAuth.cs" />
-    <Compile Include="Dependencies\FireCalendary.cs" />
+    <Compile Include="Dependencies\FireDaysInWeek.cs" />
     <Compile Include="Dependencies\FireCards.cs" />
     <Compile Include="Dependencies\FireDetailCard.cs" />
     <Compile Include="Dependencies\FireEx.cs" />
@@ -204,7 +208,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionProgMobAndroidHideInfoBar="True" TriggeredFromHotReload="False" />
+      <UserProperties TriggeredFromHotReload="False" XamarinHotReloadDebuggerTimeoutExceptionProgMobAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

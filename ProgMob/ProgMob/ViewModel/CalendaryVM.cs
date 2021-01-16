@@ -14,11 +14,9 @@ namespace ProgMob.ViewModel
 {
     public class CalendaryVM : INotifyPropertyChanged
     {
-       
         public event PropertyChangedEventHandler PropertyChanged;
-        
-        private Day selectedDay;
-        public Day SelectedDay
+        private DaysInWeek selectedDay;
+        public DaysInWeek SelectedDay
         {
             get { return selectedDay; }
             set
@@ -42,7 +40,7 @@ namespace ProgMob.ViewModel
             }
         }
 
-        public ObservableCollection<Day> Days { get; set; }
+        public ObservableCollection<DaysInWeek> ListDays { get; set; }
 
         public ICommand RefreshCommand
         {
@@ -52,7 +50,7 @@ namespace ProgMob.ViewModel
                 {
                     IsRefreshing = true;
                     
-                    ListDay(App.Current.Properties["UID"].ToString() , "A");
+                    ListDaysInWeek(App.Current.Properties["UID"].ToString() , "A");
 
                     IsRefreshing = false;
                 });
@@ -61,24 +59,25 @@ namespace ProgMob.ViewModel
 
         public CalendaryVM()
         {
-            Days = new ObservableCollection<Day>();
+            ListDays = new ObservableCollection<DaysInWeek>();
         }
 
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         } 
-
-        public async void ListDay(string Uid , string Type)
+        
+        public async void ListDaysInWeek(string Uid , string Type)
         {
-            
-                Days.Clear();
-                var days= await DatabaseCalendary.getDays();
-                foreach (Day d in days)
+            ListDays.Clear();
+            for (int i = 1; i <= 4; i++)
+            {
+                if (await DatabaseDaysInWeek.CheckDaysInWeek(Uid, Type, i))
                 {
-                Console.WriteLine("TAXI "+d.n.ToString());
-                   Days.Add(d);
+                    DaysInWeek d = DatabaseDaysInWeek.GetDaysInWeek();
+                    ListDays.Add(d);
                 }
+            }
         }
     }
 }

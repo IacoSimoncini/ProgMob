@@ -36,7 +36,10 @@ namespace ProgMob
             }
             else
             {
-                if (await DatabaseCalendary.ControlDay(DatabaseProfile.GetUid(), "A"))
+                if (await DatabaseDaysInWeek.CheckDaysInWeek(DatabaseProfile.GetUid(), "A", 1)
+                    && await DatabaseDaysInWeek.CheckDaysInWeek(DatabaseProfile.GetUid(), "A", 2)
+                    && await DatabaseDaysInWeek.CheckDaysInWeek(DatabaseProfile.GetUid(), "A", 3)
+                    && await DatabaseDaysInWeek.CheckDaysInWeek(DatabaseProfile.GetUid(), "A", 4))
                 {
                     App.Current.MainPage = new MainPage();
                     Navigation.PopAsync();

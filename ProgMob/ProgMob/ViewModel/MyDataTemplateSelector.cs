@@ -17,7 +17,7 @@ namespace ProgMob.ViewModel
         {
             if (Application.Current.Properties["Admin"].Equals("true"))
             {
-                var aux = item as Day;
+                var aux = item as DaysInWeek;
                 if (aux.ifSet)
                 {
                     return TrueAdminTemplate;
@@ -29,7 +29,7 @@ namespace ProgMob.ViewModel
             }
             else
             {
-                var aux = item as Day;
+                var aux = item as DaysInWeek;
                 if (aux.ifSet)
                 {
                     return TrueTemplate;

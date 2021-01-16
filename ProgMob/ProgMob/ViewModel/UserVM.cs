@@ -25,6 +25,10 @@ namespace ProgMob.ViewModel
                     Application.Current.Properties["UID"] = selectedUser.Id;
                     Application.Current.SavePropertiesAsync();
                     App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        System.Threading.Tasks.Task.Delay(100);
+                    }
                 }
             }
         }

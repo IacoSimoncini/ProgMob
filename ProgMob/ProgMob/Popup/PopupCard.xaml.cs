@@ -30,7 +30,7 @@ namespace ProgMob.Popup
                 card.Type = "A";
                 if (DatabaseCards.InsertCard(card , Day))
                 {
-                    if( await DatabaseCalendary.ControlDay(UserId , "A"))
+                    if( await DatabaseDaysInWeek.CheckDaysInWeek(UserId , "A",1))
                     {
                         _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
                         //CardListPage.verify = 1;

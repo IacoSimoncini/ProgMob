@@ -1,4 +1,5 @@
-﻿using ProgMob.Models;
+﻿using DLToolkit.Forms.Controls;
+using ProgMob.Models;
 using ProgMob.Popup;
 using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
@@ -18,14 +19,14 @@ namespace ProgMob.Views
     public partial class CalendaryPage : ContentPage
     {
         static public int verify = 0;
-        CalendaryVM CalendaryVM;
+        public CalendaryVM CalendaryVM;
         private readonly string UserId;
         public CalendaryPage()
         {
             InitializeComponent();
             Title = "Calendary";
             UserId = Application.Current.Properties["UID"].ToString();
-            CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
+            //CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
 
             ToolbarItem TBItem = new ToolbarItem
             {
@@ -54,44 +55,10 @@ namespace ProgMob.Views
 
         protected override void OnAppearing()
         {
+            //CalendaryVM.ListDaysInWeek(UserId, "A");
             base.OnAppearing();
-            CalendaryVM.ListDay(UserId, "A");
         }
 
-        private async void ButtonAdd_Clicked(object sender, System.EventArgs e)
-        {
-            Button btn = (Button)sender;
-            var day = btn.BindingContext as Day;
-            
-            verify = 0;
-            await PopupNavigation.PushAsync(new PopupCard(UserId, day.n.ToString()));
-
-            for (int i = 0; i < 1000; i++)
-            {
-                await System.Threading.Tasks.Task.Delay(100);
-                if (verify != 0)
-                    break;
-            }
-
-            CalendaryVM.ListDay(UserId, "A");
-            
-        }
-       
-        private async void ButtonGo_Clicked(object sender, System.EventArgs e)
-        {
-            Button btn = (Button)sender;
-            var day = btn.BindingContext as Day;
-            Application.Current.Properties["selectedDay"] = day.n.ToString();
-            Application.Current.SavePropertiesAsync();
-            App.Current.MainPage.Navigation.PushAsync(new CardListPage());
-
-        }
-
-        /*
-        private void CalendaryView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            //if (sender is ListView lv) lv.SelectedItem = null;
-        }*/
 
     }
 }

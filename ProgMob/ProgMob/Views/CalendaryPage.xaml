@@ -9,7 +9,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ViewModel:CalendaryVM x:Key="CalendaryViewModel"></ViewModel:CalendaryVM>
-            
+
             <DataTemplate x:Key="trueTemplate">
                 <ViewCell>
                     <StackLayout>
@@ -76,7 +76,7 @@
                         </ListView>
                     </StackLayout>
                 </ScrollView>
-        </Grid>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage> 
