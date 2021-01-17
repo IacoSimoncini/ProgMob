@@ -8,7 +8,8 @@ namespace ProgMob.ViewModel.Helpers
     public interface FireDaysInWeek
     {
         Task<bool> CheckDaysInWeek(string Uid, string type, int i);
-        DaysInWeek GetDaysInWeek();
+        Week GetWhichWeek(string week);
+        //string whichControl(string type);
     }
 
     class DatabaseDaysInWeek
@@ -18,9 +19,9 @@ namespace ProgMob.ViewModel.Helpers
         {
             return firestoreCalendary.CheckDaysInWeek(Uid, type, i);
         }
-        public static DaysInWeek GetDaysInWeek() 
+        public static Week GetWhichWeek(string week) 
         {
-            return firestoreCalendary.GetDaysInWeek();
+            return firestoreCalendary.GetWhichWeek(week);
         }
     }
 }

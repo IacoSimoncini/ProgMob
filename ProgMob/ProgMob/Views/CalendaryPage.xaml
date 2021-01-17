@@ -10,47 +10,7 @@
         <ResourceDictionary>
             <ViewModel:CalendaryVM x:Key="CalendaryViewModel"></ViewModel:CalendaryVM>
 
-            <DataTemplate x:Key="trueTemplate">
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding n}" TextColor="Black"></Label>
-                        <Button Text="->" Clicked="ButtonGo_Clicked" ></Button>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="falseTemplate">
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding n}" TextColor="Black"></Label>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-
-            <DataTemplate x:Key="trueAdminTemplate">
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding n}" TextColor="Black"></Label>
-                        <Button Text="->" Clicked="ButtonGo_Clicked" ></Button>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="falseAdminTemplate">
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding n}" TextColor="Black"></Label>
-                        <Button Text="+" Clicked="ButtonAdd_Clicked"  ></Button>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-
-
-            <ViewModel:MyDataTemplateSelector 
-                x:Key="myDataTemplateSelector"
-                TrueTemplate="{StaticResource trueTemplate}"
-                FalseTemplate="{StaticResource falseTemplate}"
-                TrueAdminTemplate="{StaticResource trueAdminTemplate}"
-                FalseAdminTemplate="{StaticResource falseAdminTemplate}"
-                />
+            
             <Color x:Key="NavigationPrimary">#3D9F88</Color>
             <Color x:Key="AccentColor">#FFC107</Color>
         </ResourceDictionary>
@@ -67,12 +27,51 @@
                             x:Name="CalendaryViewCard"
                             RowHeight="70" 
                             BackgroundColor="White"
-                            ItemsSource="{Binding Days}"
-                            SelectedItem="{Binding SelectedDay, Mode=TwoWay}"
+                            ItemsSource="{Binding ListWeek}"
+                            SelectedItem="{Binding SelectedWeek, Mode=TwoWay}"
                             IsPullToRefreshEnabled="true"
                             RefreshCommand="{Binding RefreshCommand}"
                             IsRefreshing="{Binding IsRefreshing}"
-                            ItemTemplate="{StaticResource myDataTemplateSelector}">
+                            >
+                            
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
+                                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+                                                <Button Text="{Binding d1.n}" 
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                                <Button Text="{Binding d2.n}"
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                                <Button Text="{Binding d3.n}"
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                                <Button Text="{Binding d4.n}"
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                                <Button Text="{Binding d5.n}"
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                                <Button Text="{Binding d6.n}"
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                                <Button Text="{Binding d7.n}"
+                                                   TextColor="Black"
+                                                   FontSize="25"
+                                                   Style="{x:StaticResource Key=LabelStyle}"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
                 </ScrollView>

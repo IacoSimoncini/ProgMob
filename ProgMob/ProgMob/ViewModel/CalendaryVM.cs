@@ -15,14 +15,15 @@ namespace ProgMob.ViewModel
     public class CalendaryVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private DaysInWeek selectedDay;
-        public DaysInWeek SelectedDay
+        private Week selectedWeek;
+        public Week SelectedWeek
         {
-            get { return selectedDay; }
+            get { return selectedWeek;  }
             set
             {
-                selectedDay = value;
-                /*if (selectedDay != null) {
+                selectedWeek = value;
+                /*
+                if (selectedDay != null) {
                     Application.Current.Properties["selectedDay"] = selectedDay.n;
                     Application.Current.SavePropertiesAsync();
                     App.Current.MainPage.Navigation.PushAsync(new CardListPage());
@@ -40,7 +41,7 @@ namespace ProgMob.ViewModel
             }
         }
 
-        public ObservableCollection<DaysInWeek> ListDays { get; set; }
+       public ObservableCollection<Week> ListWeek { get; set; }
 
         public ICommand RefreshCommand
         {
@@ -59,7 +60,7 @@ namespace ProgMob.ViewModel
 
         public CalendaryVM()
         {
-            ListDays = new ObservableCollection<DaysInWeek>();
+            ListWeek  = new ObservableCollection<Week>();
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -69,13 +70,14 @@ namespace ProgMob.ViewModel
         
         public async void ListDaysInWeek(string Uid , string Type)
         {
-            ListDays.Clear();
+            ListWeek.Clear();
             for (int i = 1; i <= 4; i++)
             {
                 if (await DatabaseDaysInWeek.CheckDaysInWeek(Uid, Type, i))
                 {
-                    DaysInWeek d = DatabaseDaysInWeek.GetDaysInWeek();
-                    ListDays.Add(d);
+                    Week w = DatabaseDaysInWeek.GetWhichWeek(i.ToString());
+                    w.priority = i;
+                    ListWeek.Add(w);
                 }
             }
         }

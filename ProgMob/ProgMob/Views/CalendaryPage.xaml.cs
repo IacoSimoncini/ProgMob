@@ -1,4 +1,4 @@
-﻿using DLToolkit.Forms.Controls;
+﻿
 using ProgMob.Models;
 using ProgMob.Popup;
 using ProgMob.ViewModel;
@@ -21,14 +21,29 @@ namespace ProgMob.Views
         static public int verify = 0;
         public CalendaryVM CalendaryVM;
         private readonly string UserId;
+        private readonly string type;
         public CalendaryPage()
         {
             InitializeComponent();
             Title = "Calendary";
+            type = "A"; //Application.Current.Properties["ABC"].ToString();
             UserId = Application.Current.Properties["UID"].ToString();
-            //CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
+            CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
 
             ToolbarItem TBItem = new ToolbarItem
+            {
+                Text = "Change Type",
+                IconImageSource = ImageSource.FromFile("logout.png"),
+                Order = ToolbarItemOrder.Secondary,
+                Priority = 0
+            };
+
+            TBItem.Clicked += async (sender, args) =>
+            {
+                Console.WriteLine("AO");
+            };
+
+            ToolbarItem TBItemLogout = new ToolbarItem
             {
                 Text = "Logout",
                 IconImageSource = ImageSource.FromFile("logout.png"),
@@ -36,7 +51,7 @@ namespace ProgMob.Views
                 Priority = 0
             };
 
-            TBItem.Clicked += async (sender, args) =>
+            TBItemLogout.Clicked += async (sender, args) =>
             {
                 bool logout = await Auth.Logout();
                 if (logout)
@@ -49,16 +64,21 @@ namespace ProgMob.Views
                 }
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
+            this.ToolbarItems.Add(TBItemLogout);
             this.ToolbarItems.Add(TBItem);
         }
 
 
         protected override void OnAppearing()
         {
-            //CalendaryVM.ListDaysInWeek(UserId, "A");
+            CalendaryVM.ListDaysInWeek(UserId, type);
             base.OnAppearing();
         }
 
-
+        public void OnTapped(object sender, EventArgs e)
+        {
+           DaysInWeek d =  sender as DaysInWeek;
+            Console.WriteLine(sender);
+        }
     }
 }
