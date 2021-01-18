@@ -21,7 +21,7 @@ namespace ProgMob.ViewModel
             set
             {
                 selectedCard = value;
-                OnPropertyChanged("SelectedUser");
+                OnPropertyChanged("SelectedCard");
                 if (selectedCard != null)
                 {
                     Application.Current.Properties["CID"] = selectedCard.Path;

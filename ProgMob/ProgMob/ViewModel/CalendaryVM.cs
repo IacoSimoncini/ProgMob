@@ -16,6 +16,7 @@ namespace ProgMob.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Week selectedWeek;
+        ICommand tapCommand;
         public Week SelectedWeek
         {
             get { return selectedWeek;  }
@@ -23,13 +24,14 @@ namespace ProgMob.ViewModel
             {
                 selectedWeek = value;
                 /*
-                if (selectedDay != null) {
-                    Application.Current.Properties["selectedDay"] = selectedDay.n;
+                if (selectedWeek != null) {
+                    Application.Current.Properties["selectedDay"] = selectedWeek;
                     Application.Current.SavePropertiesAsync();
                     App.Current.MainPage.Navigation.PushAsync(new CardListPage());
                 } ;*/
             }
         }
+
         private bool _isRefreshing = false;
         public bool IsRefreshing
         {
@@ -61,6 +63,18 @@ namespace ProgMob.ViewModel
         public CalendaryVM()
         {
             ListWeek  = new ObservableCollection<Week>();
+            tapCommand = new Command(OnTapped);
+        }
+
+        public ICommand TapCommand
+        {
+            get { return tapCommand; }
+        }
+
+        void OnTapped(object s)
+        {
+            var label = s as Label;
+            Console.WriteLine(label.Text);
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -80,6 +94,13 @@ namespace ProgMob.ViewModel
                     ListWeek.Add(w);
                 }
             }
+        }
+
+
+        void labelTapCommand(object obj)
+        {
+            var labelText = (obj as Label).Text;
+            Console.WriteLine(labelText);
         }
     }
 }

@@ -75,10 +75,5 @@ namespace ProgMob.Views
             base.OnAppearing();
         }
 
-        public void OnTapped(object sender, EventArgs e)
-        {
-           DaysInWeek d =  sender as DaysInWeek;
-            Console.WriteLine(sender);
-        }
     }
 }

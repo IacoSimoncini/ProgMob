@@ -9,8 +9,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ViewModel:CalendaryVM x:Key="CalendaryViewModel"></ViewModel:CalendaryVM>
-
-            
             <Color x:Key="NavigationPrimary">#3D9F88</Color>
             <Color x:Key="AccentColor">#FFC107</Color>
         </ResourceDictionary>
@@ -48,7 +46,7 @@
                                            Grid.Column="0"  
                                            FontSize="Medium" 
                                            FontAttributes="Bold" 
-                                           BackgroundColor="MediumBlue" 
+                                           BackgroundColor="#FFC107" 
                                            TextColor="White" 
                                            HorizontalTextAlignment="Center"
                                            Margin="1"/>
@@ -57,7 +55,7 @@
                                            Grid.Column="1" 
                                            FontSize="Medium" 
                                            FontAttributes="Bold" 
-                                           BackgroundColor="MediumBlue" 
+                                           BackgroundColor="#FFC107" 
                                            TextColor="White"
                                            HorizontalTextAlignment="Center"
                                            Margin="1"/>
@@ -66,7 +64,7 @@
                                            Grid.Column="2" 
                                            FontSize="Medium"
                                            FontAttributes="Bold"
-                                           BackgroundColor="MediumBlue"
+                                           BackgroundColor="#FFC107"
                                            TextColor="White"
                                            HorizontalTextAlignment="Center" 
                                            Margin="1"/>
@@ -75,7 +73,7 @@
                                            Grid.Column="3"
                                            FontSize="Medium" 
                                            FontAttributes="Bold"
-                                           BackgroundColor="MediumBlue" 
+                                           BackgroundColor="#FFC107" 
                                            TextColor="White"
                                            HorizontalTextAlignment="Center"
                                            Margin="1"/>
@@ -84,7 +82,7 @@
                                            Grid.Column="4"
                                            FontSize="Medium" 
                                            FontAttributes="Bold"
-                                           BackgroundColor="MediumBlue" 
+                                           BackgroundColor="#FFC107" 
                                            TextColor="White"
                                            HorizontalTextAlignment="Center"
                                            Margin="1"/>
@@ -93,7 +91,7 @@
                                            Grid.Column="5"
                                            FontSize="Medium" 
                                            FontAttributes="Bold"
-                                           BackgroundColor="MediumBlue" 
+                                           BackgroundColor="#FFC107" 
                                            TextColor="White"
                                            HorizontalTextAlignment="Center"
                                            Margin="1"/>
@@ -102,7 +100,7 @@
                                            Grid.Column="6"
                                            FontSize="Medium" 
                                            FontAttributes="Bold"
-                                           BackgroundColor="MediumBlue" 
+                                           BackgroundColor="#FFC107" 
                                            TextColor="White"
                                            HorizontalTextAlignment="Center"
                                            Margin="1"/>
@@ -111,7 +109,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid BackgroundColor="Black">
+                                    <Grid BackgroundColor="LightGray">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -121,48 +119,90 @@
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" 
+                                        <Label x:Name="label1" 
+                                                Grid.Column="0" 
                                                 Text ="{Binding d1.n}"
                                                 HorizontalOptions="FillAndExpand"
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label>
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label1}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Grid.Column="1"
+                                               x:Name="label2"
                                                 Text ="{Binding d2.n}"
                                                 HorizontalOptions="FillAndExpand"
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label>
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label2}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Grid.Column="2"
+                                               x:Name="label3" 
                                                 Text ="{Binding d3.n}"
                                                 HorizontalOptions="FillAndExpand"
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label>
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label3}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Grid.Column="3"
+                                               x:Name="label4" 
                                                 Text ="{Binding d4.n}" 
                                                 HorizontalOptions="FillAndExpand" 
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label>
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label4}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Grid.Column="4"
+                                               x:Name="label5" 
                                                 Text ="{Binding d5.n}"
                                                 HorizontalOptions="FillAndExpand"
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label>
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label5}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Grid.Column="5"
+                                               x:Name="label6" 
                                                 Text ="{Binding d6.n}"
                                                 HorizontalOptions="FillAndExpand"
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label>
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label6}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                         <Label Grid.Column="6"
+                                               x:Name="label7" 
                                                 Text ="{Binding d7.n}"
                                                 HorizontalOptions="FillAndExpand"
                                                 BackgroundColor="LightBlue"
                                                 HorizontalTextAlignment="Center"
-                                                Margin="1"></Label> 
+                                                Margin="1">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                                      CommandParameter="{x:Reference label7}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label> 
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
