@@ -16,16 +16,15 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <ScrollView Grid.Row="0">
-                    <StackLayout Orientation="Vertical">
-                        <ListView BindingContext="{StaticResource CalendaryViewModel}" 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout Orientation="Vertical">
+                    <ListView BindingContext="{StaticResource CalendaryViewModel}" 
                             x:Name="CalendaryViewCard"
-                            RowHeight="70" 
+                            RowHeight="80" 
                             BackgroundColor="White"
                             ItemsSource="{Binding ListWeek}"
                             SelectedItem="{Binding SelectedWeek, Mode=TwoWay}"
@@ -33,49 +32,144 @@
                             RefreshCommand="{Binding RefreshCommand}"
                             IsRefreshing="{Binding IsRefreshing}"
                             >
-                            
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
-                                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
-                                                <Button Text="{Binding d1.n}" 
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                                <Button Text="{Binding d2.n}"
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                                <Button Text="{Binding d3.n}"
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                                <Button Text="{Binding d4.n}"
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                                <Button Text="{Binding d5.n}"
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                                <Button Text="{Binding d6.n}"
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                                <Button Text="{Binding d7.n}"
-                                                   TextColor="Black"
-                                                   FontSize="25"
-                                                   Style="{x:StaticResource Key=LabelStyle}"/>
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-                </ScrollView>
-            </Grid>
-        </StackLayout>
+                        <ListView.Header>
+                            <Grid BackgroundColor="Black">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="LUN" 
+                                           HorizontalOptions="Fill"  
+                                           Grid.Column="0"  
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold" 
+                                           BackgroundColor="MediumBlue" 
+                                           TextColor="White" 
+                                           HorizontalTextAlignment="Center"
+                                           Margin="1"/>
+                                <Label Text="MAR"
+                                           HorizontalOptions="Fill" 
+                                           Grid.Column="1" 
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold" 
+                                           BackgroundColor="MediumBlue" 
+                                           TextColor="White"
+                                           HorizontalTextAlignment="Center"
+                                           Margin="1"/>
+                                <Label Text="MER"
+                                           HorizontalOptions="Fill" 
+                                           Grid.Column="2" 
+                                           FontSize="Medium"
+                                           FontAttributes="Bold"
+                                           BackgroundColor="MediumBlue"
+                                           TextColor="White"
+                                           HorizontalTextAlignment="Center" 
+                                           Margin="1"/>
+                                <Label Text="GIO"
+                                           HorizontalOptions="Fill"
+                                           Grid.Column="3"
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold"
+                                           BackgroundColor="MediumBlue" 
+                                           TextColor="White"
+                                           HorizontalTextAlignment="Center"
+                                           Margin="1"/>
+                                <Label Text="VEN"
+                                           HorizontalOptions="Fill"
+                                           Grid.Column="4"
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold"
+                                           BackgroundColor="MediumBlue" 
+                                           TextColor="White"
+                                           HorizontalTextAlignment="Center"
+                                           Margin="1"/>
+                                <Label Text="SAB"
+                                           HorizontalOptions="Fill"
+                                           Grid.Column="5"
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold"
+                                           BackgroundColor="MediumBlue" 
+                                           TextColor="White"
+                                           HorizontalTextAlignment="Center"
+                                           Margin="1"/>
+                                <Label Text="DOM"
+                                           HorizontalOptions="Fill"
+                                           Grid.Column="6"
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold"
+                                           BackgroundColor="MediumBlue" 
+                                           TextColor="White"
+                                           HorizontalTextAlignment="Center"
+                                           Margin="1"/>
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="Black">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" 
+                                                Text ="{Binding d1.n}"
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label>
+                                        <Label Grid.Column="1"
+                                                Text ="{Binding d2.n}"
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label>
+                                        <Label Grid.Column="2"
+                                                Text ="{Binding d3.n}"
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label>
+                                        <Label Grid.Column="3"
+                                                Text ="{Binding d4.n}" 
+                                                HorizontalOptions="FillAndExpand" 
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label>
+                                        <Label Grid.Column="4"
+                                                Text ="{Binding d5.n}"
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label>
+                                        <Label Grid.Column="5"
+                                                Text ="{Binding d6.n}"
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label>
+                                        <Label Grid.Column="6"
+                                                Text ="{Binding d7.n}"
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="LightBlue"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="1"></Label> 
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage> 
