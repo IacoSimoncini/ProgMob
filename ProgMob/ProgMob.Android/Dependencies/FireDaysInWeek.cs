@@ -57,7 +57,7 @@ namespace ProgMob.Droid.Dependencies
                     DaysInWeek d = new DaysInWeek();
                     d.n = doc.Id;
                     d.ifSet = false;
-                    if ( doc.Get(whichTypeControl(currentType))!= null && doc.Get(whichTypeControl(currentType)).Equals(currentType) )
+                    if ( doc.Get(whichTypeControl(currentType))!= null && doc.Get(whichTypeControl(currentType)).Equals("True") )
                     {
                         d.ifSet = true;
                     }
