@@ -96,11 +96,5 @@ namespace ProgMob.ViewModel
             }
         }
 
-
-        void labelTapCommand(object obj)
-        {
-            var labelText = (obj as Label).Text;
-            Console.WriteLine(labelText);
-        }
     }
 }

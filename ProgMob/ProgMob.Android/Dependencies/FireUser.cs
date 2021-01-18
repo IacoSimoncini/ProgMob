@@ -53,8 +53,27 @@ namespace ProgMob.Droid.Dependencies
                 mp.Put("username", User.Username);
                 mp.Put("email", User.Email);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid)
-                    .Set(mp);
+                    .Document(Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid);
+                collection.Set(mp);
+                HashMap mp2 = new HashMap();
+                mp2.Put(1, "LUN");
+                mp2.Put(2, "MAR");
+                mp2.Put(3, "MER");
+                mp2.Put(4, "GIO");
+                mp2.Put(5, "VEN");
+                mp2.Put(6, "SAB");
+                mp2.Put(7, "DOM");
+                HashMap mp3 = new HashMap();
+                mp3.Put("ifSetA", "False");
+                mp3.Put("ifSetB", "False");
+                mp3.Put("ifSetC", "False");
+                for (int i = 1; i <= 4; i++)
+                {
+                    for(int j = 1; j <= 7; j++)
+                    {
+                        collection.Collection(i.ToString()).Document(mp2.Get(j).ToString()).Set(mp3);
+                    }
+                }
                 return true;
             }
             catch (Exception e)
