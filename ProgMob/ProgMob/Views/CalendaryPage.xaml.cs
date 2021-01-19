@@ -27,7 +27,7 @@ namespace ProgMob.Views
             InitializeComponent();
             Title = "Calendary";
             type = Application.Current.Properties["ABC"].ToString();
-            UserId = Application.Current.Properties["MyUID"].ToString();
+            UserId = Application.Current.Properties["UID"].ToString();
             CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
             ToolbarItem TBItemLogout = new ToolbarItem
             {

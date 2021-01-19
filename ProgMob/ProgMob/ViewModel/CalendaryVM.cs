@@ -65,7 +65,8 @@ namespace ProgMob.ViewModel
 
         public CalendaryVM()
         {
-            UserId = Application.Current.Properties["MyUID"].ToString();
+            ListWeek = new ObservableCollection<Week>();
+            UserId = Application.Current.Properties["UID"].ToString();
             selectedType = Application.Current.Properties["ABC"].ToString();
             tapCommand = new Command(OnTapped);
         }
@@ -77,16 +78,15 @@ namespace ProgMob.ViewModel
 
 
         
-        void OnTapped(object s)
+        async void OnTapped(object s)
         {
             var label = s as Label;
 
             var week = label.BindingContext as Week;
 
             DaysInWeek d = new DaysInWeek();
-
             d = getSelectedDay(label.Text, week);
-            /*if (Application.Current.Properties["Admin"].ToString().Equals("true") && !d.ifSet) {
+            if (Application.Current.Properties["Admin"].ToString().Equals("true") && !d.ifSet) {
                 Application.Current.Properties["selectedWeek"] = d.week;
                 Application.Current.Properties["selectedDay"] = d.n;
                 verify = 0;
@@ -101,12 +101,12 @@ namespace ProgMob.ViewModel
 
                 //CardVM.ListCard(UserId, selectedDay, selectedWeek, selectedType);
             }
-            else { */
+            else {
                 Application.Current.Properties["selectedWeek"] = d.week;
                 Application.Current.Properties["selectedDay"] = d.n;
                 Application.Current.SavePropertiesAsync();
                 App.Current.MainPage.Navigation.PushAsync(new CardListPage());
-            //}
+            }
         }
 
         private void OnPropertyChanged(string propertyName)
