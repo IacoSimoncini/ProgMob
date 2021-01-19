@@ -13,11 +13,16 @@ namespace ProgMob.Popup
     {
         private string Day;
         private string UserId;
-        public PopupCard(string Uid, string day)
+        private string Week;
+        private string Type;
+        public PopupCard(string Uid, string day, string type, string week)
         {
             InitializeComponent();
+
             Day = day;
             UserId = Uid;
+            Week = week;
+            Type = type;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -27,10 +32,9 @@ namespace ProgMob.Popup
                 Card card = new Card();
                 card.Path = Name.Text;
                 card.Ref = UserId;
-                card.Type = "A";
-                if (DatabaseCards.InsertCard(card , Day))
+                if (DatabaseCards.InsertCard(card , Day, Week))
                 {
-                    if( await DatabaseDaysInWeek.CheckDaysInWeek(UserId , "A",1))
+                    if( await DatabaseDaysInWeek.CheckDaysInWeek(UserId , Type, Convert.ToInt32(Week)))
                     {
                         _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
                         //CardListPage.verify = 1;

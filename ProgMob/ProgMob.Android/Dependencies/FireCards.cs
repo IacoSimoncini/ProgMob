@@ -39,15 +39,19 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public bool InsertCard(Card card, string day)
+        public bool InsertCard(Card card, string day, string week)
         {
             try
             {
                 HashMap mp = new HashMap();
                 mp.Put("type", card.Type);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(card.Ref).Collection(day).Document(card.Path);
+                    .Document(card.Ref).Collection(week).Document(day).Collection("dailyCard").Document(card.Path);
                 collection.Set(mp);
+                HashMap mp2 = new HashMap();
+                mp2.Put("iFSet" + card.Type, "true");
+                Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+                    .Document(card.Ref).Collection(week).Document(day).Set(mp2);
                 return true;
             }
             catch (Exception e)
@@ -56,12 +60,12 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<bool> ListCard(string Uid , string day , string type)
+        public async Task<bool> ListCard(string Uid , string day, string week , string type)
         {
             value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Uid)
-                .Collection(day);
+                .Collection(week).Document(day).Collection("dailyCard");
             UserId = Uid;
             currentType = type;
             collection.Get().AddOnCompleteListener(this);

@@ -209,7 +209,7 @@
                                                 <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label7}"/>
                                             </Label.GestureRecognizers>
-                                        </Label> 
+                                        </Label>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -217,6 +217,16 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
+            <Button 
+                x:Name="ChangeTypeButton"
+                Grid.Row="1"
+                Text="Change Type"
+                BackgroundColor="{StaticResource AccentColor}"
+                BorderRadius="35"
+                HeightRequest="20"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                Clicked="ChangeTypeButton_Clicked"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage> 

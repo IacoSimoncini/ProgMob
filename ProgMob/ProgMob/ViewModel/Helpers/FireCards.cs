@@ -7,9 +7,9 @@ namespace ProgMob.ViewModel.Helpers
 {
     public interface FireCards
     {
-        bool InsertCard(Card Card, string day);
+        bool InsertCard(Card Card, string day, string week);
         Task<bool> DeleteCard(Card Card , string day);
-        Task<bool> ListCard(string Uid, string day, string type);
+        Task<bool> ListCard(string Uid, string day, string week,string type);
         Task<IList<Card>> GetCard();
 
     }
@@ -17,17 +17,17 @@ namespace ProgMob.ViewModel.Helpers
     {
         private static FireCards firestoreCards = DependencyService.Get<FireCards>();
 
-        public static bool InsertCard(Card Card , string day)
+        public static bool InsertCard(Card Card , string day ,string week)
         {
-            return firestoreCards.InsertCard(Card , day);
+            return firestoreCards.InsertCard(Card , day, week);
         }
         public static Task<bool> DeleteCard(Card Card , string day)
         {
             return firestoreCards.DeleteCard(Card , day);
         }
-        public static Task<bool> ListCard(string Uid, string day, string type)
+        public static Task<bool> ListCard(string Uid, string day, string week ,string type)
         {
-            return firestoreCards.ListCard(Uid , day , type);
+            return firestoreCards.ListCard(Uid , day ,  week , type);
         }
         public static Task<IList<Card>> GetCard()
         {

@@ -15,6 +15,8 @@ namespace ProgMob.Views
         static public int verify = 0;
         private readonly string UserId;
         private readonly string selectedDay;
+        private readonly string selectedWeek;
+        private readonly string selectedType;
         CardVM CardVM;
         public CardListPage()
         {
@@ -22,6 +24,8 @@ namespace ProgMob.Views
             Title = "Cards";
             selectedDay = Application.Current.Properties["selectedDay"].ToString();
             UserId = Application.Current.Properties["UID"].ToString();
+            selectedType = Application.Current.Properties["ABC"].ToString();
+            selectedWeek = Application.Current.Properties["selectedWeek"].ToString();
             CardVM = Resources["CardViewModel"] as CardVM;
             Btn_AddCard.IsVisible = false;
 
@@ -54,14 +58,14 @@ namespace ProgMob.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-             CardVM.ListCard(UserId , selectedDay);
+             CardVM.ListCard(UserId , selectedDay, selectedWeek, selectedType);
         }
 
 
         private async void Button_Clicked(object sender, System.EventArgs e)
         {
             verify = 0;
-            await PopupNavigation.PushAsync(new PopupCard(UserId, selectedDay));
+            await PopupNavigation.PushAsync(new PopupCard(UserId, selectedDay, "A", "1"));
 
             for (int i = 0; i < 1000; i++)
             {
@@ -70,7 +74,7 @@ namespace ProgMob.Views
                     break;
             }
 
-            CardVM.ListCard(UserId , selectedDay);
+            CardVM.ListCard(UserId , selectedDay, selectedWeek, selectedType);
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

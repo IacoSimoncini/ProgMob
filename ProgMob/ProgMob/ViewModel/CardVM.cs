@@ -53,7 +53,7 @@ namespace ProgMob.ViewModel
                 {
                     IsRefreshing = true;
 
-                    ListCard(App.Current.Properties["UID"].ToString() , Application.Current.Properties["selectedDay"].ToString());
+                    ListCard(App.Current.Properties["UID"].ToString() , Application.Current.Properties["selectedDay"].ToString(), Application.Current.Properties["selectedWeek"].ToString(), Application.Current.Properties["ABC"].ToString());
 
                     IsRefreshing = false;
                 });
@@ -99,9 +99,9 @@ namespace ProgMob.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async void ListCard(string Uid , string Day)
+        public async void ListCard(string Uid , string Day, string Week, string Type)
         {
-            if (await DatabaseCards.ListCard(Uid, Day , "A"))
+            if (await DatabaseCards.ListCard(Uid, Day , Week ,Type))
             {
                 Cards.Clear();
                 var card = await DatabaseCards.GetCard();

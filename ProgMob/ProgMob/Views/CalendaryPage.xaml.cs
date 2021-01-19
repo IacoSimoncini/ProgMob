@@ -20,29 +20,15 @@ namespace ProgMob.Views
     {
         static public int verify = 0;
         public CalendaryVM CalendaryVM;
-        private readonly string UserId;
-        private readonly string type;
+        private string UserId;
+        private string type;
         public CalendaryPage()
         {
             InitializeComponent();
             Title = "Calendary";
-            type = "A"; //Application.Current.Properties["ABC"].ToString();
-            UserId = Application.Current.Properties["UID"].ToString();
+            type = Application.Current.Properties["ABC"].ToString();
+            UserId = Application.Current.Properties["MyUID"].ToString();
             CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
-
-            ToolbarItem TBItem = new ToolbarItem
-            {
-                Text = "Change Type",
-                IconImageSource = ImageSource.FromFile("logout.png"),
-                Order = ToolbarItemOrder.Secondary,
-                Priority = 0
-            };
-
-            TBItem.Clicked += async (sender, args) =>
-            {
-                Console.WriteLine("AO");
-            };
-
             ToolbarItem TBItemLogout = new ToolbarItem
             {
                 Text = "Logout",
@@ -65,7 +51,6 @@ namespace ProgMob.Views
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
             this.ToolbarItems.Add(TBItemLogout);
-            this.ToolbarItems.Add(TBItem);
         }
 
 
@@ -73,6 +58,13 @@ namespace ProgMob.Views
         {
             CalendaryVM.ListDaysInWeek(UserId, type);
             base.OnAppearing();
+        }
+
+        private void ChangeTypeButton_Clicked(object sender, EventArgs e)
+        {
+            type = CalendaryVM.ChangeType();
+            CalendaryVM.ListDaysInWeek(UserId, type);
+            Console.WriteLine(type);
         }
 
     }

@@ -20,6 +20,7 @@ namespace ProgMob
         {
 
             Application.Current.Properties["MyUID"] = DatabaseProfile.GetUid();
+            Application.Current.Properties["ABC"] = "A";
             await Application.Current.SavePropertiesAsync();
             if (await DatabaseProfile.GetProfile())
             {

@@ -33,8 +33,8 @@
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
-            <ViewModel:ListCardTemplateSelector 
-                x:Key="ListCardTemplateSelector"
+            <ViewModel:MyDataTemplateSelector 
+                x:Key="myDataTemplateSelector"
                 UserTemplate="{StaticResource userTemplate}"
                 AdminTemplate="{StaticResource adminTemplate}"
                 />
@@ -58,7 +58,7 @@
                         IsPullToRefreshEnabled="true"
                         RefreshCommand="{Binding RefreshCommand}"
                         IsRefreshing="{Binding IsRefreshing}"
-                        ItemTemplate="{StaticResource ListCardTemplateSelector}">
+                        ItemTemplate="{StaticResource myDataTemplateSelector}">
                     </ListView>
                 </StackLayout>
             </ScrollView>

@@ -8,36 +8,18 @@ namespace ProgMob.ViewModel
 {
     public class MyDataTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate TrueTemplate { get; set; }
-        public DataTemplate FalseTemplate { get; set; }
-        public DataTemplate TrueAdminTemplate { get; set; }
-        public DataTemplate FalseAdminTemplate { get; set; }
+        public DataTemplate UserTemplate { get; set; }
+        public DataTemplate AdminTemplate { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            if (Application.Current.Properties["Admin"].Equals("true"))
+            if (false)
             {
-                var aux = item as DaysInWeek;
-                if (aux.ifSet)
-                {
-                    return TrueAdminTemplate;
-                }
-                else
-                {
-                    return FalseAdminTemplate;
-                }
+                return AdminTemplate;
             }
             else
             {
-                var aux = item as DaysInWeek;
-                if (aux.ifSet)
-                {
-                    return TrueTemplate;
-                }
-                else
-                {
-                    return FalseTemplate;
-                }
+                return UserTemplate;
             }
         }
     }

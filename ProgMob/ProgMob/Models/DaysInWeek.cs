@@ -8,5 +8,6 @@ namespace ProgMob.Models
     {
         public string n { get; set; }
         public Boolean ifSet { get; set; }
+        public string week { get; set; }
     }
 }
