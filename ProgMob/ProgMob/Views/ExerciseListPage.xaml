@@ -56,7 +56,8 @@
             <Button
                 x:Name="Btn_AddEx"
                 Grid.Row="0"
-                Text="+" FontSize="30"
+                Text="+"
+                FontSize="30"
                 BackgroundColor="{StaticResource AccentColor}" 
                 BorderRadius="35"
                 TextColor="Black"

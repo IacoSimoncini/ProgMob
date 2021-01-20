@@ -127,7 +127,27 @@ namespace ProgMob.Droid.Dependencies
                 value = 2;
             }
         }
-        
+
+        public bool Update(User user)
+        {
+            try
+            {
+                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+                    .Document(user.Id)
+                    .Update("name", user.Name,
+                        "email", user.Email,
+                        "surname", user.Surname,
+                        "username", user.Username);
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            
+        }
+
         public bool UpdateUserPic(User User, string uri)
         {
             try

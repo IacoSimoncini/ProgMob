@@ -2,7 +2,9 @@
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -44,7 +46,6 @@ namespace ProgMob.Views
                 else await DisplayAlert("Logout", "It was not possible to disconnect", "Cancel");
             };
             this.ToolbarItems.Add(TBItem);
-
 
         }
 
@@ -98,6 +99,18 @@ namespace ProgMob.Views
             }
         }
 
-        
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.PushAsync(new PopupUpdateUser(user));
+            if (await DatabaseUserDetail.generateUserData())
+            {
+                user = DatabaseUserDetail.getUserData();
+
+                ProfileImage.Source = user.Uri;
+                name.Text = user.Name;
+                surname.Text = user.Surname;
+                email.Text = user.Email;
+            }
+        }
     }
 }

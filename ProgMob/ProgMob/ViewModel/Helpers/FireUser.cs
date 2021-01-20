@@ -12,6 +12,7 @@ namespace ProgMob.ViewModel.Helpers
         bool UpdateUserPic(User User, string uri);
         Task<bool> ListUser();
         Task<IList<User>> GetUser();
+        bool Update(User user);
 
     }
     class DatabaseUser
@@ -41,6 +42,11 @@ namespace ProgMob.ViewModel.Helpers
         public static Task<IList<User>> GetUser()
         {
             return firestoreUser.GetUser();
+        }
+
+        public static bool Update(User user)
+        {
+            return firestoreUser.Update(user);
         }
 
 
