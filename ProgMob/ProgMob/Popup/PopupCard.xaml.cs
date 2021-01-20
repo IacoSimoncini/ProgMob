@@ -30,7 +30,7 @@ namespace ProgMob.Popup
             if(Name.Text != null && Name.Text.Length < 10)
             {
                 Card card = new Card();
-                card.Path = Name.Text;
+                card.Name = Name.Text;
                 card.Ref = UserId;
                 card.Type = Type;
                 if (DatabaseCards.InsertCard(card , Day, Week))

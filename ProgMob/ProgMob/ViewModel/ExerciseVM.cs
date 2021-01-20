@@ -75,7 +75,7 @@ namespace ProgMob.ViewModel
         private async void Modify(object obj)
         {
             var ex = obj as Exercise;
-            await PopupNavigation.PushAsync(new PopupUpdateEx(ex.Id));
+            await PopupNavigation.PushAsync(new PopupUpdateEx(ex.Id, ex.Name, ex.Description, ex.Difficulty));
         }
 
         private void OnpropertyChanged(string propertyName)

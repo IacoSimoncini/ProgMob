@@ -22,17 +22,19 @@ namespace ProgMob.Droid.Dependencies
             cardList = new List<Card>();
         }
 
-        public async Task<bool> DeleteCard(Card Card , string day, string week)
+        public async Task<bool> DeleteCard(Card card , string day, string week)
         {
             try
             {
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(Card.Ref)
+                    .Document(card.Ref)
                     .Collection(week)
                     .Document(day)
                     .Collection("dailyCard")
-                    .Document(Card.Path);
+                    .Document(card.Path);
                 collection.Delete();
+                Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+                    .Document(card.Ref).Collection(week).Document(day).Update("ifSet" + card.Type, "False");
                 return true;
             }
             catch (Exception e)
@@ -47,12 +49,13 @@ namespace ProgMob.Droid.Dependencies
             {
                 HashMap mp = new HashMap();
                 mp.Put("type", card.Type);
+                mp.Put("name", card.Name);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(card.Ref)
                     .Collection(week)
                     .Document(day)
                     .Collection("dailyCard")
-                    .Document(card.Path);
+                    .Document();
                 collection.Set(mp);
                 HashMap mp2 = new HashMap();
                 mp2.Put("ifSet" + card.Type, "True");
@@ -107,6 +110,8 @@ namespace ProgMob.Droid.Dependencies
                 {
                     if (doc.Get("type").Equals(currentType)) {
                         Card card = new Card();
+                        card.Name = doc.Get("name").ToString();
+                        card.Type = doc.Get("type").ToString();
                         card.Path = doc.Id.ToString();
                         card.Ref = UserId;
                         cardList.Add(card);
@@ -121,6 +126,22 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        
+        public async Task<bool> UpdateCard(Card c, string day, string week, string newName)
+        {
+            try
+            {
+                Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+                       .Document(c.Ref).Collection(week).Document(day).Collection("dailyCard").Document(c.Path)
+                       .Update("name", newName);
+                return true;             
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }

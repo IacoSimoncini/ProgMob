@@ -1,6 +1,8 @@
 ﻿using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
 using ProgMob.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -62,7 +64,7 @@ namespace ProgMob.ViewModel
         public CardVM()
         {
             Cards = new ObservableCollection<Card>();
-            //ModifyCommand = new Command<object>(Modify);
+            ModifyCommand = new Command<object>(Modify);
             DeleteCommand = new Command<object>(Delete);
             PlayCommand = new Command<object>(Play);
             
@@ -74,13 +76,12 @@ namespace ProgMob.ViewModel
             App.Current.MainPage.Navigation.PushAsync(new TimerPage(card.Path, card.Ref));
         }
         
-        /*
+        
          private async void Modify(object obj)
         {
-
-            var ex = obj as Exercise;
-            await PopupNavigation.PushAsync(new PopupUpdateEx(ex.Id));
-        }*/
+            var c = obj as Card;
+            await PopupNavigation.PushAsync(new PopupUpdateCard(c.Ref, Application.Current.Properties["selectedDay"].ToString() , c.Path, Application.Current.Properties["selectedWeek"].ToString()));
+        }
         private async void Delete(object obj)
         {
             var card = obj as Card;

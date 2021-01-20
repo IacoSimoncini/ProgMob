@@ -15,7 +15,6 @@
                 <ViewCell>
                     <ViewCell.ContextActions>
                         <MenuItem x:Name="DeleteItem" IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardDetailViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
-                        <MenuItem x:Name="ModifyItem" IconImageSource="pencil.png"/>
                     </ViewCell.ContextActions>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
                         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >

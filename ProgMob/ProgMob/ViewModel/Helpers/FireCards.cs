@@ -9,6 +9,7 @@ namespace ProgMob.ViewModel.Helpers
     {
         bool InsertCard(Card Card, string day, string week);
         Task<bool> DeleteCard(Card Card , string day, string week);
+        Task<bool> UpdateCard(Card c, string day, string week, string newName);
         Task<bool> ListCard(string Uid, string day, string week,string type);
         Task<IList<Card>> GetCard();
 
@@ -24,6 +25,11 @@ namespace ProgMob.ViewModel.Helpers
         public static Task<bool> DeleteCard(Card Card , string day, string week)
         {
             return firestoreCards.DeleteCard(Card , day, week);
+        }
+
+        public static Task<bool> UpdateCard(Card c, string day, string week, string newName)
+        {
+            return firestoreCards.UpdateCard(c, day, week, newName);
         }
         public static Task<bool> ListCard(string Uid, string day, string week ,string type)
         {

@@ -17,7 +17,7 @@
                         <MenuItem x:Name="PlayItem" IconImageSource="playbutton.png" Command="{Binding PlayCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
                     </ViewCell.ContextActions>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
-                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
+                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
@@ -25,11 +25,11 @@
                 <ViewCell>
                     <ViewCell.ContextActions>
                         <MenuItem x:Name="DeleteItem" IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}" />
-                        <MenuItem x:Name="ModifyItem" IconImageSource="pencil.png"/>
+                        <MenuItem x:Name="ModifyItem" IconImageSource="pencil.png" Command="{Binding ModifyCommand, Source={StaticResource CardViewModel}}" IsDestructive="False" CommandParameter="{Binding .}"/>
 
                     </ViewCell.ContextActions>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
-                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
+                        <Label HorizontalOptions="StartAndExpand" FontSize="25" VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="280" Style="{x:StaticResource Key=LabelStyle}"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
