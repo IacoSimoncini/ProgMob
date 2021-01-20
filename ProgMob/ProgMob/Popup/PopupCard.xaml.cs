@@ -32,6 +32,7 @@ namespace ProgMob.Popup
                 Card card = new Card();
                 card.Path = Name.Text;
                 card.Ref = UserId;
+                card.Type = Type;
                 if (DatabaseCards.InsertCard(card , Day, Week))
                 {
                     if( await DatabaseDaysInWeek.CheckDaysInWeek(UserId , Type, Convert.ToInt32(Week)))

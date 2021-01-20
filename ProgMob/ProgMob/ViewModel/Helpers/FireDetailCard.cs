@@ -7,29 +7,29 @@ namespace ProgMob.ViewModel.Helpers
 {
     public interface FireDetailCard
     {
-        bool InsertEx(string Uid, string Cid, Exercise ex, string day);
-        Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day);
+        bool InsertEx(string Uid, string Cid, Exercise ex, string day, string week);
+        Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day, string week);
         Task<bool> UpdateExercise(string Uid, string Cid, Exercise ex);
-        Task<bool> ListExercise(string Uid, string Cid, string day);
+        Task<bool> ListExercise(string Uid, string Cid, string day, string week);
         Task<IList<Exercise>> GetExercises();
     }
     class DatabaseDetailCard
     {
         private static FireDetailCard firestoreDetailCard = DependencyService.Get<FireDetailCard>();
 
-        public static bool InsertEx(string Uid, string Cid, Exercise ex , string day)
+        public static bool InsertEx(string Uid, string Cid, Exercise ex , string day, string week)
         {
-            return firestoreDetailCard.InsertEx(Uid, Cid, ex , day);
+            return firestoreDetailCard.InsertEx(Uid, Cid, ex , day, week);
         }
 
-        public static Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day)
+        public static Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day, string week)
         {
-            return firestoreDetailCard.DeleteExercise(Uid, Cid, ex , day);
+            return firestoreDetailCard.DeleteExercise(Uid, Cid, ex , day, week);
         }
 
-        public static Task<bool> ListExercise(string Uid, string Cid, string day)
+        public static Task<bool> ListExercise(string Uid, string Cid, string day, string week)
         {
-            return firestoreDetailCard.ListExercise(Uid, Cid, day);
+            return firestoreDetailCard.ListExercise(Uid, Cid, day, week);
         }
 
         public static Task<bool> UpdateExercise(string Uid, string Cid, Exercise ex)

@@ -121,7 +121,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="label1" 
                                                Grid.Column="0" 
-                                               IsVisible="{Binding d1.ifSet}"
+                                               IsEnabled="{Binding d1.ifSet}"
                                                Text ="{Binding d1.n}"
                                                HorizontalOptions="FillAndExpand"
                                                BackgroundColor="LightBlue"
@@ -134,7 +134,7 @@
                                         </Label>
                                         <Label Grid.Column="1"
                                                x:Name="label2"
-                                               IsVisible="{Binding d2.ifSet}"
+                                               IsEnabled="{Binding d2.ifSet}"
                                                Text ="{Binding d2.n}"
                                                HorizontalOptions="FillAndExpand"
                                                BackgroundColor="LightBlue"
@@ -147,7 +147,7 @@
                                         </Label>
                                         <Label Grid.Column="2"
                                                x:Name="label3" 
-                                               IsVisible="{Binding d3.ifSet}"
+                                               IsEnabled="{Binding d3.ifSet}"
                                                Text ="{Binding d3.n}"
                                                HorizontalOptions="FillAndExpand"
                                                BackgroundColor="LightBlue"
@@ -160,7 +160,7 @@
                                         </Label>
                                         <Label Grid.Column="3"
                                                x:Name="label4" 
-                                               IsVisible="{Binding d4.ifSet}"
+                                               IsEnabled="{Binding d4.ifSet}"
                                                Text ="{Binding d4.n}" 
                                                HorizontalOptions="FillAndExpand" 
                                                BackgroundColor="LightBlue"
@@ -173,7 +173,7 @@
                                         </Label>
                                         <Label Grid.Column="4"
                                                x:Name="label5" 
-                                               IsVisible="{Binding d5.ifSet}"
+                                               IsEnabled="{Binding d5.ifSet}"
                                                Text ="{Binding d5.n}"
                                                HorizontalOptions="FillAndExpand"
                                                BackgroundColor="LightBlue"
@@ -186,7 +186,7 @@
                                         </Label>
                                         <Label Grid.Column="5"
                                                x:Name="label6" 
-                                               IsVisible="{Binding d6.ifSet}"
+                                               IsEnabled="{Binding d6.ifSet}"
                                                Text ="{Binding d6.n}"
                                                HorizontalOptions="FillAndExpand"
                                                BackgroundColor="LightBlue"
@@ -199,7 +199,7 @@
                                         </Label>
                                         <Label Grid.Column="6"
                                                x:Name="label7" 
-                                               IsVisible="{Binding d7.ifSet}"
+                                               IsEnabled="{Binding d7.ifSet}"
                                                Text ="{Binding d7.n}"
                                                HorizontalOptions="FillAndExpand"
                                                BackgroundColor="LightBlue"

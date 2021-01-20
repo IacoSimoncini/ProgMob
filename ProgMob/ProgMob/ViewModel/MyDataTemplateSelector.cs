@@ -13,7 +13,7 @@ namespace ProgMob.ViewModel
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            if (false)
+            if (Application.Current.Properties["Admin"].ToString().Equals("true"))
             {
                 return AdminTemplate;
             }

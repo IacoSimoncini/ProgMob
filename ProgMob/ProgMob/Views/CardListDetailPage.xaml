@@ -11,6 +11,35 @@
             <ViewModel:CardDetailVM x:Key="CardDetailViewModel"/>
             <Color x:Key="NavigationPrimary">#3D9F88</Color>
             <Color x:Key="AccentColor">#FFC107</Color>
+            <DataTemplate x:Key="adminTemplate">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem x:Name="DeleteItem" IconImageSource="trash.png" Command="{Binding DeleteCommand, Source={StaticResource CardDetailViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
+                        <MenuItem x:Name="ModifyItem" IconImageSource="pencil.png"/>
+                    </ViewCell.ContextActions>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
+                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+                            <Image WidthRequest="35" HeightRequest="35" Source="{Binding Difficulty}" HorizontalOptions="End" />
+                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="userTemplate">
+                <ViewCell>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
+                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+                            <Image WidthRequest="35" HeightRequest="35" Source="{Binding Difficulty}" HorizontalOptions="End" />
+                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <ViewModel:MyDataTemplateSelector 
+                x:Key="myDataTemplateSelector"
+                UserTemplate="{StaticResource userTemplate}"
+                AdminTemplate="{StaticResource adminTemplate}"
+                />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -22,34 +51,18 @@
 
             <ScrollView Grid.Row="0">
                 <StackLayout Orientation="Vertical">
-                    
+
                     <ListView BindingContext="{StaticResource CardDetailViewModel}" 
-                    RowHeight="80" 
-                    BackgroundColor="White"
-                    ItemsSource="{Binding Exercises}"
-                    SelectedItem="{Binding SelectedExercise, Mode=TwoWay}"
-                    ItemTapped="ListView_ItemTapped"
-                    IsPullToRefreshEnabled="true"
-                    RefreshCommand="{Binding RefreshCommand}"
-                    IsRefreshing="{Binding IsRefreshing}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ViewCell.ContextActions>
-                                        <MenuItem Text="Delete" Command="{Binding DeleteCommand, Source={StaticResource CardDetailViewModel}}" IsDestructive="True" CommandParameter="{Binding .}" />
-                                    </ViewCell.ContextActions>
-                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
-                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
-                                            <Image WidthRequest="35" HeightRequest="35" Source="{Binding Difficulty}" HorizontalOptions="End" />
-                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                </ViewCell>
-
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
+                        RowHeight="80" 
+                        BackgroundColor="White"
+                        ItemsSource="{Binding Exercises}"
+                        SelectedItem="{Binding SelectedExercise, Mode=TwoWay}"
+                        ItemTapped="ListView_ItemTapped"
+                        IsPullToRefreshEnabled="true"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        ItemTemplate="{StaticResource myDataTemplateSelector}">
                     </ListView>
-
                 </StackLayout>
             </ScrollView>
             <Button            

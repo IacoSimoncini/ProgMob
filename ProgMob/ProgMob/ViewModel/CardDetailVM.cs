@@ -75,11 +75,15 @@ namespace ProgMob.ViewModel
         public async void ListEx(string Uid, string Cid)
         {
             Exercises.Clear();
-            if(await DatabaseDetailCard.ListExercise(Uid, Cid, "1")) 
+            if(await DatabaseDetailCard.ListExercise(Uid, 
+                    Cid, 
+                    Application.Current.Properties["selectedDay"].ToString(),
+                    Application.Current.Properties["selectedWeek"].ToString())) 
             {
                 var ex = await DatabaseDetailCard.GetExercises();
                 foreach (var e in ex)
                 {
+                    Console.WriteLine(e.Name);
                     Exercises.Add(e);
                 }
             }
@@ -90,7 +94,9 @@ namespace ProgMob.ViewModel
             var ex = obj as Exercise;
             bool deleted = await DatabaseDetailCard.DeleteExercise(Application.Current.Properties["UID"].ToString(),
                 Application.Current.Properties["CID"].ToString(),
-                ex, "1");
+                ex,
+                Application.Current.Properties["selectedDay"].ToString(),
+                Application.Current.Properties["selectedWeek"].ToString());
             if (deleted)
             {
                 Exercises.Remove(ex);

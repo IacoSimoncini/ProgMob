@@ -84,7 +84,9 @@ namespace ProgMob.ViewModel
         private async void Delete(object obj)
         {
             var card = obj as Card;
-            bool deleted = await DatabaseCards.DeleteCard(card, "1");
+            bool deleted = await DatabaseCards.DeleteCard(card, 
+                Application.Current.Properties["selectedDay"].ToString(),
+                Application.Current.Properties["selectedWeek"].ToString());
             if (deleted)
             {
                 Cards.Remove(card);

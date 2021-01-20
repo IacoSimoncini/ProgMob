@@ -22,13 +22,15 @@ namespace ProgMob.Droid.Dependencies
             cardList = new List<Card>();
         }
 
-        public async Task<bool> DeleteCard(Card Card , string day)
+        public async Task<bool> DeleteCard(Card Card , string day, string week)
         {
             try
             {
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Card.Ref)
-                    .Collection(day)
+                    .Collection(week)
+                    .Document(day)
+                    .Collection("dailyCard")
                     .Document(Card.Path);
                 collection.Delete();
                 return true;
@@ -46,12 +48,19 @@ namespace ProgMob.Droid.Dependencies
                 HashMap mp = new HashMap();
                 mp.Put("type", card.Type);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(card.Ref).Collection(week).Document(day).Collection("dailyCard").Document(card.Path);
+                    .Document(card.Ref)
+                    .Collection(week)
+                    .Document(day)
+                    .Collection("dailyCard")
+                    .Document(card.Path);
                 collection.Set(mp);
                 HashMap mp2 = new HashMap();
-                mp2.Put("iFSet" + card.Type, "true");
+                mp2.Put("ifSet" + card.Type, "True");
                 Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
-                    .Document(card.Ref).Collection(week).Document(day).Set(mp2);
+                    .Document(card.Ref)
+                    .Collection(week)
+                    .Document(day)
+                    .Set(mp2);
                 return true;
             }
             catch (Exception e)
@@ -65,7 +74,9 @@ namespace ProgMob.Droid.Dependencies
             value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Uid)
-                .Collection(week).Document(day).Collection("dailyCard");
+                .Collection(week)
+                .Document(day)
+                .Collection("dailyCard");
             UserId = Uid;
             currentType = type;
             collection.Get().AddOnCompleteListener(this);

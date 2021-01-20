@@ -86,7 +86,10 @@ namespace ProgMob.Views
             Maximum = 60;
             ProgressValue = 60;
             timerRunning = true;
-            if (await DatabaseDetailCard.ListExercise(UserId, CardId, "1"))
+            if (await DatabaseDetailCard.ListExercise(UserId, 
+                    CardId,
+                    Application.Current.Properties["selectedDay"].ToString(),
+                    Application.Current.Properties["selectedWeek"].ToString()))
             {
                 list = (List<Exercise>)await DatabaseDetailCard.GetExercises();
                 foreach (var e in list) Console.WriteLine("e.NAME: " + e.Name);

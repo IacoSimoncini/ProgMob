@@ -56,8 +56,8 @@ namespace ProgMob.Views
 
         protected override void OnAppearing()
         {
-            CalendaryVM.ListDaysInWeek(UserId, type);
             base.OnAppearing();
+            CalendaryVM.ListDaysInWeek(UserId, type);
         }
 
         private void ChangeTypeButton_Clicked(object sender, EventArgs e)
@@ -67,5 +67,9 @@ namespace ProgMob.Views
             Console.WriteLine(type);
         }
 
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }

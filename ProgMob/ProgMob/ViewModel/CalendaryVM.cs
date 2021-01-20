@@ -34,6 +34,25 @@ namespace ProgMob.ViewModel
                 } ;*/
             }
         }
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set 
+            {
+                _isBusy = value; 
+                OnPropertyChanged(nameof(IsBusy)); 
+            }
+        }
+
+        public void LoadDataFromApi()
+        {
+            IsBusy = true;  
+
+            ListDaysInWeek(selectedType, selectedType);
+
+            IsBusy = false;  
+        }
 
         private bool _isRefreshing = false;
         public bool IsRefreshing

@@ -39,7 +39,11 @@ namespace ProgMob.Popup
                 if (x.IsChecked)
                 {
                     x.IsChecked = false;
-                    DatabaseDetailCard.InsertEx(UserId, CardId, x , "1");
+                    DatabaseDetailCard.InsertEx(UserId, 
+                        CardId,
+                        x, 
+                        Application.Current.Properties["selectedDay"].ToString(),
+                        Application.Current.Properties["selectedWeek"].ToString());
                 }
             }
 

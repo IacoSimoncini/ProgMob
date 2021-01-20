@@ -58,9 +58,13 @@ namespace ProgMob.Droid.Dependencies
                     d.n = doc.Id;
                     d.week = currentWeek;
                     d.ifSet = false;
-                    if ( doc.Get(whichTypeControl(currentType))!= null && doc.Get(whichTypeControl(currentType)).Equals("True") )
+                    if ( doc.Get("ifSet" + currentType)!= null && doc.Get("ifSet" + currentType).Equals("True"))
                     {
                         d.ifSet = true;
+                    }
+                    else
+                    {
+                        d.ifSet = false;
                     }
                     whichDayAdd(d, GetWhichWeek(currentWeek));
                     value = 1;

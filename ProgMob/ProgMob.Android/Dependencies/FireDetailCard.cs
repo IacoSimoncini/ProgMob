@@ -19,15 +19,17 @@ namespace ProgMob.Droid.Dependencies
             exList = new List<Exercise>();
         }
 
-        public async Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day)
+        public async Task<bool> DeleteExercise(string Uid, string Cid, Exercise ex, string day, string week)
         {
             try
             {
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Uid)
-                    .Collection(day)
+                    .Collection(week)
+                    .Document(day)
+                    .Collection("dailyCard")
                     .Document(Cid)
-                    .Collection("Ex")
+                    .Collection("exerciseCard")
                     .Document(ex.Name)
                     .Delete();
                 return true;
@@ -43,7 +45,7 @@ namespace ProgMob.Droid.Dependencies
             return exList;
         }
 
-        public bool InsertEx(string Uid, string Cid, Exercise ex, string day)
+        public bool InsertEx(string Uid, string Cid, Exercise ex, string day, string week)
         {
             try
             {
@@ -53,9 +55,11 @@ namespace ProgMob.Droid.Dependencies
                 mp.Put("difficulty", ex.Difficulty);
                 var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                     .Document(Uid)
-                    .Collection(day)
+                    .Collection(week)
+                    .Document(day)
+                    .Collection("dailyCard")
                     .Document(Cid)
-                    .Collection("Ex")
+                    .Collection("exerciseCard")
                     .Document(ex.Name);
                 collection.Set(mp);
                 return true;
@@ -66,14 +70,16 @@ namespace ProgMob.Droid.Dependencies
             }
         }
 
-        public async Task<bool> ListExercise(string Uid, string Cid , string day)
+        public async Task<bool> ListExercise(string Uid, string Cid , string day, string week)
         {
             value = 0;
             var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                    .Document(Uid)
-                   .Collection(day)
+                   .Collection(week)
+                   .Document(day)
+                   .Collection("dailyCard")
                    .Document(Cid)
-                   .Collection("Ex");
+                   .Collection("exerciseCard");
             collection.Get().AddOnCompleteListener(this);
 
             for(int i = 0; i < 30; i++)

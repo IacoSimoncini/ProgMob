@@ -1,4 +1,5 @@
-﻿using ProgMob.Popup;
+﻿using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel;
 using ProgMob.ViewModel.Helpers;
 using Rg.Plugins.Popup.Services;
@@ -21,7 +22,10 @@ namespace ProgMob.Views
             InitializeComponent();
             UserId = Uid;
             CardId = Cid;
-            DatabaseDetailCard.ListExercise(UserId, CardId, "1");
+            DatabaseDetailCard.ListExercise(UserId, 
+                CardId,
+                Application.Current.Properties["selectedDay"].ToString(),
+                Application.Current.Properties["selectedWeek"].ToString());
             Title = CardId;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
 
@@ -62,8 +66,8 @@ namespace ProgMob.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
             CardDetailVM.ListEx(UserId, CardId);
+            base.OnAppearing();
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
