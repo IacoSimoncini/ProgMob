@@ -1,6 +1,8 @@
 ﻿using ProgMob.Models;
+using ProgMob.Popup;
 using ProgMob.ViewModel.Helpers;
 using ProgMob.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -24,7 +26,7 @@ namespace ProgMob.ViewModel
                 {
                     Application.Current.Properties["UID"] = selectedUser.Id;
                     Application.Current.SavePropertiesAsync();
-                    App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
+                    PopupNavigation.PushAsync(new PopupLoading(selectedUser.Id, "A"));
                     for (int i = 0; i < 1000; i++)
                     {
                         System.Threading.Tasks.Task.Delay(100);

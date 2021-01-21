@@ -16,7 +16,8 @@ namespace ProgMob.Droid.Dependencies
         Week DaysInWeek2;
         Week DaysInWeek3;
         Week DaysInWeek4;
-        int value;
+        List<Week> weeks;
+        int value = 0;
         string currentType;
         string currentWeek;
         public FireDaysInWeek()
@@ -25,16 +26,18 @@ namespace ProgMob.Droid.Dependencies
             DaysInWeek2 = new Week();
             DaysInWeek3 = new Week();
             DaysInWeek4 = new Week();
+            weeks = new List<Week>();
         }
 
         public async Task<bool> CheckDaysInWeek(string Uid, string type, int i)
         {
             currentWeek = i.ToString();
+            Console.WriteLine(i.ToString());
             currentType = type;
-                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
+            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("Users")
                 .Document(Uid)
                 .Collection(i.ToString());
-                collection.Get().AddOnCompleteListener(this);
+            collection.Get().AddOnCompleteListener(this);
 
                 for (int j = 0; j < 30; j++)
                 {
@@ -42,8 +45,17 @@ namespace ProgMob.Droid.Dependencies
                     if (value != 0)
                         break;
                 }
-            
-            return true;
+
+            if(value == 1)
+            {
+                value = 0;
+                return true;
+            }
+            else
+            {
+                value = 0;
+                return false;
+            }
         }
 
 
@@ -55,9 +67,9 @@ namespace ProgMob.Droid.Dependencies
                 foreach(var doc in documents.Documents)
                 {
                     DaysInWeek d = new DaysInWeek();
-                    d.n = doc.Id;
+                    d.n = doc.Id; 
                     d.week = currentWeek;
-                    d.ifSet = false;
+                    Console.WriteLine("======================= " + d.n.ToString() + " "+ "ifSet" + currentType + "====================================");
                     if ( doc.Get("ifSet" + currentType)!= null && doc.Get("ifSet" + currentType).Equals("True"))
                     {
                         d.ifSet = true;
@@ -67,8 +79,12 @@ namespace ProgMob.Droid.Dependencies
                         d.ifSet = false;
                     }
                     whichDayAdd(d, GetWhichWeek(currentWeek));
-                    value = 1;
                 }
+                value = 1;
+            }
+            else
+            {
+                value = 2;
             }
         }
 
@@ -115,7 +131,7 @@ namespace ProgMob.Droid.Dependencies
 
         public List<Week> GetWeeks()
         {
-            List<Week> weeks = new List<Week>();
+            weeks.Clear();
             weeks.Add(DaysInWeek1);
             weeks.Add(DaysInWeek2);
             weeks.Add(DaysInWeek3);

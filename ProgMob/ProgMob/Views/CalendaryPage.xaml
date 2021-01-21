@@ -23,7 +23,7 @@
                     <ListView BindingContext="{StaticResource CalendaryViewModel}" 
                             x:Name="CalendaryViewCard"
                             RowHeight="80" 
-                            BackgroundColor="White"
+                            BackgroundColor="LightGray"
                             ItemsSource="{Binding ListWeek}"
                             SelectedItem="{Binding SelectedWeek, Mode=TwoWay}"
                             IsPullToRefreshEnabled="true"
@@ -119,19 +119,27 @@
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Label x:Name="label1" 
-                                               Grid.Column="0" 
+                                        <StackLayout Grid.Column="0" Orientation="Vertical">
+                                            <Label x:Name="label1" 
                                                IsEnabled="{Binding d1.ifSet}"
                                                Text ="{Binding d1.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightBlue"
+                                               BackgroundColor="LightGray"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label1}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="check.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="LightGray"
+                                                IsVisible="{Binding d1.ifSet}"/>
+                                        </StackLayout>
+                                        
                                         <Label Grid.Column="1"
                                                x:Name="label2"
                                                IsEnabled="{Binding d2.ifSet}"

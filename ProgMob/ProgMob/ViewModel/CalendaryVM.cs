@@ -34,26 +34,7 @@ namespace ProgMob.ViewModel
                 } ;*/
             }
         }
-        private bool _isBusy;
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set 
-            {
-                _isBusy = value; 
-                OnPropertyChanged(nameof(IsBusy)); 
-            }
-        }
-
-        public void LoadDataFromApi()
-        {
-            IsBusy = true;  
-
-            ListDaysInWeek(selectedType, selectedType);
-
-            IsBusy = false;  
-        }
-
+        
         private bool _isRefreshing = false;
         public bool IsRefreshing
         {
@@ -136,10 +117,6 @@ namespace ProgMob.ViewModel
         public async void ListDaysInWeek(string Uid , string Type)
         {
             ListWeek.Clear();
-            for (int i = 1; i <= 4; i++)
-            {
-                while (!await DatabaseDaysInWeek.CheckDaysInWeek(Uid, Type, i)) ;
-            }
             var lv = DatabaseDaysInWeek.GetWeeks();
             foreach (var w in lv)
             {
