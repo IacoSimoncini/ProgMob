@@ -112,5 +112,16 @@ namespace ProgMob.Droid.Dependencies
             else { return null; }
         }
 
+
+        public List<Week> GetWeeks()
+        {
+            List<Week> weeks = new List<Week>();
+            weeks.Add(DaysInWeek1);
+            weeks.Add(DaysInWeek2);
+            weeks.Add(DaysInWeek3);
+            weeks.Add(DaysInWeek4);
+            return weeks;
+        }
+
     }  
 }

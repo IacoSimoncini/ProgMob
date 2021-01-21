@@ -138,12 +138,12 @@ namespace ProgMob.ViewModel
             ListWeek.Clear();
             for (int i = 1; i <= 4; i++)
             {
-                if (await DatabaseDaysInWeek.CheckDaysInWeek(Uid, Type, i))
-                {
-                    Week w = DatabaseDaysInWeek.GetWhichWeek(i.ToString());
-                    w.priority = i;
-                    ListWeek.Add(w);
-                }
+                while (!await DatabaseDaysInWeek.CheckDaysInWeek(Uid, Type, i)) ;
+            }
+            var lv = DatabaseDaysInWeek.GetWeeks();
+            foreach (var w in lv)
+            {
+                ListWeek.Add(w);
             }
         }
 

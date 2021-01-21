@@ -6,7 +6,6 @@ namespace ProgMob.Models
 {
     public class Week
     {
-        public int priority { get; set; }
         public DaysInWeek d1 { get; set; }
         public DaysInWeek d2 { get; set; }
         public DaysInWeek d3 { get; set; }
