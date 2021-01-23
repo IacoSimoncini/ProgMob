@@ -69,7 +69,6 @@ namespace ProgMob.Droid.Dependencies
                     DaysInWeek d = new DaysInWeek();
                     d.n = doc.Id; 
                     d.week = currentWeek;
-                    Console.WriteLine("======================= " + d.n.ToString() + " "+ "ifSet" + currentType + "====================================");
                     if ( doc.Get("ifSet" + currentType)!= null && doc.Get("ifSet" + currentType).Equals("True"))
                     {
                         d.ifSet = true;

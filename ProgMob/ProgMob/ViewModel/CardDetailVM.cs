@@ -5,6 +5,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -83,8 +84,11 @@ namespace ProgMob.ViewModel
                 var ex = await DatabaseDetailCard.GetExercises();
                 foreach (var e in ex)
                 {
-                    Console.WriteLine(e.Name);
                     Exercises.Add(e);
+                }
+                if (!Exercises.Any() && !Application.Current.Properties["Admin"].Equals("true"))
+                {
+                    await PopupNavigation.PushAsync(new PopupError());
                 }
             }
         }

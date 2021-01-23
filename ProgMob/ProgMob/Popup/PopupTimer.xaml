@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="ProgMob.Popup.PopupTimer">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    
+    <ContentPage.Content>
+        <Frame CornerRadius="10" BackgroundColor="White" Margin="50" Padding="10">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="Select Difficulty" Style="{x:StaticResource Key=LabelTitle}"/>
+                <Picker Title="Difficulty" x:Name="Difficulty" >
+                    <Picker.Items>
+                        <x:String>Hard</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Easy</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Button Text="Submit" Clicked="Button_Clicked" CornerRadius="25" Style="{x:StaticResource Key=BtnStyle}" BackgroundColor="Orange"/>
+            </StackLayout>
+        </Frame>
+        
+    </ContentPage.Content>
+</pages:PopupPage>

@@ -6,6 +6,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -28,7 +29,7 @@ namespace ProgMob.ViewModel
                 {
                     Application.Current.Properties["CID"] = selectedCard.Path;
                     Application.Current.SavePropertiesAsync();
-                    App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path));
+                    App.Current.MainPage.Navigation.PushAsync(new CardListDetailPage(selectedCard.Ref, selectedCard.Path, selectedCard.Name));
                 }
             }
         }
@@ -70,10 +71,11 @@ namespace ProgMob.ViewModel
             
         }
 
-        private void Play(object obj)
+        private async void Play(object obj)
         {
             var card = obj as Card;
-            App.Current.MainPage.Navigation.PushAsync(new TimerPage(card.Path, card.Ref));
+
+            await PopupNavigation.PushAsync(new PopupTimer(card.Path, card.Ref, card.Name));
         }
         
         
@@ -111,6 +113,10 @@ namespace ProgMob.ViewModel
                 foreach (var c in card)
                 {
                     Cards.Add(c);
+                }
+                if (!Cards.Any() && !Application.Current.Properties["Admin"].Equals("true"))
+                {
+                    await PopupNavigation.PushAsync(new PopupError());
                 }
             }
         }

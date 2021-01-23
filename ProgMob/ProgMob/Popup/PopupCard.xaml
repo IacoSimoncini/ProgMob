@@ -20,9 +20,9 @@
 
     <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0"  >
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-            <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-            <Entry x:Name="Name" Placeholder="Insert name" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
-            <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+            <Label Text="Insert name " Style="{x:StaticResource Key=LabelStyle}"/>
+            <Entry x:Name="Name" Placeholder="Insert name" Style="{x:StaticResource Key=LabelStyle}" />
+            <Button Text="Submit" Clicked="Button_Clicked" Style="{x:StaticResource Key=BtnStyle}"/>
             </StackLayout>
         </Frame>
     

@@ -10,12 +10,16 @@ namespace ProgMob.ViewModel.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (double)value / 60;
+            string val = Application.Current.Properties["value"].ToString();
+            int i = Int32.Parse(val);
+            return (double)value / i;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            string val = Application.Current.Properties["value"].ToString();
+            int i = Int32.Parse(val);
+            return (double)value * i;
         }
     }
 }

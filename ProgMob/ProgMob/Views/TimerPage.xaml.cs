@@ -19,8 +19,10 @@ namespace ProgMob.Views
         List<Exercise> list;
         readonly string CardId;
         readonly string UserId;
-        private int _countSeconds = 60;
-        int index = 0;
+        int index;
+        int pausa;
+        int MaxIndex;
+        bool value = false;
         private double _ProgressValue;
         public double ProgressValue
         {
@@ -62,79 +64,145 @@ namespace ProgMob.Views
         }
         private Timer time = new Timer();
         private bool timerRunning;
+        string Diff;
 
-
-        public TimerPage(string Cid, string Uid)
+        public TimerPage(string Cid, string Uid, string name, string diff)
         {
             InitializeComponent();
             BindingContext = this;
-            
+            Minimum = 0;
+            index = 0;
+
+            Diff = diff;
             CardId = Cid;
             UserId = Uid;
 
-            Title = Cid;
+            Title = name;
 
-            
+            CheckDiff(Diff);
+
             Startup();
 
             PlayPauseButton.Source = "playbutton.png";
+
         }
 
         private async void Startup()
         {
-            Minimum = 0;
-            Maximum = 60;
-            ProgressValue = 60;
-            timerRunning = true;
             if (await DatabaseDetailCard.ListExercise(UserId, 
                     CardId,
                     Application.Current.Properties["selectedDay"].ToString(),
                     Application.Current.Properties["selectedWeek"].ToString()))
             {
                 list = (List<Exercise>)await DatabaseDetailCard.GetExercises();
-                foreach (var e in list) Console.WriteLine("e.NAME: " + e.Name);
-                Console.WriteLine(index);
-                ExLbl.Text = list[index].Name;
+                if (!list.Any())
+                {
+                    await DisplayAlert("Empty card", "The card looks empty, please choose another one", "Ok");
+                    Application.Current.MainPage.Navigation.PopAsync();
+                }
+                else
+                {
+                    MaxIndex = list.Count();
+
+                    ExLbl.Text = list[index].Name;
+                }
+                
             }
             
         }
 
-        private void PlayPauseButton_Clicked(object sender, EventArgs e)
+        private void CheckDiff(string diff)
         {
-            time.Start();
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            if (diff.Equals("Hard"))
             {
-                if (ProgressValue > Minimum)
+                pausa = 5;
+                ProgressValue = 15;
+                Maximum = 15;
+                Application.Current.Properties["value"] = "15";
+                Application.Current.SavePropertiesAsync();
+            }
+            else
+            {
+                if (diff.Equals("Medium"))
                 {
-                    ProgressValue--;
-                    return true;
+                    pausa = 10;
+                    ProgressValue = 10;
+                    Maximum = 10;
+                    Application.Current.Properties["value"] = "10";
+                    Application.Current.SavePropertiesAsync();
                 }
                 else
                 {
-                    if (ProgressValue == Minimum)
+                    if (diff.Equals("Easy"))
+                    {
+                        pausa = 15;
+                        ProgressValue = 5;
+                        Maximum = 5;
+                        Application.Current.Properties["value"] = "5";
+                        Application.Current.SavePropertiesAsync();
+                    }
+                }
+            }
+        }
+
+        private void PlayPauseButton_Clicked(object sender, EventArgs e)
+        {
+            if (sender is ImageButton btn)
+            {
+                if (value)
+                {
+                    ProgressValue = pausa;
+                    Maximum = ProgressValue;
+                }
+                time.Start();
+                Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+                {
+                    btn.IsEnabled = false;
+                    timerRunning = true;
+                    if (ProgressValue > Minimum)
+                    {
+                        ProgressValue--;
+                        return true;
+                    }
+                    else if (ProgressValue == Minimum)
                     {
                         time.Stop();
                         timerRunning = false;
+
+                        ProgressValue = Maximum;
+                        if (value)
+                        {
+                            CheckDiff(Diff);
+                            index += 1;
+                            value = false;
+                            if (index == MaxIndex)
+                            {
+                                ProgressValue = Maximum;
+                                DisplayAlert("Finished workout", "You will be redirected to the previous page", "Ok");
+                                Application.Current.MainPage.Navigation.PopAsync();
+                            }
+                            else
+                            {
+                                ExLbl.Text = list[index].Name;
+                            }
+                        }
+                        else
+                        {
+                            ProgressValue = pausa;
+                            Maximum = ProgressValue;
+                            ExLbl.Text = "Break";
+                            value = true;
+                        }
+                        btn.IsEnabled = true;
                         return false;
                     }
-                }
-                if (_countSeconds != 0)
-                {
-                    _countSeconds--;
-                }
-                if (_countSeconds == 0) { 
-                    if (index != list.Count - 1) index++;
-                    else 
+                    else
                     {
-                        App.Current.MainPage.Navigation.PopAsync(); 
-                        index = 0; 
+                        return true;
                     }
-                    ExLbl.Text = list[index].Name;
-                }
-                Console.WriteLine("Time: " + _countSeconds.ToString());
-                TimerLbl.Text = "Time: " + _countSeconds.ToString();
-                return Convert.ToBoolean(_countSeconds);
-            });
+                });
+            }
+            
         }
     }
 }

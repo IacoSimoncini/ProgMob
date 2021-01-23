@@ -44,7 +44,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" x:Name="{Binding Name}" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" />
+                                <Label Text="{Binding Name}" x:Name="{Binding Name}" Style="{x:StaticResource Key=LabelStyle}" />
                                 <Switch IsToggled="{Binding IsChecked}" 
                                         HorizontalOptions="End"
                                         Grid.Column="1"/>
@@ -53,7 +53,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add Exercises " Clicked="Add_Exercise" FontFamily="bangers.regular.ttf#banger.regular" />
+            <Button Text="Add Exercises " Clicked="Add_Exercise" Style="{x:StaticResource Key=BtnStyle}" />
         </StackLayout>
     </Frame>
 </pages:PopupPage>

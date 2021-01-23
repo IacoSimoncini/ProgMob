@@ -1,4 +1,5 @@
-﻿using ProgMob.ViewModel.Helpers;
+﻿using ProgMob.ViewModel;
+using ProgMob.ViewModel.Helpers;
 using ProgMob.Views;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -15,30 +16,48 @@ namespace ProgMob.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupLoading : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public PopupLoading(string id, string type)
+        public PopupLoading(string id, string type, int value)
         {
             InitializeComponent();
-            Console.WriteLine("inizio Startup");
-            Startup(id, type);
-            Console.WriteLine("fine Startup");
+            Startup(id, type, value);
         }
 
-        public async void Startup(string id, string type)
+        public async void Startup(string id, string type, int value)
         {
-            if (await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 1)
-                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 2)
-                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 3)
-                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 4))
+            if(value == 1)
             {
-                Console.WriteLine("Calendario start");
-                PopupNavigation.PopAsync();
-                App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
+                if (await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 1)
+                                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 2)
+                                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 3)
+                                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 4))
+                {
+                    PopupNavigation.PopAsync();
+                    App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Something went wrong", "OK");
+                    PopupNavigation.PopAsync();
+                }
             }
             else
             {
-                await DisplayAlert("Error", "Something went wrong", "OK");
-                PopupNavigation.PopAsync();
+                if (await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 1)
+                                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 2)
+                                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 3)
+                                    && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 4))
+                {
+                    PopupNavigation.PopAsync();
+                    App.Current.MainPage.Navigation.PopAsync();
+                    App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Something went wrong", "OK");
+                    PopupNavigation.PopAsync();
+                }
             }
+            
         }
 
     }

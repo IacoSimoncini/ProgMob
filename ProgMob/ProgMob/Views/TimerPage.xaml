@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProgMob.Views.TimerPage"
-             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin" xmlns:local="clr-namespace:ProgMob.ViewModel.Helpers">
+             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
+             xmlns:local="clr-namespace:ProgMob.ViewModel.Helpers">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ValueProgressBarConverter x:Key="ValueProgressBar" />
@@ -14,27 +16,40 @@
             <Label x:Name="TitleLbl"
                    HorizontalOptions="Center"
                    Text="Press play button to start the timer"
-                   Style="{x:StaticResource Key=LabelStyle}"/>
-            <Label x:Name="ExLbl"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="Center"                
-                   Style="{x:StaticResource Key=LabelStyle}"
-                   />
-            <control:ProgressRing HeightRequest="90" RingProgressColor="Orange" Scale="2" WidthRequest="90" RingThickness="5" Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBar}, Mode=TwoWay}"/>
-            <Label x:Name="TimerLbl"
-                Text=""
-                FontSize="25"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                Style="{x:StaticResource Key=LabelStyle}"/>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
-                <ImageButton x:Name="PlayPauseButton"
-                    HeightRequest="50"
-                    WidthRequest="50"
-                    Source=""
-                    Clicked="PlayPauseButton_Clicked"
-                />
+                   Style="{x:StaticResource Key=LabelTimerTitle}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Current exercise: " Style="{x:StaticResource Key=LabelTimerEx}" HorizontalOptions="Center"/>
+                <Label x:Name="ExLbl" Style="{x:StaticResource Key=LabelTimerEx}" HorizontalOptions="Center" />
             </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                    <control:ProgressRing HeightRequest="90" 
+                                          RingProgressColor="Orange"
+                                          Scale="2"
+                                          WidthRequest="90"
+                                          RingThickness="5" 
+                                          Progress="{Binding ProgressValue , Converter={StaticResource ValueProgressBar},Mode=TwoWay}"/>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label FontAttributes="Bold"
+                               FontSize="20"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               TextColor="Black" 
+                               Text="{Binding ProgressValue, StringFormat='{}{0:N0}'}"/>
+                        <Label Text="Sec" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+                        <ImageButton x:Name="PlayPauseButton"
+                                     HeightRequest="80"
+                                     WidthRequest="80"
+                                     BackgroundColor="Transparent"
+                                     Clicked="PlayPauseButton_Clicked"/>
+                    
+                    </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

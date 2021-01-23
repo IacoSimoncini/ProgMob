@@ -17,6 +17,15 @@
             <OnPlatform x:TypeArguments="Font" x:Key="FontBold">
                 <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 15" />
             </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontTimer">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 25" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontTimerEx">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 20" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontLoading">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 20" />
+            </OnPlatform>
             <!--STYLES-->
             <Style x:Key="LabelStyle" TargetType="Label">
                 <Setter Property="Font" Value="{StaticResource FontNormal}" />
@@ -27,7 +36,16 @@
             <Style x:Key="LabelTitle" TargetType="Label">
                 <Setter Property="Font" Value="{StaticResource FontBold}" />
             </Style>
-            
+            <Style x:Key="LabelTimerTitle" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontTimer}"/>
+            </Style>
+            <Style x:Key="LabelTimerEx" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontTimerEx}"/>
+            </Style>
+            <Style x:Key="LabelLoading" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontLoading}"/>
+            </Style>
+
 
         </ResourceDictionary>
         

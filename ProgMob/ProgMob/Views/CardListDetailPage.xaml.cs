@@ -17,7 +17,7 @@ namespace ProgMob.Views
         private readonly string CardId;
         static public int verify = 0;
         CardDetailVM CardDetailVM;
-        public CardListDetailPage(string Uid, string Cid)
+        public CardListDetailPage(string Uid, string Cid, string Name)
         {
             InitializeComponent();
             UserId = Uid;
@@ -26,7 +26,7 @@ namespace ProgMob.Views
                 CardId,
                 Application.Current.Properties["selectedDay"].ToString(),
                 Application.Current.Properties["selectedWeek"].ToString());
-            Title = CardId;
+            Title = Name;
             CardDetailVM = Resources["CardDetailViewModel"] as CardDetailVM;
 
             if (Application.Current.Properties["Admin"].ToString().Equals("true"))

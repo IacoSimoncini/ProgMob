@@ -23,11 +23,11 @@
         <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0">
         <ScrollView>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-                <Label Text="Insert name " FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-                <Entry x:Name="Name" Placeholder="Insert name" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
-                <Label Text="Insert description" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
-                <Entry x:Name="Description" Placeholder="Insert description" FontSize="25" FontFamily="annie-use-your-telescope.regular.ttf#annie-use-yout-telescope.regular" />
-                <Label Text="Insert difficulty" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular"/>
+                <Label Text="Insert name " Style="{x:StaticResource Key=LabelStyle}"/>
+                <Entry x:Name="Name" Placeholder="Insert name" Style="{x:StaticResource Key=LabelStyle}" />
+                <Label Text="Insert description" Style="{x:StaticResource Key=LabelStyle}"/>
+                <Entry x:Name="Description" Placeholder="Insert description" Style="{x:StaticResource Key=LabelStyle}"/>
+                <Label Text="Insert difficulty" Style="{x:StaticResource Key=LabelStyle}"/>
                 <Picker Title="Difficulty" x:Name="Difficulty" >
                     <Picker.Items>
                         <x:String>Warming Up</x:String>
@@ -37,7 +37,7 @@
                         <x:String>Hit and Special</x:String>
                     </Picker.Items>
                 </Picker>
-                <Button Text="Submit" Clicked="Button_Clicked" FontSize="25" FontFamily="bangers.regular.ttf#banger.regular" />
+                <Button Text="Submit" Clicked="Button_Clicked" Style="{x:StaticResource Key=BtnStyle}"/>
             </StackLayout>
         </ScrollView>
     </Frame>

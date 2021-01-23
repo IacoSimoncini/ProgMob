@@ -23,7 +23,7 @@
                     <ListView BindingContext="{StaticResource CalendaryViewModel}" 
                             x:Name="CalendaryViewCard"
                             RowHeight="80" 
-                            BackgroundColor="LightGray"
+                            BackgroundColor="White"
                             ItemsSource="{Binding ListWeek}"
                             SelectedItem="{Binding SelectedWeek, Mode=TwoWay}"
                             IsPullToRefreshEnabled="true"
@@ -109,7 +109,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid BackgroundColor="LightGray">
+                                    <Grid BackgroundColor="White">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -121,10 +121,9 @@
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Column="0" Orientation="Vertical">
                                             <Label x:Name="label1" 
-                                               IsEnabled="{Binding d1.ifSet}"
                                                Text ="{Binding d1.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightGray"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
                                                 <Label.GestureRecognizers>
@@ -133,91 +132,135 @@
                                                 </Label.GestureRecognizers>
                                             </Label>
                                             <Image 
-                                                Source="check.png"
+                                                Source="cards.png"
                                                 HeightRequest="40"
                                                 WidthRequest="10"
-                                                BackgroundColor="LightGray"
+                                                BackgroundColor="White"
                                                 IsVisible="{Binding d1.ifSet}"/>
                                         </StackLayout>
-                                        
-                                        <Label Grid.Column="1"
-                                               x:Name="label2"
-                                               IsEnabled="{Binding d2.ifSet}"
+
+                                        <StackLayout Grid.Column="1" Orientation="Vertical">
+                                            <Label x:Name="label2" 
                                                Text ="{Binding d2.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightBlue"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label2}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                        <Label Grid.Column="2"
-                                               x:Name="label3" 
-                                               IsEnabled="{Binding d3.ifSet}"
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="cards.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="White"
+                                                IsVisible="{Binding d2.ifSet}"/>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="2" Orientation="Vertical">
+                                            <Label x:Name="label3" 
                                                Text ="{Binding d3.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightBlue"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label3}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                        <Label Grid.Column="3"
-                                               x:Name="label4" 
-                                               IsEnabled="{Binding d4.ifSet}"
-                                               Text ="{Binding d4.n}" 
-                                               HorizontalOptions="FillAndExpand" 
-                                               BackgroundColor="LightBlue"
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="cards.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="White"
+                                                IsVisible="{Binding d3.ifSet}"/>
+                                        </StackLayout>
+
+
+
+                                        <StackLayout Grid.Column="3" Orientation="Vertical">
+                                            <Label x:Name="label4" 
+                                               Text ="{Binding d4.n}"
+                                               HorizontalOptions="FillAndExpand"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label4}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                        <Label Grid.Column="4"
-                                               x:Name="label5" 
-                                               IsEnabled="{Binding d5.ifSet}"
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="cards.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="White"
+                                                IsVisible="{Binding d4.ifSet}"/>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="4" Orientation="Vertical">
+                                            <Label x:Name="label5" 
                                                Text ="{Binding d5.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightBlue"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label5}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                        <Label Grid.Column="5"
-                                               x:Name="label6" 
-                                               IsEnabled="{Binding d6.ifSet}"
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="cards.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="White"
+                                                IsVisible="{Binding d5.ifSet}"/>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="5" Orientation="Vertical">
+                                            <Label x:Name="label6" 
                                                Text ="{Binding d6.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightBlue"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label6}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                        <Label Grid.Column="6"
-                                               x:Name="label7" 
-                                               IsEnabled="{Binding d7.ifSet}"
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="cards.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="White"
+                                                IsVisible="{Binding d6.ifSet}"/>
+                                        </StackLayout>
+
+
+                                        <StackLayout Grid.Column="6" Orientation="Vertical">
+                                            <Label x:Name="label7" 
                                                Text ="{Binding d7.n}"
                                                HorizontalOptions="FillAndExpand"
-                                               BackgroundColor="LightBlue"
+                                               BackgroundColor="White"
                                                HorizontalTextAlignment="Center"
                                                Margin="1">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TapCommand, Source={StaticResource CalendaryViewModel}}" 
                                                                       CommandParameter="{x:Reference label7}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Image 
+                                                Source="cards.png"
+                                                HeightRequest="40"
+                                                WidthRequest="10"
+                                                BackgroundColor="White"
+                                                IsVisible="{Binding d7.ifSet}"/>
+                                        </StackLayout>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -225,16 +268,20 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
-            <Button 
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Button 
                 x:Name="ChangeTypeButton"
                 Grid.Row="1"
                 Text="Change Type"
                 BackgroundColor="{StaticResource AccentColor}"
                 BorderRadius="35"
-                HeightRequest="20"
+                HeightRequest="40"
                 TextColor="Black"
+                VerticalOptions="Center"
                 HorizontalOptions="Center"
+                
                 Clicked="ChangeTypeButton_Clicked"/>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage> 

@@ -55,8 +55,8 @@ namespace ProgMob.ViewModel
                 return new Command(() =>
                 {
                     IsRefreshing = true;
-                    
-                    ListDaysInWeek(selectedType , selectedType);
+
+                    PopupNavigation.PushAsync(new PopupLoading(UserId, selectedType, 2));
 
                     IsRefreshing = false;
                 });
@@ -90,7 +90,7 @@ namespace ProgMob.ViewModel
                 Application.Current.Properties["selectedWeek"] = d.week;
                 Application.Current.Properties["selectedDay"] = d.n;
                 verify = 0;
-                await PopupNavigation.PushAsync(new PopupCard(UserId,d.n, selectedType , d.week));  ;
+                await PopupNavigation.PushAsync(new PopupCard(UserId,d.n, selectedType , d.week));  
 
                 for (int i = 0; i < 1000; i++)
                 {
@@ -98,8 +98,6 @@ namespace ProgMob.ViewModel
                     if (verify != 0)
                         break;
                 }
-
-                //CardVM.ListCard(UserId, selectedDay, selectedWeek, selectedType);
             }
             else {
                 Application.Current.Properties["selectedWeek"] = d.week;
@@ -114,7 +112,7 @@ namespace ProgMob.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         } 
         
-        public async void ListDaysInWeek(string Uid , string Type)
+        public async void ListDaysInWeek()
         {
             ListWeek.Clear();
             var lv = DatabaseDaysInWeek.GetWeeks();
@@ -164,12 +162,12 @@ namespace ProgMob.ViewModel
                     selectedType = "B";
                     break;
                 case "B":
-                    Application.Current.Properties["ABC"] = "B";
+                    Application.Current.Properties["ABC"] = "C";
                     Application.Current.SavePropertiesAsync();
                     selectedType = "C";
                     break;
                 case "C":
-                    Application.Current.Properties["ABC"] = "C";
+                    Application.Current.Properties["ABC"] = "A";
                     selectedType = "A";
                     break;
             }

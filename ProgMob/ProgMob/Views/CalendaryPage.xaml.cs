@@ -25,8 +25,8 @@ namespace ProgMob.Views
         public CalendaryPage()
         {
             InitializeComponent();
-            Title = "Calendary";
             type = Application.Current.Properties["ABC"].ToString();
+            Title = "Calendary " + type;
             UserId = Application.Current.Properties["UID"].ToString();
             CalendaryVM = Resources["CalendaryViewModel"] as CalendaryVM;
             ToolbarItem TBItemLogout = new ToolbarItem
@@ -57,14 +57,14 @@ namespace ProgMob.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CalendaryVM.ListDaysInWeek(UserId, type);
+            CalendaryVM.ListDaysInWeek();
         }
 
         private void ChangeTypeButton_Clicked(object sender, EventArgs e)
         {
             type = CalendaryVM.ChangeType();
-            CalendaryVM.ListDaysInWeek(UserId, type);
-            Console.WriteLine(type);
+            PopupNavigation.PushAsync(new PopupLoading(UserId, type, 2));
+            CalendaryVM.ListDaysInWeek();
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

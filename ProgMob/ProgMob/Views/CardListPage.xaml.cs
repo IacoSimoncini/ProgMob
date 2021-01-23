@@ -27,7 +27,15 @@ namespace ProgMob.Views
             selectedType = Application.Current.Properties["ABC"].ToString();
             selectedWeek = Application.Current.Properties["selectedWeek"].ToString();
             CardVM = Resources["CardViewModel"] as CardVM;
-            Btn_AddCard.IsVisible = true;
+
+            if (Application.Current.Properties["Admin"].ToString().Equals("true"))
+            {
+                Btn_AddCard.IsVisible = true;
+            }
+            else
+            {
+                Btn_AddCard.IsVisible = false;
+            }
 
 
             ToolbarItem TBItem = new ToolbarItem
