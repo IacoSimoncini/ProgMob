@@ -34,6 +34,9 @@
         <Tab Title="User" Icon="user.png">
             <ShellContent  ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
+        <Tab Title="Info" Icon="info.png">
+            <ShellContent  ContentTemplate="{DataTemplate local:Info}" />
+        </Tab>
     </TabBar>
     
     

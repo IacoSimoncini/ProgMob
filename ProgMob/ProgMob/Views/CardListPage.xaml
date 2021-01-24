@@ -62,19 +62,7 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
-            <Button
-                x:Name="Btn_AddCard"
-                Grid.Row="0"
-                Text="+" FontSize="30"
-                BackgroundColor="{StaticResource AccentColor}" 
-                BorderRadius="35" 
-                TextColor="Black" 
-                HorizontalOptions="End" 
-                WidthRequest="60" 
-                HeightRequest="60" 
-                Margin="0,0,10,10" 
-                VerticalOptions="End"
-                Clicked="Button_Clicked"/>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

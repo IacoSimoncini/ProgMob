@@ -26,6 +26,12 @@
             <OnPlatform x:TypeArguments="Font" x:Key="FontLoading">
                 <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 20" />
             </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontInfo">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 25" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="Font" x:Key="FontInfoTitle">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold, 35" />
+            </OnPlatform>
             <!--STYLES-->
             <Style x:Key="LabelStyle" TargetType="Label">
                 <Setter Property="Font" Value="{StaticResource FontNormal}" />
@@ -44,6 +50,12 @@
             </Style>
             <Style x:Key="LabelLoading" TargetType="Label">
                 <Setter Property="Font" Value="{StaticResource FontLoading}"/>
+            </Style>
+            <Style x:Key="LabelInfo" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontInfo}"/>
+            </Style>
+            <Style x:Key="LabelInfoTitle" TargetType="Label">
+                <Setter Property="Font" Value="{StaticResource FontInfoTitle}"/>
             </Style>
 
 

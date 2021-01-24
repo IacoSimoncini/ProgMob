@@ -28,14 +28,7 @@ namespace ProgMob.Views
             selectedWeek = Application.Current.Properties["selectedWeek"].ToString();
             CardVM = Resources["CardViewModel"] as CardVM;
 
-            if (Application.Current.Properties["Admin"].ToString().Equals("true"))
-            {
-                Btn_AddCard.IsVisible = true;
-            }
-            else
-            {
-                Btn_AddCard.IsVisible = false;
-            }
+            
 
 
             ToolbarItem TBItem = new ToolbarItem
@@ -70,20 +63,7 @@ namespace ProgMob.Views
         }
 
 
-        private async void Button_Clicked(object sender, System.EventArgs e)
-        {
-            verify = 0;
-            await PopupNavigation.PushAsync(new PopupCard(UserId, selectedDay, "A", "1"));
-
-            for (int i = 0; i < 1000; i++)
-            {
-                await System.Threading.Tasks.Task.Delay(100);
-                if (verify != 0)
-                    break;
-            }
-
-            CardVM.ListCard(UserId , selectedDay, selectedWeek, selectedType);
-        }
+        
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {

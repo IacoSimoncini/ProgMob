@@ -16,7 +16,7 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if(Name.Text != null && Description.Text != null && Name.Text.Length < 10 && Description.Text.Length < 25 && Difficulty.SelectedItem.ToString() != null)
+            if(Name.Text != null && Description.Text != null && Name.Text.Length < 40 && Description.Text.Length < 100 && Difficulty.SelectedItem.ToString() != null)
             {
                 string diff = "";
                 if (Difficulty.SelectedItem.ToString() == "Warming Up")
@@ -53,7 +53,7 @@ namespace ProgMob.Popup
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Name up to 10 characters, description up to 25 characters", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "Name up to 20 characters, description up to 100 characters", "OK");
             }
         }
     }

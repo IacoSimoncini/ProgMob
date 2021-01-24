@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgMob.Views.Info">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Orientation="Vertical">
+            <Image Source="Logo.png"
+                   WidthRequest="70"
+                   HeightRequest="70"/>
+            <Label Text="WHITEGYM" Style="{x:StaticResource Key=LabelInfoTitle}" HorizontalOptions="Center" />
+            <StackLayout >
+                <Label Text="Siamo 3 studenti del III anno di Ingegneria Informatica e dell'Automazione. Tale progetto è volto a sviluppare un'applicazione mobile per Android riguardante una palestra organizzando le 4 settimane di allenamento perfette per ogni persona che voglia approcciarsi all'allenamento fisico. L'applicazione è poi strettamente legata ai meccanismi e funzionamenti del sistema di Databasing FIREBASE."
+                       Style="{x:StaticResource Key=LabelInfo}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
