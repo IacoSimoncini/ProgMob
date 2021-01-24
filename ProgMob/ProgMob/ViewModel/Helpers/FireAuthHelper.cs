@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgMob.Models;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -9,6 +10,7 @@ namespace ProgMob.ViewModel.Helpers
         Task<string> LoginToFirebase(string email, string password);
         Task<string> RegisterToFirebase(string username, string email, string password);
         Task<bool> Logout();
+        Task<bool> UpdateEmailToFirebase(User user);
 
     }
 
@@ -25,6 +27,19 @@ namespace ProgMob.ViewModel.Helpers
             catch (Exception e)
             {
                 return "";
+            }
+        }
+
+        public static async Task<bool> UpdateEmailToFirebase(User user)
+        {
+            try
+            {
+                return await auth.UpdateEmailToFirebase(user);
+            }
+            catch (Exception e)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", e.Message, "Cancel");
+                return false; ;
             }
         }
 

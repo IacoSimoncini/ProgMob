@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
 using System;
 using System.Threading.Tasks;
@@ -52,6 +53,23 @@ namespace ProgMob.Droid.Dependencies
             catch (Exception e)
             {
                 return "";
+            }
+        }
+
+        public async Task<bool> UpdateEmailToFirebase(User user)
+        {
+            try
+            {
+                var profileUpdates = new Firebase.Auth.UserProfileChangeRequest.Builder();
+                profileUpdates.SetDisplayName(user.Username);
+                var us = Firebase.Auth.FirebaseAuth.Instance.CurrentUser;
+                var token = us.UpdateEmailAsync(user.Email);
+                return token.IsCompleted;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
             }
         }
 

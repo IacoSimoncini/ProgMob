@@ -1,4 +1,5 @@
 ﻿using Android.Gms.Tasks;
+using Firebase.Auth;
 using Firebase.Firestore;
 using Java.Util;
 using ProgMob.Models;

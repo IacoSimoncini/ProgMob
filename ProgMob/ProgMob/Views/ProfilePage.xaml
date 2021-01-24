@@ -77,8 +77,10 @@
                 <Button 
                     HorizontalOptions="End"
                     BorderRadius="25"
-                    ImageSource="pencil.png"
-                    WidthRequest="60"
+                    BackgroundColor="#FFC107"
+                    Text="Modify data"
+                    Style="{x:StaticResource BtnStyle}"
+                    WidthRequest="80"
                     HeightRequest="60"
                     Margin="0,0,10,10"
                     VerticalOptions="End"

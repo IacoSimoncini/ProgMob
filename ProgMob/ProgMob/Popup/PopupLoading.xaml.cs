@@ -32,6 +32,7 @@ namespace ProgMob.Popup
                                     && await DatabaseDaysInWeek.CheckDaysInWeek(id, type, 4))
                 {
                     PopupNavigation.PopAsync();
+                    App.Current.MainPage.Navigation.PopAsync();
                     App.Current.MainPage.Navigation.PushAsync(new CalendaryPage());
                 }
                 else

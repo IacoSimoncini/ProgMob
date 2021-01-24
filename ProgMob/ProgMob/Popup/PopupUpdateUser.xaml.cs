@@ -43,6 +43,7 @@ namespace ProgMob.Popup
             if (DatabaseUser.Update(user))
             {
                 _ = App.Current.MainPage.DisplayAlert("Updated successful", "Please, press OK", "OK");
+                Auth.UpdateEmailToFirebase(user);
                 PopupNavigation.PopAsync();
             }
             else

@@ -268,9 +268,10 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
-            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <Button 
                 x:Name="ChangeTypeButton"
+                Grid.Row="1"
                 Text="Change Type"
                 VerticalOptions="CenterAndExpand"
                 BackgroundColor="{StaticResource AccentColor}"
