@@ -18,7 +18,7 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0"  >
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="60" Padding="10"  >
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
             <Label Text="Insert name" 
                    Style="{StaticResource LabelStyle}"/>
@@ -36,7 +36,8 @@
                    Style="{StaticResource LabelStyle}"/>
             <Entry x:Name="Username" Placeholder="Insert username" 
                    Style="{StaticResource LabelStyle}" />
-            <Button Text="Submit" Clicked="Submit" 
+            <Button Text="Submit" Clicked="Submit"
+                    BackgroundColor="#FFC107"
                     Style="{StaticResource BtnStyle}"/>
         </StackLayout>
     </Frame>

@@ -18,18 +18,18 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0">
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="60" Padding="10">
         <ScrollView>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
                 <Label Text="Insert name " 
                        FontSize="25" 
                        Style="{x:StaticResource Key=LabelStyle}"/>
-                <Entry x:Name="Name" Placeholder="Insert name" FontSize="25" />
+                <Entry x:Name="Name" Placeholder="Name" FontSize="25" />
                 <Label Text="Insert description"
                        FontSize="25" 
                        Style="{x:StaticResource Key=LabelStyle}"/>
-                <Entry x:Name="Description" Placeholder="Insert description" FontSize="25" />
-                <Label Text="Insert difficulty" 
+                <Entry x:Name="Description" Placeholder="Description" FontSize="25" />
+                <Label Text="Choose difficulty" 
                        FontSize="25" 
                        Style="{x:StaticResource Key=LabelStyle}" />
                 <Picker Title="Difficulty" x:Name="Difficulty" >
@@ -44,8 +44,10 @@
                 <Button Text="Update"
                         Clicked="Button_Clicked"
                         FontSize="25" 
+                        
+                    BackgroundColor="#FFC107"
                         CornerRadius="20"
-                        FontFamily="bangers.regular.ttf#banger.regular" />
+                        Style="{x:StaticResource Key=BtnStyle}" />
             </StackLayout>
         </ScrollView>
     </Frame>

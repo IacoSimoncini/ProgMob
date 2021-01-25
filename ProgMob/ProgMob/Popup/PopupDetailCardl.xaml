@@ -53,7 +53,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add Exercises " Clicked="Add_Exercise" Style="{x:StaticResource Key=BtnStyle}" />
+            <Button Text="Add Exercises " CornerRadius="25" 
+                    BackgroundColor="#FFC107" Clicked="Add_Exercise" Style="{x:StaticResource Key=BtnStyle}" />
         </StackLayout>
     </Frame>
 </pages:PopupPage>

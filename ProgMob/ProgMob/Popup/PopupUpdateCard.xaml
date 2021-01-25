@@ -18,7 +18,7 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0">
+    <Frame CornerRadius="10" BackgroundColor="White" Margin="60" Padding="10">
         <ScrollView>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
                 <Label Text="Insert new Name" 
@@ -29,7 +29,8 @@
                         Clicked="Button_Clicked"
                         FontSize="25" 
                         CornerRadius="20"
-                        FontFamily="bangers.regular.ttf#banger.regular" />
+                        BackgroundColor="#FFC107"
+                        Style="{x:StaticResource Key=BtnStyle}" />
             </StackLayout>
         </ScrollView>
     </Frame>

@@ -27,10 +27,6 @@ namespace ProgMob.ViewModel
                     Application.Current.Properties["UID"] = selectedUser.Id;
                     Application.Current.SavePropertiesAsync();
                     PopupNavigation.PushAsync(new PopupLoading(selectedUser.Id, "A", 1));
-                    for (int i = 0; i < 1000; i++)
-                    {
-                        System.Threading.Tasks.Task.Delay(100);
-                    }
                 }
             }
         }

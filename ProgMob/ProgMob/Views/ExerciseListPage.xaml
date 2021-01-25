@@ -41,7 +41,7 @@
                                     </ViewCell.ContextActions>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="8,10,10,15" BackgroundColor="White"  Margin="5,5,5,5">
                                         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" >
-                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
+                                            <Label HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="25" Style="{x:StaticResource Key=LabelStyle}" TextColor="Black" Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="290"/>
                                             <Image Source="{Binding Difficulty}" WidthRequest="35" HeightRequest="35" HorizontalOptions="Start"/>
                                         </StackLayout>
                                     </StackLayout>

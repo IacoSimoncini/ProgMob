@@ -1,5 +1,6 @@
 ﻿using ProgMob.Models;
 using ProgMob.ViewModel.Helpers;
+using ProgMob.Views;
 using Rg.Plugins.Popup.Services;
 using System;
 using Xamarin.Forms.Xaml;
@@ -44,6 +45,8 @@ namespace ProgMob.Popup
                 {
                     await App.Current.MainPage.DisplayAlert("Insert completed", "Please, press OK to continue", "OK");
                     PopupNavigation.PopAsync();
+                    App.Current.MainPage.Navigation.PopAsync();
+                    App.Current.MainPage.Navigation.PushAsync(new ExerciseListPage());
                 }
                 else
                 {

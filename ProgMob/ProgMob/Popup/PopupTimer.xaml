@@ -29,7 +29,8 @@
                         <x:String>Easy</x:String>
                     </Picker.Items>
                 </Picker>
-                <Button Text="Submit" Clicked="Button_Clicked" CornerRadius="25" Style="{x:StaticResource Key=BtnStyle}" BackgroundColor="Orange"/>
+                <Button Text="Submit" Clicked="Button_Clicked" CornerRadius="25" Style="{x:StaticResource Key=BtnStyle}" 
+                    BackgroundColor="#FFC107"/>
             </StackLayout>
         </Frame>
         

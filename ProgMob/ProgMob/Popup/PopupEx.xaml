@@ -20,7 +20,7 @@
     </pages:PopupPage.Animation>
 
     
-        <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="0">
+        <Frame CornerRadius="10" BackgroundColor="White" Margin="80" Padding="10">
         <ScrollView>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
                 <Label Text="Insert name " Style="{x:StaticResource Key=LabelStyle}"/>
@@ -37,7 +37,7 @@
                         <x:String>Hit and Special</x:String>
                     </Picker.Items>
                 </Picker>
-                <Button Text="Submit" Clicked="Button_Clicked" Style="{x:StaticResource Key=BtnStyle}"/>
+                <Button Text="Submit" Clicked="Button_Clicked" BackgroundColor="#FFC107" Style="{x:StaticResource Key=BtnStyle}"/>
             </StackLayout>
         </ScrollView>
     </Frame>

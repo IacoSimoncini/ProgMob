@@ -16,7 +16,6 @@ namespace ProgMob.ViewModel
 {
     public class CalendaryVM : INotifyPropertyChanged
     {
-        static public int verify = 0;
         public event PropertyChangedEventHandler PropertyChanged;
         private string selectedType;
         private string UserId;
@@ -89,15 +88,9 @@ namespace ProgMob.ViewModel
             if (Application.Current.Properties["Admin"].ToString().Equals("true") && !d.ifSet) {
                 Application.Current.Properties["selectedWeek"] = d.week;
                 Application.Current.Properties["selectedDay"] = d.n;
-                verify = 0;
                 await PopupNavigation.PushAsync(new PopupCard(UserId,d.n, selectedType , d.week));  
 
-                for (int i = 0; i < 1000; i++)
-                {
-                    await System.Threading.Tasks.Task.Delay(100);
-                    if (verify != 0)
-                        break;
-                }
+                
             }
             else {
                 Application.Current.Properties["selectedWeek"] = d.week;

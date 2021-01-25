@@ -29,7 +29,7 @@ namespace ProgMob.ViewModel
                     OnpropertyChanged("SelectedEx");
                     if (selectedEx != null)
                     {
-
+                        PopupNavigation.PushAsync(new PopupDetailExercise(SelectedEx));
                     }
                 }
             }

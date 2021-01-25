@@ -20,7 +20,8 @@
     <Frame CornerRadius="10" BackgroundColor="White"  Margin="50" Padding="10, 20" >
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
             <Label x:Name="LoadingLabel" Text="Ops... It looks empty, you will be redirected to the previous page" Style="{x:StaticResource Key=LabelLoading}" />
-            <Button x:Name="Redirect" Clicked="Redirect_Clicked" Text="OK" Style="{x:StaticResource Key=BtnStyle}" BackgroundColor="Orange" CornerRadius="25" WidthRequest="60" HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="Redirect" Clicked="Redirect_Clicked" Text="OK" Style="{x:StaticResource Key=BtnStyle}" 
+                    BackgroundColor="#FFC107" CornerRadius="25" WidthRequest="60" HorizontalOptions="CenterAndExpand" />
 
         </StackLayout>
     </Frame>

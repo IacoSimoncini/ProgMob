@@ -21,7 +21,7 @@
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
             <Label x:Name="LoadingLabel" Text="Loading..." Style="{x:StaticResource Key=LabelLoading}" />
             <ActivityIndicator IsRunning="true" 
-                               Color="Orange"/>
+                               Color="#FFC107"/>
             
         </StackLayout>
     </Frame>

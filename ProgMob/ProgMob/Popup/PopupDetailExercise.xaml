@@ -38,6 +38,8 @@
             <StackLayout HorizontalOptions="End" VerticalOptions="Center">
                 <Button Text="Close"
                     Style="{x:StaticResource Key=BtnStyle}"
+                    CornerRadius="25" 
+                    BackgroundColor="#FFC107"
                     Clicked="Button_Clicked" />
             </StackLayout>
         </StackLayout>

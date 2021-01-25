@@ -27,7 +27,7 @@ namespace ProgMob.Popup
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if(Name.Text != null && Name.Text.Length < 10)
+            if(Name.Text != null && Name.Text.Length < 15)
             {
                 Card card = new Card();
                 card.Name = Name.Text;
@@ -38,19 +38,20 @@ namespace ProgMob.Popup
                     if( await DatabaseDaysInWeek.CheckDaysInWeek(UserId , Type, Convert.ToInt32(Week)))
                     {
                         _ = App.Current.MainPage.DisplayAlert("Entry successful", "Please, press OK", "OK");
-                        //CardListPage.verify = 1;
-                        CalendaryPage.verify = 1;
+                        App.Current.MainPage.Navigation.PushAsync(new CardListPage());
+                        PopupNavigation.PopAsync();
                     }
                     else
                     {
                         _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
+                        PopupNavigation.PopAsync();
                     }
                 }
                 else
                 {
                     _ = App.Current.MainPage.DisplayAlert("Error", "The insertion was not successful", "OK");
+                    PopupNavigation.PopAsync();
                 }
-                PopupNavigation.PopAsync();
             } 
             else
             {

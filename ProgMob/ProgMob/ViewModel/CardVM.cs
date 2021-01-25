@@ -93,7 +93,9 @@ namespace ProgMob.ViewModel
             if (deleted)
             {
                 Cards.Remove(card);
-                _ = App.Current.MainPage.DisplayAlert("Successfully deleted", "Please, press OK", "OK");
+                Application.Current.MainPage.Navigation.PopAsync();
+                _ = App.Current.MainPage.DisplayAlert("Successfully deleted", "Please, refresh the calendary", "OK");
+                
             }
             else
                 _ = App.Current.MainPage.DisplayAlert("Error", "Something went wrong", "OK");
